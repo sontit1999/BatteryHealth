@@ -1,0 +1,101 @@
+<resources>
+    <!-- Text for Translator service -->
+    <!--<string name="app_name">Batterie Principale</string>-->
+
+    <string name="optimize">Optimze</string>
+    <string name="optimizing">Optimiser&#8230;</string>
+    <string name="optimized">Terminer</string>
+    <string name="technology">Technologie</string>
+    <string name="temperature">Température</string>
+    <string name="capacity">Capacité de batterie</string>
+    <string name="health">Statut</string>
+    <string name="good">Bien</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">Actions lors de l\'optimisation</string>
+    <string name="settings">Paramètres</string>
+    <string name="automation">Automatique</string>
+    <string name="launch_app_when_plugged">Ouvrez automatiquement l\'application lorsque le chargeur est branché</string>
+    <string name="exit_app_when_unplugged">Fermez l\'application lorsque vous débranchez le chargeur</string>
+    <string name="restore_state_when_unplugged">Restaurer les paramètres lors du débranchement du chargeur</string>
+    <string name="play_sound_when_battery_full">Alarme lorsque la batterie est pleine</string>
+    <string name="dont_disturb">Ne pas déranger</string>
+    <string name="battery_full_sound_not_played_while">Vous n\'obtiendrez pas un son de notification de batterie plein pendant ce temps.</string>
+
+    <string name="txt_time_star">Start von</string>
+    <string name="txt_time_end">À</string>
+
+    <string name="reject">Rejeter</string>
+    <string name="allow">Autoriser</string>
+
+    <string name="cancel">Annuler</string>
+
+    <string name="do_you_want_to_charge_fast">Voulez-vous une charge rapide ?</string>
+    <string name="yes">Oui</string>
+    <string name="no">Non</string>
+    <string name="normal_charge">Chargeur normal</string>
+    <string name="quick_charge">Chargeur rapide</string>
+    <string name="great">Génial!</string>
+    <string name="your_device_ready_for_quick_charge">Votre appareil est prêt pour une charge rapide</string>
+    <string-array name="intro_titles">
+        <item>Facile à utiliser et pratique</item>
+        <item>Notification audio lorsque la batterie est complètement chargée</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>Avec juste une touche</item>
+        <item>Protection de la batterie</item>
+    </string-array>
+    <!-- Translated myself -->
+    <string name="ok">OK</string>
+    <string name="cold">Froid</string>
+    <string name="dead">Mort</string>
+    <string name="overheat">Trop chaud</string>
+    <string name="over_voltage">Surcharger</string>
+    <string name="battery_info">Informations sur la batterie</string>
+    <string name="device_info">Info appareil</string>
+    <string name="model">Dispositif</string>
+    <string name="screen_size">Taille de l\'écran</string>
+    <string name="screen_resolution">Résolution d\'écran</string>
+    <string name="storage">Stockage</string>
+    <string name="android_version">Version Android</string>
+    <string name="no_optimization_options_selected">Il n\'y a pas d\'option d\'optimisation mis en place. Accédez à l\'écran Paramètres et sélectionnez au moins une action.</string>
+    <string name="optimization_desc_title">Pro Charger exécute les actions suivantes pour optimiser</string>
+    <string name="optimization_desc_content">Lorsque vous cliquez sur Autoriser, vous comprenez et acceptez les actions ci-dessus, l\'application s\'exécutera automatiquement la prochaine fois.</string>
+    <string name="info">Information</string>
+
+    <string name="alert_button_rate_app">Évaluer l\'application</string>
+    <string name="menu_share_app">Partagez cette appli</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="alert_button_update_app">Dernière version</string>
+    <string name="remove_ads">Supprimez la pub</string>
+
+    <string name="unspecified_failure">Une erreur inconnue</string>
+    <string name="unknown">Inconnue</string>
+    <string name="msg_charging_via_usb">Vous utilisez une source d\'alimentation USB, c\'est une source d\'alimentation basse tension, de sorte que le temps de charge sera plus.</string>
+
+    <string name="alert_button_rate5star_app">Note 5 étoiles</string>
+    <string name="alert_content_rate_app">Bonjour, Le développeur d\'applications a travaillé très fort pour vous proposer les meilleures applications gratuites. Votre note 5 étoiles vaut plus que tout l\'argent. S\'il vous plaît écrivez une bonne critique sur Play Store pour encourager les développeurs.</string>
+    <string name="alert_button_cancel_rate_app">Plus tard</string>
+    <string name="is_dismiss">Ne plus montrer</string>
+    <string name="title_alert_buy">Surclassement VIP - Supprimer publicités</string>
+    <string name="message_alert_buy">Devenez VIP pour supprimer les publicités et soutenir les développeurs.</string>
+    <string name="alert_buy_error">Veuillez vérifier votre connexion réseau</string>
+    <string name="alert_buy_success">Vous êtes devenu VIP</string>
+
+    <string name="desc_permission_draw_overlay">
+        Laissez cette application s\'ouvrir automatiquement chaque fois que vous branchez le chargeur.
+        \n\nPour certains téléphones Android, vous devez donner l\'autorisation d\'application pour apparaître sur d\'autres applications.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Si vous avez autorisé cette application à s\'afficher au-dessus d\'autres applications, mais que l\'application ne fonctionne pas correctement, essayez d\'activer plus d\'autorisations ci-dessous.\n\n1. Afficher sur l\'écran de verrouillage.\n2. Afficher une fenêtre pop-up lors de l\'exécution en arrière-plan.\n3. Afficher la fenêtre pop-up.
+    </string>
+    <string name="automatic_definition">Activer Auto vous aidera à optimiser le processus de charge</string>
+    <string name="charing">La batterie est en charge</string>
+    <string name="not_charing">La batterie ne charge pas</string>
+    <string name="txt_user_easy">Facile et pratique</string>
+    <string name="message_confirm_close_app">Appuyez à nouveau pour quitter !</string>
+</resources>

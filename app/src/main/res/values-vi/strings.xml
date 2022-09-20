@@ -1,0 +1,97 @@
+<resources>
+    <string name="optimize">Tối ưu</string>
+    <string name="optimizing">Đang tối ưu&#8230;</string>
+    <string name="optimized">Đã tối ưu</string>
+    <string name="technology">Công nghệ</string>
+    <string name="temperature">Nhiệt độ</string>
+    <string name="capacity">Dung lượng pin</string>
+    <string name="health">Tình trạng</string>
+    <string name="good">Tốt</string>
+    <string name="clear_ram">Làm sạch RAM</string>
+    <string name="turn_off_bluetooth">Tắt Bluetooth</string>
+    <string name="turn_off_wifi">Tắt Wifi</string>
+    <string name="turn_off_auto_sync">Tắt tự động đồng bộ</string>
+    <string name="turn_off_screen_rotation">Tắt xoay màn hình</string>
+    <string name="reduce_screen_timeout">Giảm thời gian sáng màn hình</string>
+    <string name="optimization_options">Các tác vụ khi tối ưu</string>
+    <string name="settings">Cài đặt</string>
+    <string name="automation">Tự động</string>
+    <string name="launch_app_when_plugged">Mở ứng dụng khi cắm sạc</string>
+    <string name="exit_app_when_unplugged">Đóng ứng dụng khi rút sạc</string>
+    <string name="restore_state_when_unplugged">Khôi phục các cài đặt khi rút sạc</string>
+    <string name="play_sound_when_battery_full">Chuông báo khi pin đầy</string>
+    <string name="dont_disturb">Không làm phiền</string>
+    <string name="battery_full_sound_not_played_while">Bạn sẽ không nhận được âm thanh thông báo pin đầy trong khoảng thời gian này.</string>
+    <string name="txt_time_star">Bắt đầu từ</string>
+    <string name="txt_time_end">Đến</string>
+    <string name="reject">Từ chối</string>
+    <string name="allow">Cho phép</string>
+    <string name="cancel">Hủy</string>
+    <string name="do_you_want_to_charge_fast">Bạn có muốn sạc nhanh?</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="normal_charge">Sạc thường</string>
+    <string name="quick_charge">Sạc nhanh</string>
+    <string name="great">Tuyệt vời!</string>
+    <string name="your_device_ready_for_quick_charge">Thiết bị của bạn đã sẵn sàng sạc pin nhanh</string>
+    <string name="ok">OK</string>
+    <string name="cold">Mát</string>
+    <string name="dead">Chết</string>
+    <string name="overheat">Quá nóng</string>
+    <string name="over_voltage">Quá tải</string>
+    <string name="battery_info">Thông tin pin</string>
+    <string name="device_info">Thông tin thiết bị</string>
+    <string name="model">Thiết bị</string>
+    <string name="screen_size">Kích thước màn hình</string>
+    <string name="screen_resolution">Độ phân giải màn hình</string>
+    <string name="storage">Bộ nhớ</string>
+    <string name="android_version">Phiên bản Android</string>
+    <string name="no_optimization_options_selected">Không có tùy chọn tối ưu nào được thiết lập. Vui lòng đi tới màn hình Cài Đặt và lựa chọn ít nhất một tác vụ.</string>
+    <string name="optimization_desc_title">Pro Charger sẽ thực hiện các hành động sau để tối ưu hóa</string>
+    <string name="optimization_desc_content">Khi bạn bấm vào Cho Phép, bạn đã hiểu và đồng ý với các hành động trên, ứng dụng sẽ tự động thực hiện vào các lần tiếp theo.</string>
+    <string name="info">Thông tin</string>
+    <!-- ko can dich -->
+    <string name="alert_button_rate_app">Xếp hạng ứng dụng</string>
+    <string name="menu_share_app">Chia sẻ ứng dụng</string>
+    <string name="privacy_policy">Chính sách bảo mật</string>
+    <string name="alert_button_update_app">Cập nhật bản mới nhất</string>
+    <string name="remove_ads">Xóa quảng cáo</string>
+    <string name="unspecified_failure">Lỗi không xác định</string>
+    <string name="unknown">Unknown</string>
+    <string name="msg_charging_via_usb">Bạn đang sử dụng loại nguồn USB, đây là nguồn điện có điện áp thấp, vì vậy thời gian sạc pin sẽ lâu hơn.</string>
+    <string name="alert_button_rate5star_app">Đánh giá 5 sao</string>
+    <string name="alert_content_rate_app">Chào bạn, nhà phát triển ứng dụng đã làm việc rất chăm chỉ để mang đến cho bạn những ứng dụng miễn phí tốt nhất. Xếp hạng 5 sao của bạn đáng giá hơn tất cả tiền bạc. Hãy viết đánh giá tốt trên cửa hàng CH Play để khuyến khích nhà phát triển.</string>
+    <string name="alert_button_cancel_rate_app">Để sau</string>
+    <string name="is_dismiss">Không hiện lại</string>
+    <string name="title_alert_buy">Nâng cấp VIP - Xóa quảng cáo</string>
+    <string name="message_alert_buy">Trở thành VIP để loại bỏ quảng cáo và ủng hộ nhà phát triển.</string>
+    <string name="alert_buy_error">Vui lòng kiểm tra kết nối mạng của bạn</string>
+    <string name="alert_buy_success">Bạn đã trở thành VIP</string>
+
+    <string name="desc_permission_draw_overlay">
+        Để ứng dụng có thể luôn tự động mở mỗi khi bạn cắm sạc.
+        \n\nĐối với một số điện thoại Android, bạn sẽ cần cấp quyền cho phép ứng dụng này có thể hiển thị trên các ứng dụng khác.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Nếu bạn đã cấp quyền hiển thị trên các ứng dụng khác, nhưng ứng dụng vẫn chưa hoạt động đúng, vui lòng thử bật thêm các quyền bên dưới.
+        \n\n1. Hiển thị trên màn hình khóa.
+        \n2. Hiển thị cửa sổ pop-up khi chạy trong nền.
+        \n3. Hiển thị cửa sổ pop-up.
+    </string>
+    <string name="automatic_definition">Bật Tự Động sẽ giúp bạn tối ưu hóa quá trình sạc</string>
+    <string name="charing">Pin đang được sạc</string>
+    <string name="not_charing">Pin chưa được sạc</string>
+    <string name="txt_user_easy">Sử dụng dễ dàng và tiện lợi</string>
+    <string name="message_confirm_close_app">Nhấn lần nữa để thoát!</string>
+    <string name="go_since_the_last_full_charge">Lần sạc đầy cuối cùng</string>
+    <string name="du_no_charger_record">Không có hồ sơ</string>
+    <string name="bd_charge_duration">Thời gian sạc</string>
+    <string name="go_charge_quantity">Số lần sạc pin</string>
+    <string name="bd_charger_type">Loại sạc</string>
+    <string name="bd_charge_history">Lịch sử sạc pin</string>
+    <string name="go_last_3_days">Kỷ lục sạc 3 ngày qua</string>
+    <string name="guide_access_permission_v5">Trên màn hình tiếp theo, hãy tìm ứng dụng Pro Charger, sau đó chạm vào để BẬT hoặc CHO PHÉP.</string>
+    <string name="txt_history_charge">Lịch sử sạc pin </string>
+    <string name="clean_apps">Dọn dẹp các ứng dụng</string>
+
+
+</resources>

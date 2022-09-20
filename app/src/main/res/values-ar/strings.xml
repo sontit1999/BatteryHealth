@@ -1,0 +1,101 @@
+<resources>
+    <!-- Text for Translator service -->
+    <!--<string name="app_name">Pro Charger - Battery Saver</string>-->
+
+    <string name="optimize">Optimize</string>
+    <string name="optimizing">التعامل مع التحسين&#8230;</string>
+    <string name="optimized">منجز</string>
+    <string name="technology">تقنية </string>
+    <string name="temperature">درجة الحرارة</string>
+    <string name="capacity">قدرة البطارية</string>
+    <string name="health">صحة البطارية</string>
+    <string name="good">جيد</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">الإجراءات عند التحسين</string>
+    <string name="settings">اعدادات</string>
+    <string name="automation">تلقائي</string>
+    <string name="launch_app_when_plugged">Mở ứng dụng khi bộ sạc được kết nối</string>
+    <string name="exit_app_when_unplugged">أغلق التطبيق عند فصل الشاحن</string>
+    <string name="restore_state_when_unplugged">قم باستعادة الإعدادات عندما يكون الشحن غير موصول</string>
+    <string name="play_sound_when_battery_full">إنذار عندما تكون البطارية ممتلئة</string>
+    <string name="dont_disturb">الوضع الصامت</string>
+    <string name="battery_full_sound_not_played_while">لن تحصل على صوت إشعار كامل للبطارية خلال هذا الوقت.</string>
+
+    <string name="txt_time_star">بداية</string>
+    <string name="txt_time_end">النهاية</string>
+
+    <string name="reject">رفض</string>
+    <string name="allow">السماح</string>
+
+    <string name="cancel">إلغاء</string>
+
+    <string name="do_you_want_to_charge_fast">هل تريد الشحن السريع؟</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+    <string name="normal_charge">الشحن العادي</string>
+    <string name="quick_charge">شحن سريع</string>
+    <string name="great">Tعظيم!</string>
+    <string name="your_device_ready_for_quick_charge">جهازك جاهز للشحن السريع</string>
+    <string-array name="intro_titles">
+        <item>سهل الاستخدام ومريح</item>
+        <item>إنذار عندما تكون البطارية مشحونة بالكامل</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>بلمسة واحدة فقط</item>
+        <item>حماية البطارية</item>
+    </string-array>
+
+    <string name="ok">OK</string>
+    <string name="cold"> باردة</string>
+    <string name="dead">مات</string>
+    <string name="overheat">حار جدا</string>
+    <string name="over_voltage">الزائد</string>
+    <string name="battery_info">معلومات البطارية</string>
+    <string name="device_info">معلومات الجهاز</string>
+    <string name="model">جهاز</string>
+    <string name="screen_size">حجم الشاشة</string>
+    <string name="screen_resolution">دقة الشاشة</string>
+    <string name="storage">ذاكرة الهاتف</string>
+    <string name="android_version">نسخة أندرويد</string>
+    <string name="no_optimization_options_selected">لم يتم تعيين خيارات التحسين. يرجى الانتقال إلى شاشة الإعدادات وتحديد إجراء واحد على الأقل.</string>
+    <string name="optimization_desc_title">سوف يقوم Pro Charger بتنفيذ الإجراءات التالية للتحسين</string>
+    <string name="optimization_desc_content">عند النقر فوق "السماح" ، فأنت تفهم الإجراءات المذكورة أعلاه وتوافق عليها ، وسيتم تنفيذ التطبيق تلقائيًا في المرة التالية.</string>
+    <string name="info">معلومات</string>
+
+    <string name="alert_button_rate_app">قيم هذا التطبيق</string>
+    <string name="menu_share_app">شارك هذا التطبيق</string>
+    <string name="privacy_policy">سياسة الخصوصية</string>
+    <string name="alert_button_update_app">التحديث إلى أحدث إصدار</string>
+    <string name="remove_ads">ازالة الاعلانات</string>
+
+    <string name="unspecified_failure">خطأ غير معروف</string>
+    <string name="unknown">Unknown</string>
+    <string name="msg_charging_via_usb">أنت تستخدم مصدر طاقة USB ، وهذا مصدر طاقة منخفض الجهد ، لذلك سيكون وقت الشحن أطول</string>
+
+    <string name="alert_content_rate_app">مرحبًا ، لقد عمل مطور التطبيقات بجد لتوفير أفضل التطبيقات المجانية لك. تصنيف 5 نجوم الخاص بك يستحق أكثر من كل المال. يرجى كتابة تقييم جيد على Play متجر لتشجيع المطور.</string>
+    <string name="alert_button_rate5star_app">تقييم 5 نجوم</string>
+    <string name="alert_button_cancel_rate_app">لاحقاً</string>
+    <string name="is_dismiss">لا تظهر مرة أخرى</string>
+    <string name="title_alert_buy">ترقية VIP - إزالة الإعلانات</string>
+    <string name="message_alert_buy">اشترك في VIP لإزالة الإعلانات ودعم المطورين.</string>
+    <string name="alert_buy_error">يرجى التحقق من اتصال الشبكة الخاص بك</string>
+    <string name="alert_buy_success">لقد أصبحت VIP</string>
+
+    <string name="desc_permission_draw_overlay">
+        دع هذا التطبيق يفتح تلقائيًا في كل مرة تقوم فيها بتوصيل الشاحن.
+        \n\nبالنسبة لبعض هواتف Android ، ستحتاج إلى منح هذا التطبيق إذنًا للظهور فوق التطبيقات الأخرى.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">إذا كنت قد منحت الإذن لهذا التطبيق بالظهور فوق التطبيقات الأخرى ، ولكن التطبيق لا يعمل بشكل صحيح ، فالرجاء محاولة تمكين المزيد من الأذونات أدناه.\n\n1. العرض على شاشة القفل.\n2. إظهار نافذة pop-up عند التشغيل في الخلفية.\n3. اعرض نافذة pop-up.
+    </string>
+    <string name="automatic_definition">سيساعدك تشغيل Auto على تحسين عملية الشحن</string>
+    <string name="charing">البطارية قيد الشحن</string>
+    <string name="not_charing">البطارية لا تشحن</string>
+    <string name="txt_user_easy">سهل الاستخدام ومريح</string>
+    <string name="message_confirm_close_app">انقر مرة أخرى للخروج!</string>
+</resources>

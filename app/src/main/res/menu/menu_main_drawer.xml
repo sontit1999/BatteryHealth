@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/gr1"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/nav_remove_ads"
+            android:checkable="false"
+            android:visible="false"
+            android:icon="@drawable/ic_remove_ads"
+            android:title="@string/remove_ads"
+            android:actionLayout="@layout/layout_custom_menu_main_remove_ads"
+            />
+        <!--<item
+            android:id="@+id/nav_info"
+            android:checkable="false"
+            android:icon="@drawable/ic_info"
+            android:title="@string/device_info" />-->
+    </group>
+
+    <group
+        android:id="@+id/gr2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_rate_app"
+            android:checkable="false"
+            android:icon="@drawable/ic_star"
+            android:title="@string/alert_button_rate_app" />
+        <item
+            android:id="@+id/nav_share_app"
+            android:checkable="false"
+            android:icon="@drawable/ic_share"
+            android:title="@string/menu_share_app" />
+        <item
+            android:id="@+id/nav_policy"
+            android:checkable="false"
+            android:icon="@drawable/ic_policy"
+            android:title="@string/privacy_policy" />
+        <item
+            android:id="@+id/nav_check_for_update"
+            android:checkable="false"
+            android:icon="@drawable/ic_refresh"
+            android:title="@string/alert_button_update_app" />
+    </group>
+</menu>

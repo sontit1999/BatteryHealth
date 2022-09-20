@@ -1,0 +1,48 @@
+<resources>
+    <dimen name="dimen_05x">3dp</dimen>
+    <dimen name="dimen_1x">7dp</dimen>
+    <dimen name="dimen_x1x">11dp</dimen>
+    <dimen name="dimen_2x">15dp</dimen>
+    <dimen name="dimen_x2x">19dp</dimen>
+    <dimen name="dimen_3x">23dp</dimen>
+    <dimen name="dimen_x3x">27dp</dimen>
+    <dimen name="dimen_4x">31dp</dimen>
+    <dimen name="dimen_x4x">35dp</dimen>
+    <dimen name="dimen_5x">38dp</dimen>
+    <dimen name="dimen_6x">46dp</dimen>
+    <dimen name="dimen_x6x">50dp</dimen>
+    <dimen name="dimen_7x">52dp</dimen>
+    <dimen name="dimen_8x">58dp</dimen>
+    <dimen name="dimen_6">5dp</dimen>
+    <dimen name="dimen_10">9dp</dimen>
+    <dimen name="dimen_30">28.5dp</dimen>
+    <dimen name="dimen_50">46dp</dimen>
+    <dimen name="dimen_96">90dp</dimen>
+    <dimen name="dimen_120">110dp</dimen>
+    <dimen name="dimen_140">130dp</dimen>
+    <dimen name="dimen_150">140dp</dimen>
+    <dimen name="dimen_200">180dp</dimen>
+    <dimen name="dimen_250">235dp</dimen>
+    <dimen name="dimen_320">300dp</dimen>
+    <dimen name="dimen_340">310dp</dimen>
+
+    <!-- Text size -->
+    <dimen name="text_size_12">11sp</dimen>
+    <dimen name="text_size_13">12sp</dimen>
+    <dimen name="text_size_14">13sp</dimen>
+    <dimen name="text_size_15">14sp</dimen>
+    <dimen name="text_size_16">15sp</dimen>
+    <dimen name="text_size_17">16sp</dimen>
+    <dimen name="text_size_18">17sp</dimen>
+    <dimen name="text_size_20">18.5sp</dimen>
+    <dimen name="text_size_22">20sp</dimen>
+    <dimen name="text_size_24">22sp</dimen>
+    <dimen name="text_size_32">29sp</dimen>
+    <dimen name="text_size_38">35sp</dimen>
+
+    <!-- Others -->
+    <dimen name="zero">0dp</dimen>
+    <dimen name="dimen_progressbar">33dp</dimen>
+    <dimen name="divider">0.8dp</dimen>
+    <dimen name="border">1.8dp</dimen>
+</resources>

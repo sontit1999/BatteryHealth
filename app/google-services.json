@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457324486290",
+    "project_id": "charger-b1113",
+    "storage_bucket": "charger-b1113.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457324486290:android:64995073cbf8942eb7104b",
+        "android_client_info": {
+          "package_name": "com.procharger.fastbatterycharging.quickcharge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457324486290-k07lk0qus97jtpqq8cedi545bscrqga8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGcDfX8Y_LZKGA1A05g1v00ucDBowg5bg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457324486290-k07lk0qus97jtpqq8cedi545bscrqga8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

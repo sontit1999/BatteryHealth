@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources >
+  <string name="optimize">Optimieren</string>
+    <string name="optimizing">Optimierung&#8230;</string>
+    <string name="optimized">Fertig</string>
+    <string name="health">Status</string>
+    <string name="technology">Technologie</string>
+    <string name="temperature">Temperatur</string>
+    <string name="capacity">Batteriekapazität</string>
+    <string name="cold">Kühl</string>
+    <string name="dead">sterben</string>
+    <string name="good">Gut</string>
+    <string name="overheat">Zu heiß</string>
+    <string name="over_voltage">Überlast (Spannung)</string>
+    <string name="unspecified_failure">Unbekannter Fehler</string>
+    <string name="unknown">Unbekannt</string>
+    <string name="remove_ads">Anzeigen entfernen</string>
+    <string name="alert_button_rate_app">Bewerte diese App</string>
+    <string name="menu_share_app">Teile diese App</string>
+    <string name="privacy_policy">Datenschutz-Bestimmungen</string>
+    <string name="alert_button_update_app">App aktualisieren</string>
+    <string name="clear_ram">Arbeitsspeicher löschen</string>
+    <string name="turn_off_bluetooth">Bluetooth aus</string>
+    <string name="turn_off_wifi">WLAN aus</string>
+    <string name="turn_off_auto_sync">Automatische Synchronisierung aus</string>
+    <string name="turn_off_screen_rotation">Bildschirmdrehung Aus</string>
+    <string name="reduce_screen_timeout">Reduzieren Sie die Zeit für die Bildschirmhelligkeit</string>
+    <string name="optimization_options">Optimieren</string>
+    <string name="settings">Einstellungen</string>
+    <string name="automation">Automatisch</string>
+    <string name="launch_app_when_plugged">Fragedialog anzeigen, wenn das Ladegerät angeschlossen wird</string>
+    <string name="exit_app_when_unplugged">Schließen Sie die App, wenn Sie das Ladegerät ausstecken</string>
+    <string name="restore_state_when_unplugged">Stellen Sie die Einstellungen wieder her, wenn der Ladevorgang getrennt ist</string>
+    <string name="play_sound_when_battery_full">Alarm, wenn der Akku voll ist</string>
+    <string name="dont_disturb">Bitte nicht stören</string>
+    <string name="battery_full_sound_not_played_while">Während dieser Zeit erhalten Sie keinen Benachrichtigungston für einen vollen Akku.</string>
+    <string name="txt_time_star">Beginne von</string>
+    <string name="txt_time_end">Zu</string>
+    <string name="info">Information</string>
+    <string name="no_optimization_options_selected">Es sind keine Optimierungsoptionen eingestellt. Bitte gehen Sie zum Bildschirm Einstellungen und wählen Sie mindestens eine Aktion aus.</string>
+    <string name="optimization_desc_title">Pro Charger führt die folgenden Aktionen zur Optimierung durch</string>
+    <string name="optimization_desc_content">Wenn Sie auf Zulassen klicken, verstehen und stimmen Sie den oben genannten Aktionen zu, die Anwendung wird beim nächsten Mal automatisch ausgeführt.</string>
+    <string name="reject">Leugnen</string>
+    <string name="allow">Erlauben</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Absagen</string>
+    <string name="do_you_want_to_charge_fast">Sie wollen schnell laden?</string>
+    <string name="yes">Ja</string>
+    <string name="no">Nein</string>
+    <string name="normal_charge">Normales Aufladen</string>
+    <string name="quick_charge">Schnelles Aufladen</string>
+    <string name="great">Groß!</string>
+    <string name="your_device_ready_for_quick_charge">Ihr Gerät ist bereit für den Schnelllademodus</string>
+    <string name="battery_info">Batterieinfo</string>
+    <string name="device_info">Geräteinformationen</string>
+    <string name="model">Modell</string>
+    <string name="screen_size">Bildschirmgröße</string>
+    <string name="screen_resolution">Bildschirmauflösung</string>
+    <string name="storage">Lagerung</string>
+    <string name="android_version">Android-Version</string>
+    <string name="msg_charging_via_usb">Ihr Gerät wird über USB aufgeladen, dies ist eine niedrige Spannung und dauert daher länger.</string>
+    <string name="alert_content_rate_app">Hallo, der App-Entwickler hat sehr hart daran gearbeitet, Ihnen die besten kostenlosen Apps anzubieten. Ihre 5-Sterne-Bewertung ist mehr wert als alles Geld. Bitte schreiben Sie eine gute Bewertung im Play Store, um Entwickler zu ermutigen.</string>
+    <string name="alert_button_rate5star_app">Bewerten Sie 5-Sterne</string>
+    <string name="alert_button_cancel_rate_app">Später</string>
+    <string name="is_dismiss">Nicht mehr anzeigen</string>
+    <string name="title_alert_buy">VIP upgraden - Anzeigen entfernen</string>
+    <string name="message_alert_buy">Werden Sie VIP, um Anzeigen zu entfernen und Entwickler zu ermutigen.</string>
+    <string name="alert_buy_error">Bitte überprüfen Sie Ihre Verbindung</string>
+    <string name="alert_buy_success">Sie sind VIP</string>
+    <string name="desc_permission_draw_overlay">
+        Lassen Sie diese App jedes Mal automatisch öffnen, wenn Sie das Ladegerät anschließen.
+         \n\nDies hilft beim Öffnen der App, während Ihr Gerät gesperrt ist.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Wenn Sie die Berechtigung zum Anzeigen über andere Apps erteilt haben, die App aber immer noch nicht richtig funktioniert, versuchen Sie bitte, auch die folgenden Berechtigungen zuzulassen.
+         \n\n1. Auf dem Sperrbildschirm anzeigen.
+         \n2. Zeigen Sie Popup-Fenster an, während Sie im Hintergrund laufen.
+         \n3. Popup-Fenster anzeigen.
+    </string>
+    <string name="automatic_definition">Das Einschalten von Auto hilft Ihnen, den Ladevorgang zu optimieren</string>
+    <string name="charing">Akku wird aufgeladen</string>
+    <string name="not_charing">Akku lädt nicht</string>
+    <string name="txt_user_easy">Einfach und bequem</string>
+    <string name="message_confirm_close_app">Tippen Sie erneut, um zu beenden!</string>
+
+   
+</resources>

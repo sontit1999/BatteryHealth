@@ -1,0 +1,101 @@
+<resources>
+    <!-- Text for Translator service -->
+   <!-- <string name="app_name">มาสเตอร์แบตเตอรี่</string>-->
+
+    <string name="optimize">Optimize</string>
+    <string name="optimizing">การเพิ่มประสิทธิภาพ&#8230;</string>
+    <string name="optimized">เสร็จสิ้น</string>
+    <string name="technology">เทคโนโลยี</string>
+    <string name="temperature">อุณหภูมิ</string>
+    <string name="capacity">ความจุแบตเตอรี่</string>
+    <string name="health">สถานะ</string>
+    <string name="good">ดี</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">การดำเนินการเมื่อทำการเพิ่มประสิทธิภาพ</string>
+    <string name="settings">การตั้งค่า</string>
+    <string name="automation">อัตโนมัติ</string>
+    <string name="launch_app_when_plugged">เปิดแอพเมื่อเสียบสายชาร์จ</string>
+    <string name="exit_app_when_unplugged">ปิดแอพเมื่อถอดปลั๊กเครื่องชาร์จ</string>
+    <string name="restore_state_when_unplugged">เรียกคืนการตั้งค่าเมื่อถอดปลั๊กเครื่องชาร์จ</string>
+    <string name="play_sound_when_battery_full">ปลุกเมื่อแบตเตอรี่เต็ม</string>
+    <string name="dont_disturb">โหมดห้ามรบกวน</string>
+    <string name="battery_full_sound_not_played_while">คุณจะไม่ได้รับเสียงแจ้งเตือนแบตเตอรี่เต็มในช่วงเวลานี้.</string>
+
+    <string name="txt_time_star">เริ่มจาก</string>
+    <string name="txt_time_end">ถึง</string>
+
+    <string name="reject">ปฏิเสธ</string>
+    <string name="allow">อนุญาต</string>
+
+    <string name="cancel">ยกเลิก</string>
+
+    <string name="do_you_want_to_charge_fast">คุณต้องการชาร์จเร็ว ?</string>
+    <string name="yes">ใช่</string>
+    <string name="no">ไม่ใช่</string>
+    <string name="normal_charge">การชาร์จปกติ</string>
+    <string name="quick_charge">ชาร์จรวดเร็ว</string>
+    <string name="great">เยี่ยมมาก!</string>
+    <string name="your_device_ready_for_quick_charge">อุปกรณ์ของคุณพร้อมสำหรับการชาร์จอย่างรวดเร็ว</string>
+    <string-array name="intro_titles">
+        <item>ใช้งานง่ายและสะดวก</item>
+        <item>การแจ้งเตือนด้วยเสียงเมื่อแบตเตอรี่ชาร์จเต็ม</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>เพียงสัมผัสเดียว</item>
+        <item>การป้องกันแบตเตอรี่</item>
+    </string-array>
+    <!-- Translated myself -->
+    <string name="ok">OK</string>
+    <string name="cold">เย็น</string>
+    <string name="dead">เสียชีวิต</string>
+    <string name="overheat">ร้อนเกินไป</string>
+    <string name="over_voltage">เกินพิกัด</string>
+    <string name="battery_info">ข้อมูลแบตเตอรี่</string>
+    <string name="device_info">ข้อมูลอุปกรณ์</string>
+    <string name="model">อุปกรณ์</string>
+    <string name="screen_size">ขนาดหน้าจอ</string>
+    <string name="screen_resolution">ความละเอียดหน้าจอ</string>
+    <string name="storage">Memory</string>
+    <string name="android_version">เวอร์ชัน Android</string>
+    <string name="no_optimization_options_selected">ไม่มีการตั้งค่าตัวเลือกการเพิ่มประสิทธิภาพ โปรดไปที่หน้าจอการตั้งค่าและเลือกอย่างน้อย การกระทำ.</string>
+    <string name="optimization_desc_title">Pro Charger ดำเนินการเหล่านี้เมื่อดำเนินการเพิ่มประสิทธิภาพ</string>
+    <string name="optimization_desc_content">เมื่อคุณคลิกอนุญาตคุณเข้าใจและยอมรับการกระทำข้างต้นแอปพลิเคชันจะดำเนินการโดยอัตโนมัติในครั้งต่อไป.</string>
+    <string name="info">ข้อมูล</string>
+
+    <string name="alert_button_rate_app">ให้คะแนนแอปนี้</string>
+    <string name="menu_share_app">แชร์แอพนี้</string>
+    <string name="privacy_policy">นโยบายความเป็นส่วนตัว</string>
+    <string name="alert_button_update_app">รุ่นล่าสุด</string>
+    <string name="remove_ads">ลบโฆษณา</string>
+
+    <string name="unspecified_failure">ข้อผิดพลาดที่ไม่รู้จัก</string>
+    <string name="unknown">Unknown</string>
+    <string name="msg_charging_via_usb">คุณกำลังใช้แหล่งจ่ายไฟ USB ซึ่งเป็นแหล่งพลังงานแรงดันไฟฟ้าต่ำดังนั้นเวลาในการชาร์จจะนานขึ้น.</string>
+
+    <string name="alert_button_rate5star_app">ให้คะแนน 5 ดาว</string>
+    <string name="alert_content_rate_app">สวัสดีนักพัฒนาแอปพลิเคชันทำงานอย่างหนักเพื่อให้แอพฟรีที่ดีที่สุดแก่คุณ คะแนนระดับ 5 ดาวของคุณมีค่ามากกว่าเงินทั้งหมด โปรดเขียนบทวิจารณ์ที่ดีใน Play Store เพื่อสนับสนุนนักพัฒนาซอฟต์แวร์</string>
+    <string name="alert_button_cancel_rate_app">ไว้คราวหน้า</string>
+    <string name="is_dismiss">ไม่แสดงอีก</string>
+    <string name="title_alert_buy">อัพเกรด VIP - ลบโฆษณา</string>
+    <string name="message_alert_buy">เปลี่ยนไปใช้ VIP เพื่อสนับสนุนผู้พัฒนาแอปและลบโฆษณา</string>
+    <string name="alert_buy_error">โปรดตรวจสอบการเชื่อมต่อเครือข่ายของคุณ</string>
+    <string name="alert_buy_success">คุณได้กลายเป็น VIP</string>
+
+    <string name="desc_permission_draw_overlay">
+        ปล่อยให้แอปนี้เปิดโดยอัตโนมัติทุกครั้งที่เสียบสายชาร์จ.
+        \n\nสำหรับโทรศัพท์ Android บางรุ่นคุณจะต้องให้สิทธิ์แอปจึงจะแสดงบนหน้าจอล็อกโดยที่แอปอื่น ๆ มองเห็นได้
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">หากคุณให้สิทธิ์อนุญาตให้แอปนี้แสดงบนหน้าจอล็อกของโทรศัพท์ แต่ยังทำงานไม่ถูกต้องโปรดลองเปิดใช้งานการอนุญาตเพิ่มเติมด้านล่าง\n\n1. แสดงบนหน้าจอล็อก\n2. แสดงหน้าต่าง pop-up เมื่อทำงานในพื้นหลัง\n3. แสดงหน้าต่าง pop-up.
+    </string>
+    <string name="automatic_definition">การเปิดอัตโนมัติจะช่วยให้คุณปรับกระบวนการชาร์จให้เหมาะสมที่สุด</string>
+    <string name="charing">กำลังชาร์จแบตเตอรี่</string>
+    <string name="not_charing">แบตไม่ชาร์จ</string>
+    <string name="txt_user_easy">ง่ายและสะดวก</string>
+    <string name="message_confirm_close_app">แตะอีกครั้งเพื่อออก!</string>
+</resources>

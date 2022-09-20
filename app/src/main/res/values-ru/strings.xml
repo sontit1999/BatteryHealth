@@ -1,0 +1,101 @@
+<resources>
+    <!-- Text for Translator service -->
+    <!--<string name="app_name">Основная батарея</string>-->
+
+    <string name="optimize">Оптимизировать</string>
+    <string name="optimizing">Оптимизация&#8230;</string>
+    <string name="optimized">Оптимизировано</string>
+    <string name="technology">Технологии</string>
+    <string name="temperature">Температура</string>
+    <string name="capacity">Емкость батареи</string>
+    <string name="health">Положение дел</string>
+    <string name="good">Хорошо</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">Действия при оптимизации</string>
+    <string name="settings">Настройки</string>
+    <string name="automation">Автоматический</string>
+    <string name="launch_app_when_plugged">Откройте приложение при подключении зарядного устройства</string>
+    <string name="exit_app_when_unplugged">Закройте приложение при отключении зарядного устройства</string>
+    <string name="restore_state_when_unplugged">Восстановление настроек при отключении зарядного устройства</string>
+    <string name="play_sound_when_battery_full">Тревога, когда батарея полностью заряжена</string>
+    <string name="dont_disturb">Не беспокоить режим</string>
+    <string name="battery_full_sound_not_played_while">В это время вы не услышите звукового оповещения о полном заряде батареи.</string>
+
+    <string name="txt_time_star">Начните с</string>
+    <string name="txt_time_end">До</string>
+
+    <string name="reject">Запретить</string>
+    <string name="allow">Разрешить</string>
+
+    <string name="cancel">Отменить</string>
+
+    <string name="do_you_want_to_charge_fast">Используете режим быстрая зарядка?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="normal_charge">Нормальная зарядка</string>
+    <string name="quick_charge">Быстрая зарядка</string>
+    <string name="great">Хорошо!</string>
+    <string name="your_device_ready_for_quick_charge">Ваше устройство готово к быстрой зарядке</string>
+    <string-array name="intro_titles">
+        <item>Легко использовать и удобно</item>
+        <item>Звуковое уведомление, когда аккумулятор полностью заряжен</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>Оптимизация в одно касание</item>
+        <item>Защита аккумулятора</item>
+    </string-array>
+    <!-- Translated myself -->
+    <string name="ok">OK</string>
+    <string name="cold">Круто</string>
+    <string name="dead">Умер</string>
+    <string name="overheat">Слишком жарко</string>
+    <string name="over_voltage">Перегрузка</string>
+    <string name="battery_info">Информация о батарее</string>
+    <string name="device_info">Информация об устройстве</string>
+    <string name="model">Устройство</string>
+    <string name="screen_size">Размер экрана</string>
+    <string name="screen_resolution">Разрешение экрана</string>
+    <string name="storage">Объем памяти</string>
+    <string name="android_version">Версия Android</string>
+    <string name="no_optimization_options_selected">Параметры оптимизации не заданы. Пожалуйста, перейдите на экран настроек и выберите хотя бы одно действие.</string>
+    <string name="optimization_desc_title">Pro Charger выполнит следующие действия для оптимизации</string>
+    <string name="optimization_desc_content">Когда вы нажимаете Разрешить, вы понимаете и соглашаетесь с вышеуказанными действиями, приложение автоматически запустится в следующий раз.</string>
+    <string name="info">Информация</string>
+
+    <string name="alert_button_rate_app">Оцените это приложение</string>
+    <string name="menu_share_app">Поделитесь этим приложением</string>
+    <string name="privacy_policy">Политика конфиденциальности</string>
+    <string name="alert_button_update_app">Последняя версия</string>
+    <string name="remove_ads">Удалить рекламу</string>
+
+    <string name="unspecified_failure">Неизвестная ошибка</string>
+    <string name="unknown">Unknown</string>
+    <string name="msg_charging_via_usb">Вы используете источник питания USB, это источник питания низкого напряжения, поэтому время зарядки будет больше.</string>
+
+    <string name="alert_content_rate_app">Привет, разработчик приложений очень усердно трудился, чтобы предложить вам лучшие бесплатные приложения. Ваш 5-звездочный рейтинг стоит больше, чем все деньги. Пожалуйста, напишите хороший отзыв на Play Store, чтобы поощрить разработчика.</string>
+    <string name="alert_button_rate5star_app">Оценить на 5 звезд</string>
+    <string name="alert_button_cancel_rate_app">Позже</string>
+    <string name="is_dismiss">Больше не показывать</string>
+    <string name="title_alert_buy">VIP-обновление - удаление рекламы</string>
+    <string name="message_alert_buy">Станьте VIP, чтобы убрать рекламу и поддерживать разработчиков.</string>
+    <string name="alert_buy_error">Пожалуйста, проверьте ваше сетевое соединение</string>
+    <string name="alert_buy_success">Вы уже VIP</string>
+
+    <string name="desc_permission_draw_overlay">
+        Пусть это приложение запускается автоматически каждый раз, когда вы подключаете зарядное устройство.
+        \n\nДля некоторых телефонов Android вам необходимо дать этому приложению разрешение на отображение поверх других приложений.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Если вы разрешили этому приложению отображаться над другими приложениями, но оно не работает должным образом, попробуйте активировать дополнительные разрешения ниже.\n\n1. Показать на экране блокировки.\n2. Отображение окна pop-up при работе в фоновом режиме.\n3. Отображает окно pop-up.
+    </string>
+    <string name="automatic_definition">Включение Auto поможет вам оптимизировать процесс зарядки.</string>
+    <string name="charing">Аккумулятор заряжается</string>
+    <string name="not_charing">Аккумулятор не заряжается</string>
+    <string name="txt_user_easy">Легко и удобно</string>
+    <string name="message_confirm_close_app">Нажмите еще раз, чтобы выйти!</string>
+</resources>

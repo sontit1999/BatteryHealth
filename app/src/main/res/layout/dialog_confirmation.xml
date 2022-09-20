@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_radius"
+    android:layout_marginBottom="@dimen/dimen_2x"
+    android:minWidth="@dimen/dimen_340">
+
+    <TextView
+        android:id="@+id/lbl_title"
+        style="@style/TextView.Medium"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/dimen_2x"
+        android:paddingTop="@dimen/dimen_2x"
+        android:textSize="@dimen/text_size_18"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lbl_message"
+        style="@style/TextView.Regular"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_2x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_title" />
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_x2x"
+        android:minWidth="@dimen/dimen_96"
+        android:background="@drawable/btn_white_not_radius"
+        android:text="@string/cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/text_size_15"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_ok"
+        app:layout_constraintEnd_toStartOf="@id/btn_ok" />
+
+    <TextView
+        android:id="@+id/btn_ok"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dimen_2x"
+        android:layout_marginBottom="@dimen/dimen_1x"
+        android:background="@drawable/btn_primary"
+        android:minWidth="@dimen/dimen_96"
+        android:text="@string/ok"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_15"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_message" />
+</androidx.constraintlayout.widget.ConstraintLayout>

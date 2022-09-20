@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/dimen_2x">
+
+            <ImageView
+                android:id="@+id/img_help"
+                android:layout_width="@dimen/dimen_x3x"
+                android:layout_height="@dimen/dimen_x3x"
+                android:adjustViewBounds="true"
+                android:background="@drawable/btn_blue_dark_round"
+                android:contentDescription="@string/app_name"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_help"
+                app:tint="@color/yellow" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim_optimization"
+                android:layout_width="@dimen/dimen_320"
+                android:layout_height="@dimen/dimen_320"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_rawRes="@raw/lt_optimization_effect" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim_percentage"
+                android:layout_width="@dimen/zero"
+                android:layout_height="@dimen/zero"
+                app:layout_constraintBottom_toBottomOf="@+id/vw_border"
+                app:layout_constraintEnd_toEndOf="@+id/vw_border"
+                app:layout_constraintStart_toStartOf="@+id/vw_border"
+                app:layout_constraintTop_toTopOf="@+id/vw_border" />
+
+            <com.skyfishjy.library.RippleBackground
+                android:id="@+id/charge_boost_ripple_background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/vw_border"
+                app:layout_constraintEnd_toEndOf="@+id/vw_border"
+                app:layout_constraintStart_toStartOf="@+id/vw_border"
+                app:layout_constraintTop_toTopOf="@+id/vw_border"
+                app:rb_color="#00ffffff"
+                app:rb_duration="1200"
+                app:rb_radius="56dp"
+                app:rb_rippleAmount="2"
+                app:rb_scale="2.5">
+
+                <FrameLayout
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="@dimen/_200sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:padding="@dimen/_30sdp">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/ivDoneHoloCirular"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:alpha="0.6"
+                            android:visibility="visible" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/ivScan"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_fan" />
+
+                        <ImageView
+                            android:id="@+id/ivScan2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_fan_white" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lytListItem"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:weightSum="2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <FrameLayout
+                                android:id="@+id/fm_scan_container_1"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent" />
+
+                            <FrameLayout
+                                android:id="@+id/fm_scan_container_2"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:orientation="horizontal"
+                            android:weightSum="2">
+
+                            <FrameLayout
+                                android:id="@+id/fm_scan_container_4"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent" />
+
+                            <FrameLayout
+                                android:id="@+id/fm_scan_container_3"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </com.skyfishjy.library.RippleBackground>
+
+            <View
+                android:id="@+id/vw_border"
+                android:layout_width="@dimen/dimen_200"
+                android:layout_height="@dimen/dimen_200"
+                android:background="@drawable/bg_border_white_4dp_circle"
+                app:layout_constraintBottom_toBottomOf="@+id/anim_optimization"
+                app:layout_constraintEnd_toEndOf="@+id/anim_optimization"
+                app:layout_constraintStart_toStartOf="@+id/anim_optimization"
+                app:layout_constraintTop_toTopOf="@+id/anim_optimization" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/anim_percentage"
+                app:layout_constraintEnd_toEndOf="@+id/anim_percentage"
+                app:layout_constraintStart_toStartOf="@+id/anim_percentage"
+                app:layout_constraintTop_toTopOf="@+id/anim_percentage">
+
+                <TextView
+                    android:id="@+id/lbl_percentage"
+                    style="@style/TextView.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="40%"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_22" />
+
+                <TextView
+                    android:id="@+id/txtInfo"
+                    style="@style/TextView.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/time_charging_left"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_14" />
+
+                <LinearLayout
+                    android:id="@+id/view_time_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvHour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                        android:layout_marginStart="2dp"
+                        android:text="h"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/tvMin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                        android:layout_marginStart="2dp"
+                        android:text="00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                        android:layout_marginStart="2dp"
+                        android:text="m"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_optimize"
+                style="@style/Button.Yellow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_2x"
+                android:layout_marginTop="@dimen/dimen_8x"
+                android:drawablePadding="@dimen/dimen_1x"
+                android:fontFamily="@font/roboto_regular"
+                android:minWidth="@dimen/dimen_200"
+                android:text="@string/optimize"
+                android:textSize="@dimen/text_size_22"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/anim_percentage" />
+
+            <TextView
+                android:id="@+id/lbl_optimization_desc_process"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:gravity="center_horizontal"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_optimize" />
+
+            <TextView
+                android:id="@+id/lbl_warn_usb_charging"
+                style="@style/TextView.Italic"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_2x"
+                android:background="@drawable/bg_bluelight50_with_border_radius"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingHorizontal="@dimen/dimen_2x"
+                android:paddingVertical="@dimen/dimen_1x"
+                android:text="@string/msg_charging_via_usb"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_12"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_warn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_optimization_desc_process" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.procharger.fastprocharrging.quickcharge.widget.ads.LayoutNativeAd
+            android:id="@+id/nativeAdView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:padding="@dimen/dimen_1x" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

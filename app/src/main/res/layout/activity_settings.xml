@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    app:layout_constraintBottom_toTopOf="@+id/btn_start"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_2x"
+        android:paddingBottom="@dimen/dimen_2x">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_radius"
+            android:paddingBottom="@dimen/dimen_6">
+
+            <TextView
+                android:id="@+id/lbl_play_sound"
+                style="@style/TextView.Medium"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_2x"
+                android:paddingVertical="@dimen/dimen_10"
+                android:text="@string/play_sound_when_battery_full"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintEnd_toStartOf="@+id/img_play_sound"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_play_sound"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/zero"
+                android:layout_marginEnd="@dimen/dimen_2x"
+                android:adjustViewBounds="true"
+                android:background="@drawable/btn_white_round"
+                android:contentDescription="@string/app_name"
+                android:padding="@dimen/dimen_05x"
+                app:layout_constraintBottom_toBottomOf="@+id/chb_play_sound"
+                app:layout_constraintEnd_toStartOf="@+id/chb_play_sound"
+                app:layout_constraintTop_toTopOf="@+id/chb_play_sound"
+                app:srcCompat="@drawable/ic_speaker_audio" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/chb_play_sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_1x"
+                android:theme="@style/SwitchCompatTheme"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_play_sound"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lbl_play_sound"
+                app:switchMinWidth="@dimen/dimen_50"
+                app:thumbTint="@color/white"
+                app:track="@drawable/custom_track" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/info_time_notification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_play_sound">
+
+
+                <View
+                    android:id="@+id/vw_play_sound"
+                    style="@style/HorizontalDivider"
+                    app:layout_constraintBottom_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_dont_disturb"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_2x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/dont_disturb"
+                    app:layout_constraintEnd_toStartOf="@+id/chb_dont_disturb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vw_play_sound" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/chb_dont_disturb"
+                    style="@style/CheckBoxStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_1x"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_dont_disturb"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/label_desc_dont_disturb"
+                    style="@style/TextView.Italic"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_2x"
+                    android:layout_marginEnd="@dimen/dimen_1x"
+                    android:text="@string/battery_full_sound_not_played_while"
+                    android:textSize="@dimen/text_size_13"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_dont_disturb" />
+
+                <TextView
+                    android:id="@+id/lbl_from_label"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_2x"
+                    android:layout_marginTop="@dimen/dimen_6"
+                    android:background="@drawable/btn_white_not_radius"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_6"
+                    android:text="@string/txt_time_star"
+                    android:textColor="@color/grey"
+                    app:drawableStartCompat="@drawable/ic_oclock_on"
+                    app:drawableTint="@color/grey"
+                    app:layout_constraintEnd_toEndOf="@+id/chb_dont_disturb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_desc_dont_disturb" />
+
+                <TextView
+                    android:id="@+id/lbl_from_value"
+                    style="@style/TextView.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_1x"
+                    android:background="@color/transparent"
+                    android:textColor="@color/grey"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_from_label"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_to_label"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_2x"
+                    android:background="@drawable/btn_white_not_radius"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_6"
+                    android:text="@string/txt_time_end"
+                    android:textColor="@color/grey"
+                    app:drawableStartCompat="@drawable/ic_oclock_off"
+                    app:drawableTint="@color/grey"
+                    app:layout_constraintEnd_toEndOf="@+id/chb_dont_disturb"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_from_label" />
+
+                <TextView
+                    android:id="@+id/lbl_to_value"
+                    style="@style/TextView.Regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_1x"
+                    android:background="@color/transparent"
+                    android:textColor="@color/grey"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_to_label"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:background="@drawable/bg_white_radius">
+
+            <TextView
+                android:id="@+id/label_auto"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:paddingStart="@dimen/dimen_2x"
+                android:paddingEnd="@dimen/dimen_x1x"
+                android:text="@string/automation"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/chb_auto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_1x"
+                android:theme="@style/SwitchCompatTheme"
+                app:layout_constraintBottom_toBottomOf="@+id/label_auto"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:switchMinWidth="@dimen/dimen_50"
+                app:thumbTint="@color/white"
+                app:track="@drawable/custom_track" />
+
+            <TextView
+                android:id="@+id/txt_define"
+                style="@style/TextView.Italic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_2x"
+                android:layout_marginEnd="@dimen/dimen_1x"
+                android:text="@string/automatic_definition"
+                app:layout_constraintTop_toBottomOf="@+id/label_auto" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:id="@+id/info_automation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_define">
+
+                <View
+                    android:id="@+id/vw_auto"
+                    style="@style/HorizontalDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_launch_app"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_2x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/launch_app_when_plugged"
+                    app:layout_constraintEnd_toStartOf="@+id/chb_launch_app"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/vw_auto" />
+
+                <!--   <ImageView
+                       android:id="@+id/img_help"
+                       android:layout_width="wrap_content"
+                       android:layout_height="@dimen/zero"
+                       android:layout_marginEnd="@dimen/dimen_1x"
+                       android:adjustViewBounds="true"
+                       android:background="@drawable/btn_white_round"
+                       android:contentDescription="@string/app_name"
+                       android:padding="@dimen/dimen_05x"
+                       android:visibility="gone"
+                       app:layout_constraintBottom_toBottomOf="@+id/chb_launch_app"
+                       app:layout_constraintEnd_toStartOf="@+id/chb_launch_app"
+                       app:layout_constraintTop_toTopOf="@+id/chb_launch_app"
+                       app:srcCompat="@drawable/ic_help" />-->
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/chb_launch_app"
+                    style="@style/CheckBoxStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_1x"
+                    android:checked="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/lbl_launch_app"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_launch_app" />
+
+                <TextView
+                    android:id="@+id/lbl_exit_app"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/exit_app_when_unplugged"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_launch_app"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_launch_app"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_launch_app" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/chb_exit_app"
+                    style="@style/CheckBoxStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/lbl_exit_app"
+                    app:layout_constraintEnd_toEndOf="@+id/chb_launch_app"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_exit_app" />
+
+                <TextView
+                    android:id="@+id/lbl_restore_state"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/restore_state_when_unplugged"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_launch_app"
+                    app:layout_constraintStart_toStartOf="@+id/lbl_launch_app"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_exit_app" />
+
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/chb_restore_state"
+                    style="@style/CheckBoxStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/lbl_restore_state"
+                    app:layout_constraintEnd_toEndOf="@+id/chb_launch_app"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_restore_state" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:background="@drawable/bg_white_radius">
+
+            <TextView
+                android:id="@+id/label_optimization_option"
+                style="@style/TextView.Medium"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/dimen_2x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/optimization_options"
+                android:textSize="@dimen/text_size_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/vw_optimization_option"
+                style="@style/HorizontalDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_optimization_option" />
+
+            <TextView
+                android:id="@+id/lbl_clear_ram"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_2x"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/clear_ram"
+                app:drawableStartCompat="@drawable/ic_clear_black"
+                app:layout_constraintEnd_toStartOf="@+id/chb_ram"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vw_optimization_option" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/chb_ram"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/dimen_1x"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_clear_ram"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lbl_clear_ram" />
+
+            <TextView
+                android:id="@+id/lbl_disable_wifi"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/turn_off_wifi"
+                android:visibility="gone"
+                app:drawableStartCompat="@drawable/ic_disable_wifi_black"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
+                app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_clear_ram" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/chb_wifi"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_wifi"
+                app:layout_constraintEnd_toEndOf="@+id/chb_ram"
+                app:layout_constraintTop_toTopOf="@+id/lbl_disable_wifi" />
+
+            <TextView
+                android:id="@+id/lbl_disable_bluetooth"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/turn_off_bluetooth"
+                app:drawableStartCompat="@drawable/ic_bluetooth_black"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
+                app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_wifi" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/chb_bluetooth"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_bluetooth"
+                app:layout_constraintEnd_toEndOf="@+id/chb_ram"
+                app:layout_constraintTop_toTopOf="@+id/lbl_disable_bluetooth" />
+
+            <TextView
+                android:id="@+id/lbl_disable_rotation"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/turn_off_screen_rotation"
+                app:drawableStartCompat="@drawable/ic_rotation_black"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
+                app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_bluetooth" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/chb_screen_rotation"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_rotation"
+                app:layout_constraintEnd_toEndOf="@+id/chb_ram"
+                app:layout_constraintTop_toTopOf="@+id/lbl_disable_rotation" />
+
+            <TextView
+                android:id="@+id/lbl_disable_sync"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/turn_off_auto_sync"
+                app:drawableStartCompat="@drawable/ic_disable_sync_black"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
+                app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_rotation" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/chb_sync"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_sync"
+                app:layout_constraintEnd_toEndOf="@+id/chb_ram"
+                app:layout_constraintTop_toTopOf="@+id/lbl_disable_sync" />
+
+            <TextView
+                android:id="@+id/lbl_screen_timeout"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:paddingVertical="@dimen/dimen_x1x"
+                android:text="@string/reduce_screen_timeout"
+                app:drawableStartCompat="@drawable/ic_sun"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
+                app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_sync" />
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/chb_screen_timeout"
+                style="@style/CheckBoxStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                app:layout_constraintBottom_toBottomOf="@+id/lbl_screen_timeout"
+                app:layout_constraintEnd_toEndOf="@+id/chb_ram"
+                app:layout_constraintTop_toTopOf="@+id/lbl_screen_timeout" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

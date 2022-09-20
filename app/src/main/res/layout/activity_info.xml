@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    app:layout_constraintBottom_toTopOf="@+id/btn_start"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_2x"
+        android:paddingBottom="@dimen/dimen_2x">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_radius"
+            android:paddingVertical="@dimen/dimen_x1x">
+
+            <TextView
+                android:id="@+id/label_battery_info"
+                style="@style/TextView.Medium"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_2x"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:text="@string/battery_info"
+                android:textSize="@dimen/text_size_16"
+                app:drawableStartCompat="@drawable/ic_battery_black_border"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/vw_optimization_option"
+                style="@style/HorizontalDivider"
+                android:layout_marginTop="@dimen/dimen_x1x"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_battery_info" />
+
+            <TextView
+                android:id="@+id/label_health"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/health"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_health"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_health"
+                app:layout_constraintStart_toStartOf="@+id/label_battery_info" />
+
+            <TextView
+                android:id="@+id/lbl_health"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/label_battery_info"
+                app:layout_constraintTop_toBottomOf="@+id/vw_optimization_option" />
+
+            <View
+                android:id="@+id/vw_health"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                app:layout_constraintStart_toStartOf="@+id/label_health"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_health" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/temperature"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_temperature"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_temperature"
+                app:layout_constraintStart_toStartOf="@+id/label_health" />
+
+            <TextView
+                android:id="@+id/lbl_temperature"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                app:layout_constraintTop_toBottomOf="@+id/vw_health" />
+
+            <View
+                android:id="@+id/vw_temperature"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                app:layout_constraintStart_toStartOf="@+id/label_health"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_temperature" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/capacity"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_capacity"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_capacity"
+                app:layout_constraintStart_toStartOf="@+id/label_health" />
+
+            <TextView
+                android:id="@+id/lbl_capacity"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                app:layout_constraintTop_toBottomOf="@+id/vw_temperature" />
+
+            <View
+                android:id="@+id/vw_capacity"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                app:layout_constraintStart_toStartOf="@+id/label_health"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_capacity" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/technology"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_technology"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_technology"
+                app:layout_constraintStart_toStartOf="@+id/label_health" />
+
+            <TextView
+                android:id="@+id/lbl_technology"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                app:layout_constraintTop_toBottomOf="@+id/vw_capacity" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:background="@drawable/bg_white_radius"
+            android:paddingVertical="@dimen/dimen_x1x">
+
+            <TextView
+                android:id="@+id/label_device_info"
+                style="@style/TextView.Medium"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dimen_2x"
+                android:drawablePadding="@dimen/dimen_x1x"
+                android:text="@string/device_info"
+                android:textSize="@dimen/text_size_16"
+                app:drawableStartCompat="@drawable/ic_device"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/vw_device_info"
+                style="@style/HorizontalDivider"
+                android:layout_marginTop="@dimen/dimen_x1x"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_device_info" />
+
+            <TextView
+                android:id="@+id/label_model"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/model"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_model"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_model"
+                app:layout_constraintStart_toStartOf="@+id/label_device_info" />
+
+            <TextView
+                android:id="@+id/lbl_model"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/label_device_info"
+                app:layout_constraintTop_toBottomOf="@+id/vw_device_info" />
+
+            <View
+                android:id="@+id/vw_model"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintStart_toStartOf="@+id/label_model"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_model" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:text="@string/ram"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_ram"
+                app:layout_constraintStart_toStartOf="@+id/label_model" />
+
+            <TextView
+                android:id="@+id/lbl_ram"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintTop_toBottomOf="@+id/vw_model" />
+
+            <View
+                android:id="@+id/vw_ram"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintStart_toStartOf="@+id/label_model"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_ram" />
+
+            <TextView
+                android:id="@+id/label_storage"
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/storage"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_storage"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_storage"
+                app:layout_constraintStart_toStartOf="@+id/label_model" />
+
+            <TextView
+                android:id="@+id/lbl_storage"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintTop_toBottomOf="@+id/vw_ram" />
+
+            <View
+                android:id="@+id/vw_storage"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintStart_toStartOf="@+id/label_model"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_storage" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/android_version"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_android_version"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_android_version"
+                app:layout_constraintStart_toStartOf="@+id/label_model" />
+
+            <TextView
+                android:id="@+id/lbl_android_version"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintTop_toBottomOf="@+id/vw_storage" />
+
+            <View
+                android:id="@+id/vw_version"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintStart_toStartOf="@+id/label_model"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_android_version" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/screen_size"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_screen_size"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_screen_size"
+                app:layout_constraintStart_toStartOf="@+id/label_model" />
+
+            <TextView
+                android:id="@+id/lbl_screen_size"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintTop_toBottomOf="@+id/vw_version" />
+
+            <View
+                android:id="@+id/vw_screen_size"
+                style="@style/HorizontalDivider"
+                android:layout_width="@dimen/zero"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:alpha="0.3"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintStart_toStartOf="@+id/label_model"
+                app:layout_constraintTop_toBottomOf="@+id/lbl_screen_size" />
+
+            <TextView
+                style="@style/TextView.Regular"
+                android:layout_width="@dimen/zero"
+                android:layout_height="wrap_content"
+                android:text="@string/screen_resolution"
+                app:layout_constraintBaseline_toBaselineOf="@+id/lbl_screen_resolution"
+                app:layout_constraintEnd_toStartOf="@+id/lbl_screen_resolution"
+                app:layout_constraintStart_toStartOf="@+id/label_model" />
+
+            <TextView
+                android:id="@+id/lbl_screen_resolution"
+                style="@style/TextView.Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_1x"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="@+id/lbl_model"
+                app:layout_constraintTop_toBottomOf="@+id/vw_screen_size" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

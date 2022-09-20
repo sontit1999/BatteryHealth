@@ -1,0 +1,101 @@
+<resources>
+    <!-- Text for Translator service -->
+   <!-- <string name="app_name">Bateri Induk</string>-->
+
+    <string name="optimize">Optimize</string>
+    <string name="optimizing">Mengoptimumkan&#8230;</string>
+    <string name="optimized">Selesai</string>
+    <string name="technology">Teknologi</string>
+    <string name="temperature">Suhu</string>
+    <string name="capacity">Kapasiti bateri</string>
+    <string name="health">Status</string>
+    <string name="good">Baik</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">Tindakan semasa mengoptimumkan</string>
+    <string name="settings">Tetapan</string>
+    <string name="automation">Automatik</string>
+    <string name="launch_app_when_plugged">Buka aplikasi setiap kali pengecas dipasang</string>
+    <string name="exit_app_when_unplugged">Tutup aplikasi semasa mencabut pengecas</string>
+    <string name="restore_state_when_unplugged">Pulihkan tetapan semasa pengecasan dicabut</string>
+    <string name="play_sound_when_battery_full">Penggera semasa bateri penuh</string>
+    <string name="dont_disturb">Mod Jangan ganggu</string>
+    <string name="battery_full_sound_not_played_while">Anda tidak akan menerima bunyi pemberitahuan bateri penuh dalam tempoh ini.</string>
+
+    <string name="txt_time_star">Bermula dari</string>
+    <string name="txt_time_end">Hingga</string>
+
+    <string name="reject">Menolak</string>
+    <string name="allow">Benarkan</string>
+
+    <string name="cancel">Batal</string>
+
+    <string name="do_you_want_to_charge_fast">Adakah anda mahu pengecasan pantas ?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <string name="normal_charge">Pengecasan biasa</string>
+    <string name="quick_charge">Pengecasan pantas</string>
+    <string name="great">Hebat!</string>
+    <string name="your_device_ready_for_quick_charge">Peranti anda siap untuk pengecasan pantas</string>
+    <string-array name="intro_titles">
+        <item>Mudah digunakan dan senang</item>
+        <item>Pemberitahuan audio apabila bateri terisi penuh</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>Hanya dengan satu sentuhan</item>
+        <item>Perlindungan bateri</item>
+    </string-array>
+    <!-- Translated myself -->
+    <string name="ok">OK</string>
+    <string name="cold">Cool</string>
+    <string name="dead">Died</string>
+    <string name="overheat">Terlalu panas</string>
+    <string name="over_voltage">Beban berlebihan</string>
+    <string name="battery_info">Maklumat bateri</string>
+    <string name="device_info">Maklumat peranti</string>
+    <string name="model">Peranti</string>
+    <string name="screen_size">Saiz skrin</string>
+    <string name="screen_resolution">Resolusi skrin</string>
+    <string name="storage">Penyimpanan</string>
+    <string name="android_version">Versi Android</string>
+    <string name="no_optimization_options_selected">Tidak ada pilihan pengoptimuman yang ditetapkan. Pergi ke skrin Tetapan dan pilih sekurang-kurangnya satu tindakan.</string>
+    <string name="optimization_desc_title">Pro Charger akan melakukan tindakan berikut untuk mengoptimumkan</string>
+    <string name="optimization_desc_content">Apabila anda mengklik Benarkan, anda memahami dan bersetuju dengan tindakan di atas, aplikasi akan dilaksanakan secara automatik pada waktu berikutnya.</string>
+    <string name="info">Maklumat</string>
+
+    <string name="alert_button_rate_app">Nilai aplikasi ini</string>
+    <string name="menu_share_app">Kongsi aplikasi ini</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="alert_button_update_app">Versi terkini</string>
+    <string name="remove_ads">Alih keluar iklan</string>
+
+    <string name="unspecified_failure">Ralat yang tidak diketahui</string>
+    <string name="unknown">Tidak diketahui</string>
+    <string name="msg_charging_via_usb">Anda menggunakan sumber kuasa USB, ini adalah sumber kuasa voltan rendah, jadi masa pengecasan akan lebih lama.</string>
+
+    <string name="alert_button_rate5star_app">Penarafan 5 bintang</string>
+    <string name="alert_content_rate_app">Hai, pemaju aplikasi telah bekerja keras untuk membawa anda aplikasi percuma yang terbaik. Kedudukan 5-bintang anda bernilai lebih daripada semua wang. Sila tulis semakan yang baik di Gedung Play untuk menggalakkan pemaju.</string>
+    <string name="alert_button_cancel_rate_app">Kemudian</string>
+    <string name="is_dismiss">Tidak muncul lagi</string>
+    <string name="title_alert_buy">Peningkatan VIP - Alih keluar iklan</string>
+    <string name="message_alert_buy">Jadilah VIP untuk membuang iklan dan menyokong pemaju.</string>
+    <string name="alert_buy_error">Sila semak sambungan rangkaian anda</string>
+    <string name="alert_buy_success">Anda telah menjadi VIP.</string>
+
+    <string name="desc_permission_draw_overlay">
+        Biarkan aplikasi ini dibuka secara automatik setiap kali anda memasang pengecas.
+        \n\nUntuk sebilangan telefon Android, anda perlu memberi kebenaran kepada aplikasi ini untuk muncul di atas aplikasi lain.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Sekiranya anda telah memberi kebenaran kepada aplikasi ini untuk muncul di atas aplikasi lain, tetapi aplikasi tersebut tidak berfungsi dengan baik, cubalah mengaktifkan lebih banyak kebenaran di bawah.\n\n1. Tunjukkan pada skrin kunci.\n2. Paparkan tetingkap pop-up ketika berjalan di latar belakang.\n3. Paparkan tetingkap Pop-Up.
+    </string>
+    <string name="automatic_definition">Menghidupkan Auto akan membantu anda mengoptimumkan proses pengecasan</string>
+    <string name="charing">Bateri sedang dicas</string>
+    <string name="not_charing">Bateri tidak dicas</string>
+    <string name="txt_user_easy">Mudah dan senang</string>
+    <string name="message_confirm_close_app">Ketik sekali lagi untuk Keluar!</string>
+</resources>

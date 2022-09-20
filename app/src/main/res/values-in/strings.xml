@@ -1,0 +1,94 @@
+<resources>
+    <!-- Text for Translator service -->
+    <!--<string name="app_name">Baterai Utama</string>-->
+
+    <string name="optimize">Optimal</string>
+    <string name="optimizing">Mengoptimalkan&#8230;</string>
+    <string name="optimized">Dioptimalkan</string>
+    <string name="technology">Teknologi</string>
+    <string name="temperature">Suhu</string>
+    <string name="capacity">Kapasitas baterai</string>
+    <string name="health">Status</string>
+    <string name="good">Baik</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">Tindakan saat mengoptimalkan</string>
+    <string name="settings">Pengaturan</string>
+    <string name="automation">Otomatis</string>
+    <string name="launch_app_when_plugged">Buka aplikasi saat pengisi daya dicolokkan</string>
+    <string name="exit_app_when_unplugged">Tutup aplikasi saat mencabut pengisi daya</string>
+    <string name="restore_state_when_unplugged">Restore settings when charging is unplugged</string>
+    <string name="play_sound_when_battery_full">Alarm saat baterai penuh</string>
+    <string name="dont_disturb">Jangan ganggu mode</string>
+    <string name="battery_full_sound_not_played_while">Anda tidak akan mendapatkan suara pemberitahuan baterai penuh selama ini.</string>
+    <string name="txt_time_star">Mulai dari jam</string>
+    <string name="txt_time_end">Hingga</string>
+    <string name="reject">Menolak</string>
+    <string name="allow">Mengizinkan</string>
+    <string name="cancel">Batal</string>
+    <string name="do_you_want_to_charge_fast">Apakah Anda ingin pengisian cepat?</string>
+    <string name="yes">Iya</string>
+    <string name="no">Tidak</string>
+    <string name="normal_charge">Pengisian normal</string>
+    <string name="quick_charge">Pengisian cepat</string>
+    <string name="great">Bagus!</string>
+    <string name="your_device_ready_for_quick_charge">Perangkat Anda siap untuk pengisian cepat</string>
+    <string-array name="intro_titles">
+        <item>Mudah digunakan dan nyaman</item>
+        <item>Pemberitahuan audio saat baterai terisi penuh</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>Hanya dengan satu sentuhan</item>
+        <item>Perlindungan baterai</item>
+    </string-array>
+    <!-- Translated myself -->
+    <string name="ok">OK</string>
+    <string name="cold">Keren</string>
+    <string name="dead">Meninggal</string>
+    <string name="overheat">Terlalu panas</string>
+    <string name="over_voltage">Kelebihan beban</string>
+    <string name="battery_info">Informasi baterai</string>
+    <string name="device_info">Informasi Perangkat</string>
+    <string name="model">Model</string>
+    <string name="screen_size">Ukuran layar</string>
+    <string name="screen_resolution">Resolusi layar</string>
+    <string name="storage">Penyimpanan</string>
+    <string name="android_version">Versi Android</string>
+    <string name="no_optimization_options_selected">Tidak ada opsi pengoptimalan yang ditetapkan. Silakan pergi ke layar Pengaturan dan pilih setidaknya satu tindakan.</string>
+    <string name="optimization_desc_title">Pro Charger akan melakukan tindakan berikut untuk mengoptimalkan</string>
+    <string name="optimization_desc_content">Ketika Anda mengklik Izinkan, Anda memahami dan menyetujui tindakan di atas, aplikasi akan secara otomatis dijalankan di lain waktu.</string>
+    <string name="info">Informasi</string>
+    <string name="alert_button_rate_app">Ulasan aplikasi</string>
+    <string name="menu_share_app">Bagikan aplikasi</string>
+    <string name="privacy_policy">Kebijakan pribadi</string>
+    <string name="alert_button_update_app">Versi terbaru</string>
+    <string name="remove_ads">Hilangkan iklan</string>
+    <string name="unspecified_failure">Kesalahan yang tidak diketahui</string>
+    <string name="unknown">Unknown</string>
+    <string name="msg_charging_via_usb">Anda menggunakan sumber listrik USB, ini adalah sumber listrik bertegangan rendah, sehingga waktu pengisian akan lebih lama.</string>
+    <string name="alert_button_rate5star_app">Beri peringkat 5-bintang</string>
+    <string name="alert_content_rate_app">Hi, Pengembang aplikasi telah bekerja sangat keras untuk menghadirkan aplikasi gratis terbaik kepada Anda. Anda peringkat bintang 5 bernilai lebih dari semua uang. Harap tulis ulasan yang baik di Play Store untuk mendorong pengembang.</string>
+    <string name="alert_button_cancel_rate_app">Nanti</string>
+    <string name="is_dismiss">Jangan tampilkan lagi</string>
+    <string name="title_alert_buy">Peningkatan VIP - Hapus iklan</string>
+    <string name="message_alert_buy">Jadilah VIP untuk menghilangkan iklan dan mendukung pengembang.</string>
+    <string name="alert_buy_error">Silakan periksa koneksi jaringan Anda</string>
+    <string name="alert_buy_success">Anda telah menjadi VIP</string>
+
+    <string name="desc_permission_draw_overlay">
+        Jadi aplikasi selalu bisa terbuka otomatis setiap kali Anda mencolokkan charger.
+        \n\nUntuk beberapa ponsel Android, Anda harus memberikan izin aplikasi ini untuk muncul di atas aplikasi lain.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Jika Anda telah memberikan visibilitas di atas aplikasi lain, tetapi aplikasi ini masih tidak berfungsi dengan baik, coba aktifkan lebih banyak izin di bawah.\n\n1. Tunjukkan di layar kunci.\n2. Tampilkan pop-up saat berjalan di latar belakang.\n3. Tampilkan jendela pop-up.
+    </string>
+    <string name="automatic_definition">Mengaktifkan Otomatis akan membantu Anda mengoptimalkan proses pengisian daya</string>
+    <string name="charing">Baterai sedang diisi</string>
+    <string name="not_charing">Baterai tidak mengisi daya</string>
+    <string name="txt_user_easy">Mudah dan nyaman</string>
+    <string name="message_confirm_close_app">Ketuk lagi untuk Keluar!</string>
+</resources>

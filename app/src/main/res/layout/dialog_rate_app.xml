@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_gray_radius_large"
+    android:minWidth="@dimen/dimen_340">
+
+    <FrameLayout
+        android:id="@+id/frl_title"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:layout_width="@dimen/dimen_8x"
+            android:layout_height="@dimen/dimen_8x"
+            android:layout_marginVertical="@dimen/dimen_10"
+            android:src="@drawable/ic_smile"
+            android:layout_gravity="center"/>
+     <!--   <TextView
+            android:id="@+id/label_title"
+            style="@style/TextView.Medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:maxWidth="@dimen/dimen_200"
+            android:padding="@dimen/dimen_2x"
+            android:text="@string/alert_button_rate5star_app"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16" />-->
+
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/lbl_message"
+        style="@style/TextView.quickB"
+        android:textColor="@color/white"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.2"
+        android:padding="@dimen/dimen_2x"
+        android:text="@string/alert_content_rate_app"
+        android:textSize="@dimen/text_size_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frl_title" />
+
+    <View
+        android:id="@+id/vw_bar"
+        style="@style/HorizontalDivider"
+        android:layout_width="@dimen/zero"
+        android:layout_height="@dimen/divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_message" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/ltv_star"
+        android:layout_width="@dimen/dimen_140"
+        android:layout_height="@dimen/dimen_x4x"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="@dimen/dimen_2x"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lt_rating_stars"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vw_bar"/>
+
+    <TextView
+        android:id="@+id/btn_not_now"
+        style="@style/Button.Grey"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginVertical="@dimen/dimen_2x"
+        android:layout_marginStart="@dimen/dimen_2x"
+        android:layout_marginEnd="@dimen/dimen_1x"
+        android:background="@drawable/btn_grey_round"
+        android:paddingHorizontal="@dimen/dimen_05x"
+        android:text="@string/alert_button_cancel_rate_app"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_size_13"
+        app:layout_constraintBottom_toTopOf="@+id/ckb_dont_show_again"
+        app:layout_constraintEnd_toStartOf="@id/btn_rate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vw_bar" />
+
+    <TextView
+        android:id="@+id/btn_rate"
+        style="@style/Button"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:layout_marginVertical="@dimen/dimen_2x"
+        android:layout_marginStart="@dimen/dimen_1x"
+        android:layout_marginEnd="@dimen/dimen_2x"
+        android:background="@drawable/btn_yellow_round"
+        android:paddingHorizontal="@dimen/dimen_05x"
+        android:text="@string/alert_button_rate5star_app"
+        android:textSize="@dimen/text_size_13"
+        app:layout_constraintBottom_toTopOf="@+id/ckb_dont_show_again"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_not_now"
+        app:layout_constraintTop_toBottomOf="@+id/ltv_star" />
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/ckb_dont_show_again"
+        style="@style/TextView.Regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_2x"
+        android:layout_marginBottom="@dimen/dimen_1x"
+        android:text="@string/is_dismiss"
+        android:textSize="@dimen/text_size_14"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_goneMarginBottom="@dimen/dimen_2x" />
+</androidx.constraintlayout.widget.ConstraintLayout>

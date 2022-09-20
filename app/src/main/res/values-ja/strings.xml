@@ -1,0 +1,83 @@
+  <resources>
+    <string name="optimize">最適化</string>
+    <string name="optimizing">最適化中&#8230;</string>
+    <string name="optimized">終わり</string>
+    <string name="health">状態</string>
+    <string name="technology">テクノロジー</string>
+    <string name="temperature">温度</string>
+    <string name="capacity">バッテリー容量</string>
+    <string name="cold">涼しい</string>
+    <string name="dead">死ぬ</string>
+    <string name="good">良い</string>
+    <string name="overheat">熱すぎる</string>
+    <string name="over_voltage">過負荷（電圧）</string>
+    <string name="unspecified_failure">未知のエラー</string>
+    <string name="unknown">わからない</string>
+    <string name="remove_ads">広告を削除</string>
+    <string name="alert_button_rate_app">このアプリを評価する</string>
+    <string name="menu_share_app">このアプリを共有する</string>
+    <string name="privacy_policy">プライバシーポリシー</string>
+    <string name="alert_button_update_app">アプリを更新する</string>
+    <string name="clear_ram">RAMをクリア</string>
+    <string name="turn_off_bluetooth">Bluetooth オフ</string>
+    <string name="turn_off_wifi">Wi-Fi オフ</string>
+    <string name="turn_off_auto_sync">自動同期オフ</string>
+    <string name="turn_off_screen_rotation">画面回転オフ</string>
+    <string name="reduce_screen_timeout">画面の明るさの時間を短縮</string>
+    <string name="optimization_options">最適化</string>
+    <string name="settings">設定</string>
+    <string name="automation">自動</string>
+    <string name="launch_app_when_plugged">充電器を接続するときに確認ダイアログを表示する</string>
+    <string name="exit_app_when_unplugged">Close the app when unplugging the charger</string>
+    <string name="restore_state_when_unplugged">充電が外されたときに設定を復元する</string>
+    <string name="play_sound_when_battery_full">バッテリーが満タンになるとアラーム</string>
+    <string name="dont_disturb">邪魔しないでください</string>
+    <string name="battery_full_sound_not_played_while">この間、完全なバッテリー通知音は聞こえません。</string>
+    <string name="txt_time_star">から始まる</string>
+    <string name="txt_time_end">に</string>
+    <string name="info">情報</string>
+    <string name="no_optimization_options_selected">最適化オプションは設定されていません。 設定画面に移動し、少なくとも 1 つのアクションを選択してください。</string>
+    <string name="optimization_desc_title">プロ充電器は、最適化するために次のアクションを実行します</string>
+    <string name="optimization_desc_content">[許可] をクリックすると、上記のアクションを理解して同意したことになり、アプリケーションは次回から自動的に実行されます。</string>
+    <string name="reject">拒否</string>
+    <string name="allow">許可する</string>
+    <string name="ok">わかった</string>
+    <string name="cancel">キャンセル</string>
+    <string name="do_you_want_to_charge_fast">急速充電したいですか？</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="normal_charge">通常充電</string>
+    <string name="quick_charge">急速充電</string>
+    <string name="great">すごい！</string>
+    <string name="your_device_ready_for_quick_charge">お使いのデバイスは急速充電モードの準備ができています</string>
+    <string name="battery_info">バッテリー情報</string>
+    <string name="device_info">デバイス情報</string>
+    <string name="model">モデル</string>
+    <string name="screen_size">画面サイズ</string>
+    <string name="screen_resolution">画面の解像度</string>
+    <string name="storage">保管所</string>
+    <string name="android_version">アンドロイド版</string>
+    <string name="msg_charging_via_usb">お使いのデバイスは USB 経由で充電されています。これは低電圧であるため、充電時間は長くなります。</string>
+    <string name="alert_content_rate_app">こんにちは、アプリ開発者は最高の無料アプリを提供するために一生懸命働いています。 あなたの 5 つ星評価は、すべてのお金よりも価値があります。 開発者を励ますために、Play ストアで良いレビューを書いてください。</string>
+    <string name="alert_button_rate5star_app">評価 5 つ星</string>
+    <string name="alert_button_cancel_rate_app">後で</string>
+    <string name="is_dismiss">再び表示しない</string>
+    <string name="title_alert_buy">VIP のアップグレード - 広告の削除</string>
+    <string name="message_alert_buy">VIP になって広告を削除し、開発者を励まします。</string>
+    <string name="alert_buy_error">接続を再確認してください</string>
+    <string name="alert_buy_success">YあなたはVIPです</string>
+    <string name="desc_permission_draw_overlay">
+       充電器を差し込むたびに、このアプリが自動的に開くようにします。
+         \n\nこれにより、デバイスがロックされているときにアプリを開くことができます。
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">他のアプリの上に表示する権限を付与したにもかかわらず、アプリが正しく動作しない場合は、以下の権限も許可してみてください。
+         \n\n1. ロック画面に表示します。
+         \n2. バックグラウンドでの実行中にポップアップ ウィンドウを表示します。
+         \n3. ポップアップウィンドウを表示します。
+    </string>
+    <string name="automatic_definition">自動をオンにすると、充電プロセスを最適化するのに役立ちます</string>
+    <string name="charing">バッテリー充電中</string>
+    <string name="not_charing">バッテリーが充電されていません</string>
+    <string name="txt_user_easy">簡単便利</string>
+    <string name="message_confirm_close_app">もう一度タップして終了します。</string>
+</resources>

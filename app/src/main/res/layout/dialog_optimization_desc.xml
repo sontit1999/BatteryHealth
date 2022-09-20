@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_radius"
+    android:minWidth="@dimen/dimen_340">
+
+    <TextView
+        android:id="@+id/label_title"
+        style="@style/TextView.Medium"
+        android:layout_width="@dimen/zero"
+        android:textColor="@color/colorPrimary"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_2x"
+        android:layout_marginTop="@dimen/dimen_2x"
+        android:text="@string/optimization_desc_title"
+        android:textSize="@dimen/text_size_18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/vw_divider"
+        style="@style/HorizontalDivider"
+        android:layout_width="@dimen/zero"
+        android:layout_marginTop="@dimen/dimen_2x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_title" />
+
+    <LinearLayout
+        android:id="@+id/ll_options"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_2x"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vw_divider">
+
+        <TextView
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_2x"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:text="@string/clear_ram"
+            app:drawableStartCompat="@drawable/ic_tick_black" />
+
+        <TextView
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_x1x"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:text="@string/turn_off_bluetooth"
+            app:drawableStartCompat="@drawable/ic_tick_black" />
+
+        <TextView
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_x1x"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:text="@string/turn_off_screen_rotation"
+            app:drawableStartCompat="@drawable/ic_tick_black" />
+
+        <TextView
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_x1x"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:text="@string/turn_off_auto_sync"
+            app:drawableStartCompat="@drawable/ic_tick_black" />
+
+        <TextView
+            android:id="@+id/lbl_wifi"
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_x1x"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:text="@string/turn_off_wifi"
+            app:drawableStartCompat="@drawable/ic_tick_black" />
+
+        <TextView
+            style="@style/TextView.Regular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_x1x"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:text="@string/reduce_screen_timeout"
+            app:drawableStartCompat="@drawable/ic_tick_black" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/label_desc"
+        style="@style/TextView.Regular"
+        android:layout_width="@dimen/zero"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dimen_2x"
+        android:layout_marginTop="@dimen/dimen_2x"
+        android:text="@string/optimization_desc_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ll_options" />
+
+    <TextView
+        android:id="@+id/btn_reject"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_white_not_radius"
+        android:text="@string/reject"
+        android:textColor="@color/lightColorPrimary"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_allow"
+        app:layout_constraintEnd_toStartOf="@+id/btn_allow" />
+
+    <TextView
+        android:id="@+id/btn_allow"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dimen_1x"
+        android:background="@drawable/btn_white_not_radius"
+        android:text="@string/allow"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_desc" />
+</androidx.constraintlayout.widget.ConstraintLayout>

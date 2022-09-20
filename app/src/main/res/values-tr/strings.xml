@@ -1,0 +1,101 @@
+<resources>
+    <!-- Text for Translator service -->
+   <!-- <string name="app_name">Ana Batarya</string>-->
+
+    <string name="optimize">Optimize</string>
+    <string name="optimizing">Optimize ediliyor&#8230;</string>
+    <string name="optimized">Bitti</string>
+    <string name="technology">Teknoloji</string>
+    <string name="temperature">Sıcaklık</string>
+    <string name="capacity">Pil kapasitesi</string>
+    <string name="health">Durum</string>
+    <string name="good">İyi</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">Optimize ederken yapılacak işlemler</string>
+    <string name="settings">Ayarlar</string>
+    <string name="automation">Otomatik</string>
+    <string name="launch_app_when_plugged">Şarj cihazına takıldığında uygulamayı aç</string>
+    <string name="exit_app_when_unplugged">Şarj cihazını çıkarırken uygulamayı kapatın</string>
+    <string name="restore_state_when_unplugged">Şarj cihazını çıkarırken ayarları geri yükleyin</string>
+    <string name="play_sound_when_battery_full">Pil dolduğunda alarm</string>
+    <string name="dont_disturb">Rahatsız etmeyin modu</string>
+    <string name="battery_full_sound_not_played_while">Bu süre boyunca tam pil bildirim sesi almayacaksınız.</string>
+    <!-- ko can dich -->
+    <string name="txt_time_star">Arası başlayın</string>
+    <string name="txt_time_end">A</string>
+
+    <string name="reject">Reddet</string>
+    <string name="allow">İzin ver</string>
+    <!-- ko can dich -->
+    <string name="cancel">İptal</string>
+
+    <string name="do_you_want_to_charge_fast">Hızlı şarj etmek istiyor musunuz ?</string>
+    <string name="yes">Evet</string>
+    <string name="no">Hayır</string>
+    <string name="normal_charge">Sạc thường</string>
+    <string name="quick_charge">Hızlı şarj</string>
+    <string name="great">Harika!</string>
+    <string name="your_device_ready_for_quick_charge">Cihazınız şarj olmaya hazır hızlı pil</string>
+    <string-array name="intro_titles">
+        <item>Kullanımı kolay ve kullanışlı</item>
+        <item>Pil tamamen şarj olduğunda ses bildirim</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>Sadece bir dokunuş</item>
+        <item>Pil Koruması</item>
+    </string-array>
+    <!-- Translated myself -->
+    <string name="ok">OK</string>
+    <string name="cold">Cool</string>
+    <string name="dead">Died</string>
+    <string name="overheat">Çok sıcak</string>
+    <string name="over_voltage">Aşırı yükleme</string>
+    <string name="battery_info">Batarya bilgileri</string>
+    <string name="device_info">Cihaz bilgisi</string>
+    <string name="model">Cihaz</string>
+    <string name="screen_size">Ekran boyutu</string>
+    <string name="screen_resolution">Ekran çözünürlüğü</string>
+    <string name="storage">Memory</string>
+    <string name="android_version">Android sürümü</string>
+    <string name="no_optimization_options_selected">Optimizasyon seçeneği yok ayarlandı. Lütfen Ayarlar ekranına gidin ve en az bir işlem seçin.</string>
+    <string name="optimization_desc_title">Pro Charger optimize etmek için aşağıdaki eylemleri gerçekleştirecek</string>
+    <string name="optimization_desc_content">İzin Ver\'e tıkladığınızda, yukarıdaki eylemleri anlar ve kabul edersiniz, uygulama bir sonraki sefer otomatik olarak çalışacaktır.</string>
+    <string name="info">Bilgi</string>
+
+    <string name="alert_button_rate_app">Uygulamayı oyla</string>
+    <string name="menu_share_app">Uygulamayı paylaş</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="alert_button_update_app">En son sürüm</string>
+    <string name="remove_ads">Reklamları kaldırmak</string>
+
+    <string name="unspecified_failure">Bilinmeyen bir hata</string>
+    <string name="unknown">Unknown</string>
+    <string name="msg_charging_via_usb">Bir USB güç kaynağı kullanıyorsunuz, bu düşük voltajlı bir güç kaynağıdır, bu nedenle şarj süresi daha uzun olacaktır.</string>
+
+    <string name="alert_button_rate5star_app">5 yıldız ver</string>
+    <string name="alert_content_rate_app">Merhaba, Uygulama geliştiricisi size en iyi ücretsiz uygulamaları sunmak için çok çalıştı. 5 yıldızlı puanın, bütün paradan daha değerli. Lütfen geliştiriciyi teşvik etmek için Play Store\'da iyi bir inceleme yazın.</string>
+    <string name="alert_button_cancel_rate_app">Daha sonra</string>
+    <string name="is_dismiss">Bir daha gösterme</string>
+    <string name="title_alert_buy">VIP yükseltmesi - Reklamları kaldırın</string>
+    <string name="message_alert_buy">Reklamları kaldırıp geliştiricileri desteklemek için VIP olun.</string>
+    <string name="alert_buy_error">Lütfen ağ bağlantınızı kontrol edin</string>
+    <string name="alert_buy_success">VIP oldun</string>
+
+    <string name="desc_permission_draw_overlay">
+        şarj cihazını her taktığınızda uygulama her zaman otomatik olarak açılabilir için.
+        \n\nBazı Android telefonlarda, bu uygulamaya diğer uygulamaların üzerinde görünmesine izin vermeniz gerekir.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">Bu uygulamanın diğer uygulamaların üzerinde görünmesine izin verdiyseniz, ancak uygulama düzgün çalışmıyorsa, lütfen aşağıda daha fazla izni etkinleştirmeyi deneyin.\n\n1. Kilit ekranında göster.\n2. Arka planda çalışırken bir pop-up penceresi görüntüle.\n3. Bir pop-up penceresi görüntüler.
+    </string>
+    <string name="automatic_definition">Otomatik\'i açmak, şarj işlemini optimize etmenize yardımcı olur</string>
+    <string name="charing">Pil şarj oluyor</string>
+    <string name="not_charing">Pil şarj olmuyor</string>
+    <string name="txt_user_easy">Kolay ve kullanışlı</string>
+    <string name="message_confirm_close_app">Çıkmak için tekrar dokunun!</string>
+</resources>

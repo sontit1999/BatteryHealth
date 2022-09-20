@@ -1,0 +1,131 @@
+<resources>
+    <!-- Untranslatable text -->
+    <string name="ads_app_id" translatable="false">ca-app-pub-2238530878125342~5210937149</string>
+    <string name="ad" translatable="false">Ad</string>
+    <string name="_percentage" translatable="false">%1$s%%</string>
+    <string name="_voltage" translatable="false">%1$s V</string>
+    <string name="_degree" translatable="false">%1$s\u2103 / %2$s\u2109</string>
+    <string name="_mah" translatable="false">%1$s mAh</string>
+    <string name="_ma" translatable="false">%1$s mA</string>
+    <string name="desc_power_connection_service" translatable="false">This service keeps the app is not killed automatically so that the app will work correctly.</string>
+    <string name="_colon_" translatable="false">%1$s:%2$s</string>
+    <string name="_x_" translatable="false">%1$sx%2$s</string>
+    <string name="_inch" translatable="false">%1$s inch</string>
+    <string name="_gb" translatable="false">%1$s GB</string>
+    <string name="_mp" translatable="false">%1$s MP</string>
+    <string name="powered_by" translatable="false">Powered by</string>
+    <string name="ram" translatable="false">RAM</string>
+    <string name="x2_charger" translatable="false">Pro Charger</string>
+    <string name="_gb_free" translatable="false">%1$s GB free / %2$s GB</string>
+    <string name="full" translatable="false">Battery is full</string>
+    <string name="txt_loading" translatable="false">Loading...</string>
+    <string name="fast_charger" translatable="false">Pro Charger</string>
+    <string name="app_name" translatable="false">Pro Charger</string>
+    <string name="time_charging_left" translatable="false">Time charging left</string>
+    <string name="time_using_left" translatable="false">Time using left</string>
+    <string-array name="intro_titles">
+        <item>Easy and convenient</item>
+        <item>Audio notification when battery is fully charged</item>
+    </string-array>
+
+    <string-array name="intro_messages">
+        <item>Just one touch</item>
+        <item>Prevent overcharging</item>
+    </string-array>
+
+    <!-- Translatable text -->
+
+    <string name="optimize">Optimize</string>
+    <string name="optimizing">Optimizing&#8230;</string>
+    <string name="optimized">Done</string>
+    <string name="health">Status</string>
+    <string name="technology">Technology</string>
+    <string name="temperature">Temperature</string>
+    <string name="capacity">Battery capacity</string>
+    <string name="cold">Cool</string>
+    <string name="dead">Die</string>
+    <string name="good">Good</string>
+    <string name="overheat">Too hot</string>
+    <string name="over_voltage">Overload (voltage)</string>
+    <string name="unspecified_failure">Unknown error</string>
+    <string name="unknown">Unknown</string>
+    <string name="remove_ads">Remove ads</string>
+    <string name="alert_button_rate_app">Rate this app</string>
+    <string name="menu_share_app">Share this app</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="alert_button_update_app">Update app</string>
+    <string name="clear_ram">Clear RAM</string>
+    <string name="turn_off_bluetooth">Bluetooth Off</string>
+    <string name="turn_off_wifi">Wifi Off</string>
+    <string name="turn_off_auto_sync">Auto-sync Off</string>
+    <string name="turn_off_screen_rotation">Screen rotation Off</string>
+    <string name="reduce_screen_timeout">Reduce screen brightness time</string>
+    <string name="optimization_options">Optimize</string>
+    <string name="settings">Settings</string>
+    <string name="automation">Automatic</string>
+    <string name="launch_app_when_plugged">Show ask dialog when plug charger</string>
+    <string name="exit_app_when_unplugged">Close the app when unplugging the charger</string>
+    <string name="restore_state_when_unplugged">Restore settings when charging is unplugged</string>
+    <string name="play_sound_when_battery_full">Alarm when the battery is full</string>
+    <string name="dont_disturb">Do Not Disturb</string>
+    <string name="battery_full_sound_not_played_while">You will not get a full battery notification sound during this time.</string>
+    <string name="txt_time_star">Start from</string>
+    <string name="txt_time_end">To</string>
+    <string name="info">Information</string>
+    <string name="no_optimization_options_selected">No optimization options are set. Please go to the Settings screen and select at least one action.</string>
+    <string name="optimization_desc_title">Pro Charger will perform the following actions to optimize</string>
+    <string name="optimization_desc_content">When you click Allow, you understand and agree to the above actions, the application will automatically execute on the next time.</string>
+    <string name="reject">Deny</string>
+    <string name="allow">Allow</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="do_you_want_to_charge_fast">Do you want fast charging?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="normal_charge">Normal charging</string>
+    <string name="quick_charge">Fast charging</string>
+    <string name="great">Great!</string>
+    <string name="your_device_ready_for_quick_charge">Your device is ready for fast charging mode</string>
+    <string name="battery_info">Battery info</string>
+    <string name="device_info">Device info</string>
+    <string name="model">Model</string>
+    <string name="screen_size">Screen size</string>
+    <string name="screen_resolution">Screen resolution</string>
+    <string name="storage">Storage</string>
+    <string name="android_version">Android version</string>
+    <string name="msg_charging_via_usb">Your device is being charged via USB, this is a low voltage so will be longer.</string>
+    <string name="alert_content_rate_app">Hi, App developer has worked very hard to bring you the best free apps. Your 5-star rating is worth more than all money. Please write a good review on Play Store to encourage developer.</string>
+    <string name="alert_button_rate5star_app">Rate 5-star</string>
+    <string name="alert_button_cancel_rate_app">Later</string>
+    <string name="is_dismiss">Do not show again</string>
+    <string name="title_alert_buy">Upgrade VIP - Remove ads</string>
+    <string name="message_alert_buy">Become VIP to remove ads and encourage developers.</string>
+    <string name="alert_buy_error">Please double check your connection</string>
+    <string name="alert_buy_success">You are VIP</string>
+    <string name="desc_permission_draw_overlay">
+        Let this app open automatically every time you plug in the charger.
+        \n\nThis helps opening the app while your device is locked.
+    </string>
+    <string name="desc_other_permissions_on_xiaomi_device">If you have granted Display over other apps permission but the app is still not working correctly, please try allowing below permissions also.
+        \n\n1. Show on Lock screen.
+        \n2. Display pop-up windows while running in the background.
+        \n3. Display pop-up window.
+    </string>
+    <string name="automatic_definition">Turning on Auto will help you optimize the charging process</string>
+    <string name="charing">Battery is charging</string>
+    <string name="not_charing">Battery is not charging</string>
+    <string name="txt_user_easy">Easy and convenient</string>
+    <string name="message_confirm_close_app">Tap again to Exit!</string>
+    <string name="go_since_the_last_full_charge">Since last full charge</string>
+    <string name="du_no_charger_record">No record</string>
+    <string name="bd_charge_duration">Charge duration</string>
+    <string name="go_charge_quantity">Charge quantity</string>
+    <string name="bd_charger_type">Charge Type</string>
+    <string name="bd_charge_history">Charge History</string>
+    <string name="go_last_3_days">Last 3 day charge record</string>
+    <string name="guide_access_permission_v5">On the next screen, find the Pro Charger app, then tap to ENABLE or ALLOW.</string>
+    <string name="txt_history_charge">Charge battery history</string>
+    <string name="clean_apps">Clean up apps</string>
+
+
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.procharger.fastprocharrging.quickcharge.widget.ads.LayoutNativeAd
+        android:id="@+id/nativeAdView"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_6"
+        android:layout_width="match_parent" />
+
+    <TextView
+        android:background="@color/grey50"
+        android:gravity="center"
+        android:id="@+id/btnCloseApp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:text="@string/message_confirm_close_app"
+        android:textSize="@dimen/text_size_16"/>
+</LinearLayout>
