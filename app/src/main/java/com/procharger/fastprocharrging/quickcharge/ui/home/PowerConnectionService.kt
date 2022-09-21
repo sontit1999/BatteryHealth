@@ -78,7 +78,7 @@ class PowerConnectionService : Service() {
             layoutCustomNotification?.run {
                 val imgRes = it.percentage?.let { percent ->
                     if(percent == 100f) {
-                        R.drawable.ic_battery_full
+                        R.drawable.battery_full
                     } else if (percent < 20f) {
                         R.drawable.ic_battery_low
                     } else {
