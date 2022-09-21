@@ -1,296 +1,418 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/color_gray_bg"
+        android:scrollbars="none">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/dimen_2x">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
 
-            <ImageView
-                android:id="@+id/img_help"
-                android:layout_width="@dimen/dimen_x3x"
-                android:layout_height="@dimen/dimen_x3x"
-                android:adjustViewBounds="true"
-                android:background="@drawable/btn_blue_dark_round"
-                android:contentDescription="@string/app_name"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerBatteryStatus"
+                android:layout_width="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_help"
-                app:tint="@color/yellow" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/anim_optimization"
-                android:layout_width="@dimen/dimen_320"
-                android:layout_height="@dimen/dimen_320"
+                android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:lottie_rawRes="@raw/lt_optimization_effect" />
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/btn_white_round"
+                app:layout_constraintStart_toStartOf="parent">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/anim_percentage"
-                android:layout_width="@dimen/zero"
-                android:layout_height="@dimen/zero"
-                app:layout_constraintBottom_toBottomOf="@+id/vw_border"
-                app:layout_constraintEnd_toEndOf="@+id/vw_border"
-                app:layout_constraintStart_toStartOf="@+id/vw_border"
-                app:layout_constraintTop_toTopOf="@+id/vw_border" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/anim_percentage"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="@dimen/zero"
+                    android:layout_margin="10dp"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.36"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/battery"
+                    app:lottie_repeatMode="restart" />
 
-            <com.skyfishjy.library.RippleBackground
-                android:id="@+id/charge_boost_ripple_background"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/vw_border"
-                app:layout_constraintEnd_toEndOf="@+id/vw_border"
-                app:layout_constraintStart_toStartOf="@+id/vw_border"
-                app:layout_constraintTop_toTopOf="@+id/vw_border"
-                app:rb_color="#00ffffff"
-                app:rb_duration="1200"
-                app:rb_radius="56dp"
-                app:rb_rippleAmount="2"
-                app:rb_scale="2.5">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="@+id/anim_percentage"
+                    app:layout_constraintEnd_toEndOf="@+id/anim_percentage"
+                    app:layout_constraintStart_toStartOf="@+id/anim_percentage"
+                    app:layout_constraintTop_toTopOf="@+id/anim_percentage">
 
-                <FrameLayout
-                    android:layout_width="@dimen/_200sdp"
-                    android:layout_height="@dimen/_200sdp"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center"
-                    android:padding="@dimen/_30sdp">
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/ivDoneHoloCirular"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:alpha="0.6"
-                            android:visibility="visible" />
-
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/ivScan"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_fan" />
-
-                        <ImageView
-                            android:id="@+id/ivScan2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_fan_white" />
-                    </FrameLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtInfo"
+                        style="@style/TextView.Regular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/time_charging_left"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_14" />
 
                     <LinearLayout
-                        android:id="@+id/lytListItem"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:visibility="gone"
-                        android:weightSum="2">
+                        android:id="@+id/view_time_left"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvHour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                            android:text="00"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
 
-                            <FrameLayout
-                                android:id="@+id/fm_scan_container_1"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                            android:layout_marginStart="2dp"
+                            android:text="h"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
 
-                            <FrameLayout
-                                android:id="@+id/fm_scan_container_2"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1" />
-                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvMin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                            android:layout_marginStart="2dp"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            tools:text="00" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:orientation="horizontal"
-                            android:weightSum="2">
-
-                            <FrameLayout
-                                android:id="@+id/fm_scan_container_4"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent" />
-
-                            <FrameLayout
-                                android:id="@+id/fm_scan_container_3"
-                                android:layout_width="70dp"
-                                android:layout_height="match_parent" />
-                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom|center_vertical|center_horizontal|center"
+                            android:layout_marginStart="2dp"
+                            android:text="@string/minute"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
                     </LinearLayout>
-                </FrameLayout>
-            </com.skyfishjy.library.RippleBackground>
 
-            <View
-                android:id="@+id/vw_border"
-                android:layout_width="@dimen/dimen_200"
-                android:layout_height="@dimen/dimen_200"
-                android:background="@drawable/bg_border_white_4dp_circle"
-                app:layout_constraintBottom_toBottomOf="@+id/anim_optimization"
-                app:layout_constraintEnd_toEndOf="@+id/anim_optimization"
-                app:layout_constraintStart_toStartOf="@+id/anim_optimization"
-                app:layout_constraintTop_toTopOf="@+id/anim_optimization" />
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/anim_percentage"
-                app:layout_constraintEnd_toEndOf="@+id/anim_percentage"
-                app:layout_constraintStart_toStartOf="@+id/anim_percentage"
-                app:layout_constraintTop_toTopOf="@+id/anim_percentage">
-
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/lbl_percentage"
                     style="@style/TextView.Regular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="40%"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_22" />
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toTopOf="@id/btn_optimize"
+                    app:layout_constraintEnd_toEndOf="@id/btn_optimize"
+                    app:layout_constraintStart_toStartOf="@id/btn_optimize"
+                    tools:text="40%" />
 
-                <TextView
-                    android:id="@+id/txtInfo"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btn_optimize"
+                    style="@style/Button.Yellow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/dimen_1x"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@string/optimize"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/anim_percentage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/anim_percentage"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_optimization_desc_process"
                     style="@style/TextView.Regular"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/time_charging_left"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_14" />
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/anim_percentage"
+                    tools:layout_editor_absoluteY="112dp" />
 
-                <LinearLayout
-                    android:id="@+id/view_time_left"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_warn_usb_charging"
+                    style="@style/TextView.Italic"
+                    android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:orientation="horizontal">
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="@dimen/dimen_2x"
+                    android:background="@drawable/bg_bluelight50_with_border_radius"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingHorizontal="@dimen/dimen_2x"
+                    android:paddingVertical="@dimen/dimen_1x"
+                    android:text="@string/msg_charging_via_usb"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_12"
+                    android:visibility="gone"
+                    app:drawableStartCompat="@drawable/ic_warn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_optimization_desc_process" />
 
-                    <TextView
-                        android:id="@+id/tvHour"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
-                        android:text="00"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
-                        android:layout_marginStart="2dp"
-                        android:text="h"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
 
-                    <TextView
-                        android:id="@+id/tvMin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
-                        android:layout_marginStart="2dp"
-                        android:text="00"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
+            <View
+                android:id="@+id/bgCooler"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_white_radius"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/containerBatteryStatus"
+                app:layout_constraintWidth_percent="0.3" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center_vertical|center_horizontal|center"
-                        android:layout_marginStart="2dp"
-                        android:text="m"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
 
-            </LinearLayout>
+            <View
+                android:id="@+id/bgBatterySaved"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_white_radius"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/bgCooler"
+                app:layout_constraintWidth_percent="0.3" />
 
-            <TextView
-                android:id="@+id/btn_optimize"
-                style="@style/Button.Yellow"
+
+            <View
+                android:id="@+id/bgBooster"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_white_radius"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toStartOf="@id/bgBatterySaved"
+                app:layout_constraintStart_toEndOf="@id/bgCooler"
+                app:layout_constraintTop_toTopOf="@id/bgCooler"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLibrary"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_fan"
+                app:layout_constraintBottom_toBottomOf="@id/bgCooler"
+                app:layout_constraintEnd_toEndOf="@id/bgCooler"
+                app:layout_constraintStart_toStartOf="@id/bgCooler"
+                app:layout_constraintTop_toTopOf="@id/bgCooler" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/dimen_2x"
-                android:layout_marginTop="@dimen/dimen_8x"
-                android:drawablePadding="@dimen/dimen_1x"
-                android:fontFamily="@font/roboto_regular"
-                android:minWidth="@dimen/dimen_200"
-                android:text="@string/optimize"
-                android:textSize="@dimen/text_size_22"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/anim_percentage" />
+                android:layout_marginTop="5dp"
+                android:text="@string/cpu_cooler"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/bgCooler"
+                app:layout_constraintStart_toStartOf="@id/bgCooler"
+                app:layout_constraintTop_toBottomOf="@id/ivLibrary" />
 
-            <TextView
-                android:id="@+id/lbl_optimization_desc_process"
-                style="@style/TextView.Regular"
-                android:layout_width="@dimen/zero"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_1x"
-                android:gravity="center_horizontal"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_optimize" />
 
-            <TextView
-                android:id="@+id/lbl_warn_usb_charging"
-                style="@style/TextView.Italic"
-                android:layout_width="@dimen/zero"
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCamera"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_rocket"
+                app:layout_constraintBottom_toBottomOf="@id/bgBooster"
+                app:layout_constraintEnd_toEndOf="@id/bgBooster"
+                app:layout_constraintStart_toStartOf="@id/bgBooster"
+                app:layout_constraintTop_toTopOf="@id/bgBooster" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dimen_2x"
-                android:background="@drawable/bg_bluelight50_with_border_radius"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingHorizontal="@dimen/dimen_2x"
-                android:paddingVertical="@dimen/dimen_1x"
-                android:text="@string/msg_charging_via_usb"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_12"
-                android:visibility="gone"
-                app:drawableStartCompat="@drawable/ic_warn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_optimization_desc_process" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="@string/booster"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/bgBooster"
+                app:layout_constraintStart_toStartOf="@id/bgBooster"
+                app:layout_constraintTop_toBottomOf="@id/ivCamera" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSaved"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/icon_battery_saver"
+                app:layout_constraintBottom_toBottomOf="@id/bgBatterySaved"
+                app:layout_constraintEnd_toEndOf="@id/bgBatterySaved"
+                app:layout_constraintStart_toStartOf="@id/bgBatterySaved"
+                app:layout_constraintTop_toTopOf="@id/bgBatterySaved" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="@string/saver"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@id/bgBatterySaved"
+                app:layout_constraintStart_toStartOf="@id/bgBatterySaved"
+                app:layout_constraintTop_toBottomOf="@id/ivSaved" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_white_radius"
+                android:paddingVertical="@dimen/dimen_x1x"
+                app:layout_constraintTop_toBottomOf="@id/bgCooler">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/label_battery_info"
+                    style="@style/TextView.Medium"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_2x"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:text="@string/battery_info"
+                    android:textColor="@color/color_main"
+                    android:textSize="@dimen/text_size_16"
+                    app:drawableStartCompat="@drawable/ic_battery_black_border"
+                    app:drawableTint="@color/color_main"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/vw_optimization_option"
+                    style="@style/HorizontalDivider"
+                    android:layout_marginTop="@dimen/dimen_x1x"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/label_battery_info" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/label_health"
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:text="@string/health"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_health"
+                    app:layout_constraintEnd_toStartOf="@+id/lbl_health"
+                    app:layout_constraintStart_toStartOf="@+id/label_battery_info" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_health"
+                    style="@style/TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@+id/label_battery_info"
+                    app:layout_constraintTop_toBottomOf="@+id/vw_optimization_option" />
+
+                <View
+                    android:id="@+id/vw_health"
+                    style="@style/HorizontalDivider"
+                    android:layout_width="@dimen/zero"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:alpha="0.3"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                    app:layout_constraintStart_toStartOf="@+id/label_health"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_health" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:text="@string/temperature"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_temperature"
+                    app:layout_constraintEnd_toStartOf="@+id/lbl_temperature"
+                    app:layout_constraintStart_toStartOf="@+id/label_health" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_temperature"
+                    style="@style/TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                    app:layout_constraintTop_toBottomOf="@+id/vw_health" />
+
+                <View
+                    android:id="@+id/vw_temperature"
+                    style="@style/HorizontalDivider"
+                    android:layout_width="@dimen/zero"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:alpha="0.3"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                    app:layout_constraintStart_toStartOf="@+id/label_health"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_temperature" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:text="@string/capacity"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_capacity"
+                    app:layout_constraintEnd_toStartOf="@+id/lbl_capacity"
+                    app:layout_constraintStart_toStartOf="@+id/label_health" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_capacity"
+                    style="@style/TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                    app:layout_constraintTop_toBottomOf="@+id/vw_temperature" />
+
+                <View
+                    android:id="@+id/vw_capacity"
+                    style="@style/HorizontalDivider"
+                    android:layout_width="@dimen/zero"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:alpha="0.3"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                    app:layout_constraintStart_toStartOf="@+id/label_health"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_capacity" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="@dimen/zero"
+                    android:layout_height="wrap_content"
+                    android:text="@string/technology"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/lbl_technology"
+                    app:layout_constraintEnd_toStartOf="@+id/lbl_technology"
+                    app:layout_constraintStart_toStartOf="@+id/label_health" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/lbl_technology"
+                    style="@style/TextView.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_1x"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="@+id/lbl_health"
+                    app:layout_constraintTop_toBottomOf="@+id/vw_capacity" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <com.procharger.fastprocharrging.quickcharge.widget.ads.LayoutNativeAd
-            android:id="@+id/nativeAdView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dimen_1x"
-            android:padding="@dimen/dimen_1x" />
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</layout>

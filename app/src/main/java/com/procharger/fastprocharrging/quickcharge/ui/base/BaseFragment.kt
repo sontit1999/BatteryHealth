@@ -6,14 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.procharger.fastprocharrging.quickcharge.common.util.CommonUtil
 
-abstract class BaseFragment<V : BaseView, P : BasePresenterImp<V>> : Fragment(), BaseView {
+abstract class BaseFragment<VB : ViewDataBinding,V : BaseView, P : BasePresenterImp<V>> : Fragment(), BaseView {
 
     protected lateinit var parentActivity: AppCompatActivity
     protected val self: Fragment by lazy { this }
     protected lateinit var presenter: P
+    protected  lateinit var binding :  VB
+
+    abstract fun getLayoutID(): Int
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -32,10 +37,9 @@ abstract class BaseFragment<V : BaseView, P : BasePresenterImp<V>> : Fragment(),
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val rootView = inflater.inflate(getLayoutId(), container, false)
-        initWidgets(rootView)
-
-        return rootView
+        binding = DataBindingUtil.inflate(inflater, getLayoutID(), container, false)
+        initWidgets(binding.root)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

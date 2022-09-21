@@ -20,6 +20,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar_main"
+                android:background="@color/color_main"
                 style="@style/ToolBarStyle.SmallTitle"
                 app:layout_scrollFlags="scroll|enterAlways" />
         </com.google.android.material.appbar.AppBarLayout>

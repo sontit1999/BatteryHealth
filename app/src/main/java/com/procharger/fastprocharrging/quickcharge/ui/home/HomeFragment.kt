@@ -1,8 +1,5 @@
 package com.procharger.fastprocharrging.quickcharge.ui.home
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.Dialog
@@ -22,7 +19,6 @@ import android.provider.Settings.System.SCREEN_BRIGHTNESS
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
@@ -37,37 +33,27 @@ import com.procharger.fastprocharrging.quickcharge.common.util.*
 import com.procharger.fastprocharrging.quickcharge.data.model.AppSettingsModel
 import com.procharger.fastprocharrging.quickcharge.data.model.BatteryModel
 import com.procharger.fastprocharrging.quickcharge.data.model.TaskInfo
+import com.procharger.fastprocharrging.quickcharge.databinding.FragmentHomeBinding
 import com.procharger.fastprocharrging.quickcharge.ui.base.BaseFragment
 import com.procharger.fastprocharrging.quickcharge.ui.boresult.OptimizationResultActivity
 import com.procharger.fastprocharrging.quickcharge.widget.ads.LayoutNativeAd
-import com.skyfishjy.library.RippleBackground
 import java.util.*
 
-class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
+
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterImp>(), HomeView {
 
     private lateinit var scrollView: NestedScrollView
-    private lateinit var imgHelp: ImageView
-    private lateinit var animViewPercentage: LottieAnimationView
     private lateinit var animViewOptimization: LottieAnimationView
     private lateinit var btnOptimize: TextView
     private lateinit var lblOptimizationDescProcess: TextView
     private lateinit var lblWarnUsbCharging: TextView
     private lateinit var lblPercentage: TextView
-    private lateinit var frlBannerAd: FrameLayout
     private lateinit var nativeAdView: LayoutNativeAd
 
     private lateinit var txtInfo: TextView
     private lateinit var txtMin: TextView
     private lateinit var txtHours: TextView
     private lateinit var viewTimeLeft: LinearLayout
-    private lateinit var lytListItem: LinearLayout
-
-    var chargeBoostContainers: ArrayList<FrameLayout> = ArrayList()
-    private lateinit var rocketImage: ImageView
-    private lateinit var rocketImage2: ImageView
-    private lateinit var rocketImageOut: ImageView
-    private lateinit var animationOptimization: RippleBackground
-
 
     private var arrGravity1: IntArray = intArrayOf(49, 19, 83)
     private var arrGravity2: IntArray = intArrayOf(51, 49, 21)
@@ -77,33 +63,17 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
     private var arrGravitys: Array<IntArray> =
         arrayOf(arrGravity1, arrGravity2, arrGravity3, arrGravity4)
     var curIndex = 0
-
     private var mPackageManager: PackageManager? = null
     private var mActivityManager: ActivityManager? = null
-
     private var currentPercentage: Float? = null
-    private var previousBatteryPercentage = -1
     private var isCharging = false
-    private var previousChargingState = false
-    private var shouldUpdatePercentageFrame = false
     private var didOptimize = false
     private var isJustOpenedApp = true // Always allow user to optimize when open app
-    private var didLoadBannerAd = false
     private var percentageCurrent = 0
 
-    private val animPercentageFadeOut by lazy {
-        AnimationUtils.loadAnimation(ctx, R.anim.fade_out).apply {
-            setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationStart(p0: Animation?) {
-                }
-
-                override fun onAnimationEnd(p0: Animation?) {
-                    animViewPercentage.playAnimation()
-                }
-
-                override fun onAnimationRepeat(p0: Animation?) {
-                }
-            })
+    private val batteryInfoReceiver by lazy {
+        BatteryStatusReceiver {
+            fillBatteryInfo(it)
         }
     }
 
@@ -160,7 +130,7 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        BatteryStatusReceiver.register(ctx, batteryInfoReceiver)
         // Check if #forceOptimize is true then call #startOptimizing() method immediately
         val forceOptimize = arguments?.getBoolean(ARG_FORCE_OPTIMIZE) ?: false
         if (forceOptimize) {
@@ -183,7 +153,7 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         if (requestCode == RC_WRITE_SETTINGS && ctx?.canWriteSettings() == true) {
             startOptimizing()
         } else if (requestCode == RC_DRAW_OVERLAY && ctx?.canDrawOverlay() == true) {
-            hideHelpIcon()
+
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
@@ -192,10 +162,6 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
     override fun onDestroyView() {
         // Unregister battery status receiver
         BatteryStatusReceiver.unregister(ctx, batteryStatusReceiver)
-
-        // Remove battery animator listener
-        removeBatteryAnimatorListener()
-
         super.onDestroyView()
     }
 
@@ -215,30 +181,15 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         // Find views
         rootView.run {
             scrollView = findViewById(R.id.scrollview)
-            imgHelp = findViewById(R.id.img_help)
-            animViewPercentage = findViewById(R.id.anim_percentage)
-            animViewOptimization = findViewById(R.id.anim_optimization)
             btnOptimize = findViewById(R.id.btn_optimize)
             lblOptimizationDescProcess = findViewById(R.id.lbl_optimization_desc_process)
             lblWarnUsbCharging = findViewById(R.id.lbl_warn_usb_charging)
             lblPercentage = findViewById(R.id.lbl_percentage)
-//            frlBannerAd = findViewById(R.id.frl_banner_ad)
-            nativeAdView = findViewById(R.id.nativeAdView)
-
-            lytListItem = findViewById(R.id.lytListItem)
+            // nativeAdView = findViewById(R.id.nativeAdView)
             viewTimeLeft = findViewById(R.id.view_time_left)
             txtInfo = findViewById(R.id.txtInfo)
             txtMin = findViewById(R.id.tvMin)
             txtHours = findViewById(R.id.tvHour)
-
-            chargeBoostContainers.add(findViewById<View>(R.id.fm_scan_container_1) as FrameLayout)
-            chargeBoostContainers.add(findViewById<View>(R.id.fm_scan_container_2) as FrameLayout)
-            chargeBoostContainers.add(findViewById<View>(R.id.fm_scan_container_3) as FrameLayout)
-            chargeBoostContainers.add(findViewById<View>(R.id.fm_scan_container_4) as FrameLayout)
-            animationOptimization = findViewById(R.id.charge_boost_ripple_background)
-            rocketImage = findViewById<View>(R.id.ivScan) as ImageView
-            rocketImage2 = findViewById<View>(R.id.ivScan2) as ImageView
-            rocketImageOut = findViewById<View>(R.id.ivDoneHoloCirular) as ImageView
         }
 
         LoadRunningTask(this).execute(*arrayOfNulls(0))
@@ -254,24 +205,12 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         presenter.listenAppSettingsChanged()
         BatteryStatusReceiver.register(ctx, batteryStatusReceiver)
 
-        /*if (PermissionUtil.isApi23orHigher()) {
-            ctx?.run {
-                if (!canDrawOverlay()) {
-                    if (appSettingsModel.appOpenedTimes >= 2) {
-                      //  imgHelp.visible()
-                        imgHelp.setOnSafeClickListener {
-                            showDrawOverlayPermissionDescDialog(self, RC_DRAW_OVERLAY)
-                        }
-                    }
-                }
-            }
-        }*/
 
         val adRequest = AdRequest.Builder()
             .build()
         try {
             if (MyApplication.remoteConfigModel.is_native_home) {
-                nativeAdView.showAd(adRequest, MyApplication.KEY_NATIVE)
+                //  nativeAdView.showAd(adRequest, MyApplication.KEY_NATIVE)
             }
             Log.d("QuangTB", "try")
         } catch (e: Exception) {
@@ -388,7 +327,8 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
                             ) {
                                 val taskInfo3 = TaskInfo(activity, next2)
                                 homeFragment.mActivityManager!!.killBackgroundProcesses(taskInfo3.appinfo.packageName)
-                                val applicationIcon3 = activity.packageManager.getApplicationIcon(taskInfo3.appinfo.packageName)
+                                val applicationIcon3 =
+                                    activity.packageManager.getApplicationIcon(taskInfo3.appinfo.packageName)
                                 publishProgress(*arrayOf(applicationIcon3))
                                 try {
                                     Thread.sleep(150)
@@ -435,13 +375,7 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
                 }
             }
             val imageView = ImageView(activity)
-            homeFragment.chargeBoostContainers[homeFragment.curIndex]
-                .addView(imageView, layoutParams)
 
-            homeFragment.curIndex = homeFragment.curIndex + 1
-            if (homeFragment.curIndex >= homeFragment.chargeBoostContainers.size) {
-                homeFragment.curIndex = 0
-            }
             imageView.setImageDrawable(drawableArr[0])
             imageView.startAnimation(animation)
             animation.setAnimationListener(object : Animation.AnimationListener {
@@ -471,32 +405,6 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         }
     }
 
-    //----------------------------------------------------------------------------------------------
-
-    private fun initRippleBackground() {
-        animationOptimization.startRippleAnimation()
-        val animatorSet = AnimatorSet()
-        animatorSet.duration = 400
-        animatorSet.interpolator = AccelerateDecelerateInterpolator()
-        val arrayList: ArrayList<Animator> = ArrayList()
-        arrayList.add(
-            ObjectAnimator.ofFloat(
-                rocketImageOut,
-                "ScaleX",
-                0.0f, 1.2f, 1.0f
-            )
-        )
-        arrayList.add(
-            ObjectAnimator.ofFloat(
-                rocketImageOut,
-                "ScaleY",
-                0.0f, 1.2f, 1.0f
-            )
-        )
-        animatorSet.playTogether(arrayList)
-        animatorSet.start()
-    }
-
     override fun hasOptimizationOptionsSelected(): Boolean {
         return ctx?.let {
             it.appSettingsModel.isClearRam || it.appSettingsModel.isTurnOffAutoSync || it.appSettingsModel.isTurnOffBluetooth
@@ -508,15 +416,15 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         ctx?.toast(R.string.no_optimization_options_selected, length = Toast.LENGTH_LONG)
     }
 
+
     override fun onOptimizing() {
         didOptimize = false
-
         // Update UI
         updateOptimizeButton(true)
 
         val arrOptimizationDescProcess = arrayListOf<String>().apply {
             ctx?.appSettingsModel?.run {
-                if(isCharging) {
+                if (isCharging) {
                     add(getString(R.string.clean_apps))
                 }
                 if (isTurnOffBluetooth) {
@@ -557,11 +465,15 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        BatteryStatusReceiver.unregister(ctx, batteryInfoReceiver)
+    }
+
     override fun onOptimizationSuccess() {
         // Show success screen
         showOptimizationResultScreen(true)
         animViewOptimization.visible()
-        animationOptimization.gone()
         // Update flags
         didOptimize = true
         isJustOpenedApp = false
@@ -569,8 +481,6 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         // Update UI
         updateOptimizeButton()
         lblOptimizationDescProcess.text = ""
-
-        updateBatteryPercentageAnimator(previousBatteryPercentage, true, 100)
     }
 
     override fun onAppSettingsChanged(model: AppSettingsModel) {
@@ -634,7 +544,6 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         if (!didOptimize || forceOptimize) {
             if (currentPercentage != 100f && ctx?.appSettingsModel?.batteryPercentage != 100f) {
                 presenter.optimise(animViewOptimization, isCharging)
-                presenter.optimiseV2( animationOptimization,lytListItem,rocketImage)
                 updateBrightness()
             }
         } else {
@@ -677,21 +586,13 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         if (didOptimize) {
             if (shouldOptimize()) {
                 didOptimize = false
-                updateBatteryPercentageAnimator(previousBatteryPercentage, true, 100)
                 updateOptimizeButton()
             }
         } else {
             if (!shouldOptimize()) {
                 didOptimize = true
-                updateBatteryPercentageAnimator(previousBatteryPercentage, true, 100)
                 updateOptimizeButton()
             }
-        }
-    }
-
-    fun hideHelpIcon() {
-        ctx?.run {
-            imgHelp.gone()
         }
     }
 
@@ -700,18 +601,34 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
             // Battery percentage
             lblPercentage.text =
                 String.format(getString(R.string._percentage), NumberUtil.formatNumber(percentage))
+            // Capacity
+            binding.lblCapacity.text =
+                String.format(getString(R.string._mah), NumberUtil.formatNumber(capacity))
 
-            // Show/hide usb charging warning
-            /* if (isPluggedUsb) {
-                 lblWarnUsbCharging.visible()
-             } else {
-                 lblWarnUsbCharging.gone()
-             }*/
+            // Battery temperature
+            binding.lblTemperature.text = String.format(
+                getString(R.string._degree),
+                NumberUtil.formatNumber(temperatureC, 1),
+                NumberUtil.formatNumber(temperatureF, 1)
+            )
+
+            // Battery health
+            binding.lblHealth.text = when {
+                isHealthCold -> getString(R.string.cold)
+                isHealthDead -> getString(R.string.dead)
+                isHealthGood -> getString(R.string.good)
+                isHealthOverHeat -> getString(R.string.overheat)
+                isHealthOverVoltage -> getString(R.string.over_voltage)
+                isHealthUnspecifiedFailure -> getString(R.string.unspecified_failure)
+                else -> getString(R.string.unknown)
+            }
+
+            // Battery technology
+            binding.lblTechnology.text = technology
 
             // Percentage effect
             percentage?.toInt()?.run {
                 if (percentageCurrent != this) {
-                    updateBatteryPercentageAnimator(percentage = this)
                     percentageCurrent = this
                 }
             }
@@ -795,210 +712,6 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         }
     }
 
-    private fun updateBatteryPercentageAnimator(
-        percentage: Int,
-        forceUpdate: Boolean = false,
-        startFrame: Int = 0
-    ) {
-        Log.d("HaiHT", "updateBatteryPercentageAnimator")
-
-        var animRes = 0
-        var shouldLoop = true
-        var shouldUpdateAnim = false
-        var maxFrameVertical = 0
-        when {
-            percentage < 15 -> {
-                if (previousBatteryPercentage !in 0 until 15 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_10
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_10
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 20
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 25 -> {
-                if (previousBatteryPercentage !in 15 until 25 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_20
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_20
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 30
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 35 -> {
-                if (previousBatteryPercentage !in 25 until 35 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_30
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_30
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 40
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 45 -> {
-                if (previousBatteryPercentage !in 35 until 45 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_40
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_40
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 50
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 55 -> {
-                if (previousBatteryPercentage !in 45 until 55 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_50
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_50
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 60
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 65 -> {
-                if (previousBatteryPercentage !in 55 until 65 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_60
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_60
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 60
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 75 -> {
-                if (previousBatteryPercentage !in 65 until 75 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_70
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_70
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 60
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 85 -> {
-                if (previousBatteryPercentage !in 75 until 85 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_80
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_80
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 70
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 95 -> {
-                if (previousBatteryPercentage !in 85 until 95 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_90
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_90
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 70
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            percentage < 100 -> {
-                if (previousBatteryPercentage !in 95 until 100 || forceUpdate) {
-                    shouldUpdateAnim = true
-                    animRes = if (didOptimize) {
-                        R.raw.lt_percentage_optimized_effect_95
-                    } else {
-                        R.raw.lt_percentage_optimizing_effect_95
-                    }
-                    shouldLoop = true
-                    maxFrameVertical = 70
-                    shouldUpdatePercentageFrame = true
-                }
-            }
-            else -> {
-                if (previousBatteryPercentage != 100 || forceUpdate) {
-                    shouldUpdateAnim = true
-//                    animRes = if (didOptimize) {
-//                        R.raw.lt_percentage_optimized_effect_100
-//                    } else {
-//                        R.raw.lt_percentage_optimizing_effect_100
-//                    }
-                    animRes = R.raw.lt_percentage_optimized_effect_100
-                    shouldLoop = false
-                }
-            }
-        }
-
-        // Update anim resource
-        if (shouldUpdateAnim) {
-            removeBatteryAnimatorListener()
-            animViewPercentage.apply {
-                setAnimation(animRes)
-                setMinFrame(startFrame)
-                if (isCharging && percentage < 100 && didOptimize) {
-                    setMinAndMaxFrame(0, maxFrameVertical)
-                }
-                addAnimatorListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(p0: Animator?) {
-                        if (!didLoadBannerAd) {
-                            presenter.delayBeforeDoing(2100) {
-                                loadBannerAd()
-                            }
-                        }
-                    }
-
-                    override fun onAnimationEnd(p0: Animator?) {
-                        if (shouldLoop) {
-                            if (isCharging && percentage < 100 && didOptimize) {
-                                setMinMaxFrames(0, maxFrameVertical)
-                                clearAnimation()
-                                startAnimation(animPercentageFadeOut)
-                            } else {
-                                setMinMaxFrames(120, 200)
-                                playAnimation()
-                            }
-                        }
-                    }
-
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                })
-                playAnimation()
-            }
-
-            // Keep new battery percentage
-            previousBatteryPercentage = percentage
-        }
-    }
-
-    private fun removeBatteryAnimatorListener() {
-        animViewPercentage.removeAllAnimatorListeners()
-    }
 
     private fun shouldOptimize(): Boolean {
         return ctx?.let { ctx ->
@@ -1009,29 +722,8 @@ class HomeFragment : BaseFragment<HomeView, HomePresenterImp>(), HomeView {
         } ?: false
     }
 
-    private fun setMinMaxFrames(min: Int, max: Int) {
-        if (shouldUpdatePercentageFrame || previousChargingState != isCharging) {
-            animViewPercentage.setMinAndMaxFrame(min, max)
-            shouldUpdatePercentageFrame = false
-            previousChargingState = isCharging
-        }
-    }
 
-    private fun loadBannerAd() {
-//        ctx?.run {
-//            adsConfigModel.run {
-//                // Show banner ad
-//                if (isBannerHomeEnabled) {
-//                    frlBannerAd.visible()
-//                    AdsManager.showBannerAd(
-//                        parentActivity,
-//                        frlBannerAd,
-//                        adIdBannerHome
-//                    ) {
-//                        didLoadBannerAd = true
-//                    }
-//                }
-//            }
-//        }
+    override fun getLayoutID(): Int {
+        return R.layout.fragment_home
     }
 }

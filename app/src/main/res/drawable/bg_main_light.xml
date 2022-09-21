@@ -5,5 +5,5 @@
     <gradient
         android:angle="270"
         android:endColor="@color/bgMainBottomLight"
-        android:startColor="@color/bgMainTop" />
+        android:startColor="@color/color_main" />
 </shape>

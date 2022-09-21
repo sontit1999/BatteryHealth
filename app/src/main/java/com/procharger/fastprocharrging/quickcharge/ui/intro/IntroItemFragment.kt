@@ -6,11 +6,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.procharger.fastprocharrging.quickcharge.R
 import com.procharger.fastprocharrging.quickcharge.common.extension.ctx
+import com.procharger.fastprocharrging.quickcharge.databinding.FragmentIntroItemBinding
 import com.procharger.fastprocharrging.quickcharge.ui.base.BaseFragment
 
 private const val ARG_POSITION = "arg_position"
 
-class IntroItemFragment : BaseFragment<IntroItemView, IntroItemPresenterImp>(), IntroItemView {
+class IntroItemFragment : BaseFragment<FragmentIntroItemBinding,IntroItemView, IntroItemPresenterImp>(), IntroItemView {
 
     private lateinit var imgIntro: ImageView
     private lateinit var lblIntroTitle: TextView
@@ -64,5 +65,9 @@ class IntroItemFragment : BaseFragment<IntroItemView, IntroItemPresenterImp>(), 
         if (position < arrMessage.size) {
             lblIntroMessage.text = arrMessage[position]
         }
+    }
+
+    override fun getLayoutID(): Int {
+        return R.layout.fragment_intro_item
     }
 }

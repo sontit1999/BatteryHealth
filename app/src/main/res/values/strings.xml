@@ -126,6 +126,10 @@
     <string name="guide_access_permission_v5">On the next screen, find the Pro Charger app, then tap to ENABLE or ALLOW.</string>
     <string name="txt_history_charge">Charge battery history</string>
     <string name="clean_apps">Clean up apps</string>
+    <string name="minute">m</string>
+    <string name="cpu_cooler">CPU Cooler</string>
+    <string name="booster">Bootser</string>
+    <string name="saver">Saver</string>
 
 
 </resources>

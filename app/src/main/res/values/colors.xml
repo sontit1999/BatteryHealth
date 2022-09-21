@@ -34,4 +34,6 @@
     <color name="color_over">#f35554</color>
     <color name="title_dark">#393b47</color>
     <color name="point_chart">#717eee</color>
+    <color name="color_main">#0EBF57</color>
+    <color name="color_gray_bg">#ECECEC</color>
 </resources>

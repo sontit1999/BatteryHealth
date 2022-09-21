@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.VibrationEffect
 import android.os.Vibrator
 import android.text.TextUtils
+import android.view.*
 import android.widget.*
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
@@ -26,14 +27,12 @@ import com.procharger.fastprocharrging.quickcharge.common.util.CommonUtil
 import com.procharger.fastprocharrging.quickcharge.common.util.PermissionUtil
 import com.procharger.fastprocharrging.quickcharge.data.model.AppSettingsModel
 import com.procharger.fastprocharrging.quickcharge.ui.base.BaseActivity
+import com.procharger.fastprocharrging.quickcharge.ui.chargehistory.ChargeHistoryActivity
 import com.procharger.fastprocharrging.quickcharge.ui.home.HomeFragment
 import com.procharger.fastprocharrging.quickcharge.ui.home.PowerConnectionService
 import com.procharger.fastprocharrging.quickcharge.ui.info.InfoActivity
 import com.procharger.fastprocharrging.quickcharge.ui.settings.SettingsActivity
 import com.procharger.fastprocharrging.quickcharge.widget.ads.LayoutNativeAd
-import android.content.DialogInterface
-import android.view.*
-import com.procharger.fastprocharrging.quickcharge.ui.chargehistory.ChargeHistoryActivity
 
 
 class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
@@ -95,7 +94,7 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RC_OPEN_SETTINGS_PAGE && resultCode == RESULT_OK) {
-            frgHome.hideHelpIcon()
+
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
@@ -140,7 +139,7 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
                             100,
                             VibrationEffect.DEFAULT_AMPLITUDE
                         )
-                    );
+                    )
                 } else {
                     //deprecated in API 26
                     vibration.vibrate(100)
@@ -471,8 +470,4 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
         }
     }
 
-    override fun onDestroy() {
-
-        super.onDestroy()
-    }
 }

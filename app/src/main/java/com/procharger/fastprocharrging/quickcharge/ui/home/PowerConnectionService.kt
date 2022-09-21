@@ -77,12 +77,16 @@ class PowerConnectionService : Service() {
             var iconCharge = 0
             layoutCustomNotification?.run {
                 val imgRes = it.percentage?.let { percent ->
-                    if(percent == 100f) {
-                        R.drawable.battery_full
-                    } else if (percent < 20f) {
-                        R.drawable.ic_battery_low
-                    } else {
-                        R.drawable.ic_battery
+                    when {
+                        percent == 100f -> {
+                            R.drawable.battery_full
+                        }
+                        percent < 20f -> {
+                            R.drawable.ic_battery_low
+                        }
+                        else -> {
+                            R.drawable.ic_battery
+                        }
                     }
                 } ?: R.drawable.ic_battery
                 iconCharge = imgRes
