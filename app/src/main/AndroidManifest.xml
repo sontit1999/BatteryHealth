@@ -107,6 +107,10 @@
             android:name="com.sh.entertainment.fastcharge.ui.chargehistory.ChargeHistoryActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.cooler.CoolerActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <!-- End of Activity -->
 
         <!-- Receivers -->

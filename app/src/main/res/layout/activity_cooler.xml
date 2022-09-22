@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.skyfishjy.library.RippleBackground
+            android:id="@+id/charge_boost_ripple_background"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_curved_circle"
+            android:visibility="visible"
+            app:rb_color="#00ffffff"
+            app:rb_duration="1200"
+            app:rb_radius="56dp"
+            app:rb_rippleAmount="2"
+            app:rb_scale="2.5">
+
+            <FrameLayout
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ivDoneHoloCirular"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:alpha="0.4"
+                        android:contentDescription="@null"
+                        android:visibility="visible" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivScan"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/icon_fan" />
+
+                    <ImageView
+                        android:id="@+id/ivScan2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_fan_white" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/lytListItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/fm_scan_container_1"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <FrameLayout
+                            android:id="@+id/fm_scan_container_2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:id="@+id/fm_scan_container_4"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+
+                        <FrameLayout
+                            android:id="@+id/fm_scan_container_3"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+        </com.skyfishjy.library.RippleBackground>
+
+        <TextView
+            android:id="@+id/btnOptimize"
+            style="@style/Button.Yellow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dimen_2x"
+            android:layout_marginTop="@dimen/dimen_120"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:fontFamily="@font/roboto_regular"
+            android:minWidth="@dimen/dimen_200"
+            android:text="@string/cpu_cooler"
+            android:textSize="@dimen/text_size_22" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animSnow"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_rawRes="@raw/snow" />
+    </FrameLayout>
+</layout>

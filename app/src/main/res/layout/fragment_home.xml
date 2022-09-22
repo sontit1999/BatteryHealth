@@ -194,7 +194,6 @@
                 app:layout_constraintTop_toBottomOf="@id/nativeAdView"
                 app:layout_constraintWidth_percent="0.3" />
 
-
             <View
                 android:id="@+id/bgBatterySaved"
                 android:layout_width="0dp"

@@ -130,6 +130,7 @@
     <string name="cpu_cooler">CPU Cooler</string>
     <string name="booster">Bootser</string>
     <string name="saver">Saver</string>
+    <string name="txt_phone_cooler">Cooler</string>
 
 
 </resources>
