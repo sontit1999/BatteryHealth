@@ -5,7 +5,7 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.procharger.fastprocharrging.quickcharge.widget.ads.LayoutNativeAd
+    <com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
         android:id="@+id/nativeAdView"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dimen_6"

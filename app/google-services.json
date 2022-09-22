@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "457324486290",
-    "project_id": "charger-b1113",
-    "storage_bucket": "charger-b1113.appspot.com"
+    "project_number": "99824154999",
+    "project_id": "fast-charging-pro-b03d9",
+    "storage_bucket": "fast-charging-pro-b03d9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:457324486290:android:64995073cbf8942eb7104b",
+        "mobilesdk_app_id": "1:99824154999:android:49d5ec8bff98b38e708972",
         "android_client_info": {
-          "package_name": "com.procharger.fastbatterycharging.quickcharge"
+          "package_name": "com.sh.entertainment.fastcharge"
         }
       },
       "oauth_client": [
         {
-          "client_id": "457324486290-k07lk0qus97jtpqq8cedi545bscrqga8.apps.googleusercontent.com",
+          "client_id": "99824154999-r77sup4h1mj2nr58ra47bkl29d35cjpk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDGcDfX8Y_LZKGA1A05g1v00ucDBowg5bg"
+          "current_key": "AIzaSyDmDwCnHeXJRr1u2DDhnc-eW5W4KF6Xxww"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "457324486290-k07lk0qus97jtpqq8cedi545bscrqga8.apps.googleusercontent.com",
+              "client_id": "99824154999-r77sup4h1mj2nr58ra47bkl29d35cjpk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -20,7 +20,7 @@
     <string name="full" translatable="false">Battery is full</string>
     <string name="txt_loading" translatable="false">Loading...</string>
     <string name="fast_charger" translatable="false">Pro Charger</string>
-    <string name="app_name" translatable="false">Pro Charger</string>
+    <string name="app_name" translatable="false">Fast charging Pro</string>
     <string name="time_charging_left" translatable="false">Time charging left</string>
     <string name="time_using_left" translatable="false">Time using left</string>
     <string-array name="intro_titles">

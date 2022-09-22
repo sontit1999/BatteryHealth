@@ -19,7 +19,7 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
--keep  class com.procharger.fastprocharrging.quickcharge.data.model.**{ *; }
+-keep  class com.sh.entertainment.fastcharge.data.model.**{ *; }
 -keep public class com.google.android.gms.ads.** {
   public *;
 }

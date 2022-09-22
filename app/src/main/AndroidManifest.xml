@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.procharger.fastprocharrging.quickcharge">
+    package="com.sh.entertainment.fastcharge">
 
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -25,7 +25,7 @@
         tools:ignore="QueryAllPackagesPermission" />
 
     <application
-        android:name=".common.MyApplication"
+        android:name="com.sh.entertainment.fastcharge.common.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -48,7 +48,7 @@
 
         <!-- Activity -->
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.splash.SplashActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -61,57 +61,57 @@
         </activity>
 
         <activity
-            android:name=".ui.intro.IntroSliderActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.intro.IntroSliderActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/IntroTheme" />
 
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.main.MainActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.main.ActionHandlerActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.main.ActionHandlerActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.settings.SettingsActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.settings.SettingsActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.boresult.OptimizationResultActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- android:theme="@style/BoResultTheme" />-->
 
         <activity
-            android:name=".ui.boconfirmation.OptimizationConfirmActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.boconfirmation.OptimizationConfirmActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/BoConfirmationTheme" />
 
         <activity
-            android:name=".ui.info.InfoActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.info.InfoActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.chargehistory.ChargeHistoryActivity"
+            android:name="com.sh.entertainment.fastcharge.ui.chargehistory.ChargeHistoryActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <!-- End of Activity -->
 
         <!-- Receivers -->
         <receiver
-            android:name=".ui.home.PowerConnectionReceiver"
+            android:name="com.sh.entertainment.fastcharge.ui.home.PowerConnectionReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
@@ -120,11 +120,11 @@
         </receiver>
 
         <receiver
-            android:name=".ui.home.PowerRestarterReceiver"
+            android:name="com.sh.entertainment.fastcharge.ui.home.PowerRestarterReceiver"
             android:exported="false" />
 
         <receiver
-            android:name=".ui.home.PowerBooterReceiver"
+            android:name="com.sh.entertainment.fastcharge.ui.home.PowerBooterReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -135,12 +135,12 @@
 
         <!-- Services -->
         <service
-            android:name=".ui.home.PowerRestarterService"
+            android:name="com.sh.entertainment.fastcharge.ui.home.PowerRestarterService"
             android:exported="false"
             android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <service
-            android:name=".ui.home.PowerConnectionService"
+            android:name="com.sh.entertainment.fastcharge.ui.home.PowerConnectionService"
             android:description="@string/desc_power_connection_service"
             android:exported="false" />
         <!-- End of Service -->
