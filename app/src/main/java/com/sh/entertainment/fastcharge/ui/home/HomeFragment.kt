@@ -114,15 +114,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        checkPermission()
         fillDeviceInfo()
         BatteryStatusReceiver.register(ctx, batteryInfoReceiver)
         // Check if #forceOptimize is true then call #startOptimizing() method immediately
         val forceOptimize = arguments?.getBoolean(ARG_FORCE_OPTIMIZE) ?: false
         if (forceOptimize) {
             startOptimizing(true)
+        }
+    }
+
+    private fun checkPermission() {
+        if (!requireContext().canDrawOverlay()) {
+            requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
+                requireContext().requestDrawOverlayPermission(
+                    self,
+                    OptimizationResultActivity.RC_DRAW_OVERLAY
+                )
+            }, onCancelListener = {
+
+            })
         }
     }
 
@@ -213,10 +226,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     private fun loadNativeAds() {
-       /* if(MyApplication.remoteConfigModel.is_native_home){
-            AdsManager.showNativeAd(requireContext(),binding.nativeAdView,AdsManager.NATIVE_AD_KEY)
-        }*/
-        AdsManager.showNativeAd(requireContext(),binding.nativeAdView,AdsManager.NATIVE_AD_KEY)
+        /* if(MyApplication.remoteConfigModel.is_native_home){
+             AdsManager.showNativeAd(requireContext(),binding.nativeAdView,AdsManager.NATIVE_AD_KEY)
+         }*/
+        AdsManager.showNativeAd(requireContext(), binding.nativeAdView, AdsManager.NATIVE_AD_KEY)
     }
 
     @Deprecated("Deprecated in Java")
@@ -595,7 +608,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         binding.lblModel.text = "${requireContext().manufacturer} - ${Build.MODEL}"
 
         // Fill RAM info
-        val activityManager = requireActivity().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val activityManager =
+            requireActivity().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val memInfo = ActivityManager.MemoryInfo()
         activityManager.getMemoryInfo(memInfo)
         val totalRam = memInfo.totalMem

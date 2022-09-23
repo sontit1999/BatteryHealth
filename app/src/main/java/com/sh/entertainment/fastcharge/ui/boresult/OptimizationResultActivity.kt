@@ -22,7 +22,7 @@ class OptimizationResultActivity :
     BaseActivity<OptimizationResultView, OptimizationResultPresenterImp>(), OptimizationResultView {
 
     companion object {
-        private const val RC_DRAW_OVERLAY = 256
+        const val RC_DRAW_OVERLAY = 256
 //        private const val RC_DRAW_OVERLAY = 257
     }
 
