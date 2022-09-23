@@ -21,6 +21,8 @@ class BatteryModel : BaseModel() {
 
     var health: Int? = null
 
+    var capacityLeft: Int? = null
+
     val isHealthCold: Boolean
         get() = health == BatteryManager.BATTERY_HEALTH_COLD
 

@@ -244,7 +244,7 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
         // Init toolbar
         hideToolbarBase()
         applyToolbar(toolbarMain)
-        showTitle(R.string.fast_charger, toolbar = toolbarMain)
+        showTitle(R.string.app_name, toolbar = toolbarMain)
         for (child in toolbarMain.children) {
             if (child is TextView) {
                 child.apply {

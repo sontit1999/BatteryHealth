@@ -19,17 +19,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/txt_loading"
         app:layout_constraintVertical_chainStyle="packed" />
-    <ImageView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/img_app_name"
-        android:layout_width="@dimen/dimen_250"
-        android:layout_marginHorizontal="@dimen/dimen_30"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/dimen_120"
         android:src="@drawable/img_app_name"
         android:gravity="center"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_logo"/>
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/txt_loading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/txt_slogan"/>
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/txt_slogan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

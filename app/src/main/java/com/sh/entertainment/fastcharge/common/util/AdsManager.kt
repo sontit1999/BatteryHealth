@@ -10,12 +10,30 @@ import com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
 
 object AdsManager {
 
-    private const val NATIVE_AD_UNIT_TEST = "ca-app-pub-3940256099942544/2247696110"
-    private const val INTERSTITIAL_AD_UNIT_TEST = "ca-app-pub-3940256099942544/1033173712"
-    private const val BANNER_AD_UNIT_TEST = "ca-app-pub-3940256099942544/6300978111"
+    private val OPEN_AD_KEY: String
+    private val REWARDED_AD_KEY: String
+    private val NATIVE_AD_KEY: String
+    private val BANNER_AD_KEY: String
+    private var INTERSTITIAL_AD_KEY: String
 
     private val adRequest by lazy { AdRequest.Builder().build() }
     private var interstitialAdOptimizationResult: InterstitialAd? = null
+
+    init {
+        if(BuildConfig.DEBUG){
+            NATIVE_AD_KEY = "ca-app-pub-3940256099942544/1044960115"
+            BANNER_AD_KEY = "ca-app-pub-3940256099942544/9214589741"
+            INTERSTITIAL_AD_KEY = "ca-app-pub-3940256099942544/8691691433"
+            REWARDED_AD_KEY = "ca-app-pub-3940256099942544/5224354917"
+            OPEN_AD_KEY = "ca-app-pub-3940256099942544/3419835294"
+        } else {
+            NATIVE_AD_KEY = "ca-app-pub-7254202909466206/8427297816"
+            BANNER_AD_KEY = "ca-app-pub-7254202909466206/8455503388"
+            INTERSTITIAL_AD_KEY = "ca-app-pub-7254202909466206/1506951650"
+            REWARDED_AD_KEY = "ca-app-pub-7254202909466206/1698523341"
+            OPEN_AD_KEY = "ca-app-pub-7254202909466206/9577013365"
+        }
+    }
 
     fun initMobileAdSdk(ctx: Context) {
         MobileAds.initialize(ctx) {}
@@ -25,7 +43,7 @@ object AdsManager {
         if (ctx?.shouldShowAds() == true) {
             // Assign ad id
             val nativeAdId = if (BuildConfig.DEBUG) {
-                NATIVE_AD_UNIT_TEST
+                NATIVE_AD_KEY
             } else {
                 adId
             }
@@ -49,7 +67,7 @@ object AdsManager {
         if (ctx?.shouldShowAds() == true) {
             // Assign ad id
             val bannerAdId = if (BuildConfig.DEBUG) {
-                BANNER_AD_UNIT_TEST
+                BANNER_AD_KEY
             } else {
                 adId
             }
@@ -108,7 +126,7 @@ object AdsManager {
             if (adId.isNotBlank()) {
                 // Assign ad id
                 val interstitialAdId = if (BuildConfig.DEBUG) {
-                    INTERSTITIAL_AD_UNIT_TEST
+                    INTERSTITIAL_AD_KEY
                 } else {
                     adId
                 }

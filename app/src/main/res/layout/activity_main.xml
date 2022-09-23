@@ -54,7 +54,7 @@
                 android:layout_marginTop="@dimen/dimen_10"
                 android:padding="@dimen/dimen_10">
 
-                <ImageView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -62,7 +62,7 @@
                     app:srcCompat="@drawable/ic_charge"
                     app:tint="@color/colorButton"/>
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_1x"
@@ -83,14 +83,14 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@null"
                     app:srcCompat="@drawable/ic_star" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_1x"
@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -112,7 +112,7 @@
                     app:srcCompat="@drawable/ic_info"
                     app:tint="@color/colorButton" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_1x"
@@ -126,14 +126,14 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@null"
                     app:srcCompat="@drawable/ic_share" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_1x"
@@ -147,14 +147,14 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@null"
                     app:srcCompat="@drawable/ic_policy" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_1x"
@@ -168,14 +168,14 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dimen_10">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:contentDescription="@null"
                     app:srcCompat="@drawable/ic_refresh" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_1x"

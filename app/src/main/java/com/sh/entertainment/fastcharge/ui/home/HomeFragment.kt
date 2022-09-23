@@ -9,10 +9,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
-import android.os.AsyncTask
-import android.os.BatteryManager
-import android.os.Build
-import android.os.Bundle
+import android.os.*
 import android.provider.Settings
 import android.provider.Settings.SettingNotFoundException
 import android.provider.Settings.System.SCREEN_BRIGHTNESS
@@ -22,6 +19,7 @@ import android.view.Window
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
 import com.airbnb.lottie.LottieAnimationView
@@ -36,8 +34,11 @@ import com.sh.entertainment.fastcharge.data.model.TaskInfo
 import com.sh.entertainment.fastcharge.databinding.FragmentHomeBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseFragment
 import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
+import com.sh.entertainment.fastcharge.ui.info.GIGABYTE
 import com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
 import java.util.*
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterImp>(), HomeView {
@@ -130,6 +131,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fillDeviceInfo()
         BatteryStatusReceiver.register(ctx, batteryInfoReceiver)
         // Check if #forceOptimize is true then call #startOptimizing() method immediately
         val forceOptimize = arguments?.getBoolean(ARG_FORCE_OPTIMIZE) ?: false
@@ -594,6 +596,50 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
                 updateOptimizeButton()
             }
         }
+    }
+
+    private fun fillDeviceInfo() {
+        // CPU model
+        binding.lblModel.text = "${requireContext().manufacturer} - ${Build.MODEL}"
+
+        // Fill RAM info
+        val activityManager = requireActivity().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val memInfo = ActivityManager.MemoryInfo()
+        activityManager.getMemoryInfo(memInfo)
+        val totalRam = memInfo.totalMem
+        binding.lblRam.text =
+            String.format(getString(R.string._gb), NumberUtil.formatNumber(totalRam / GIGABYTE, 1))
+
+        // Screen resolution info
+        val screen = CommonUtil.getRealScreenSizeAsPixels(requireActivity() as AppCompatActivity)
+        binding.lblScreenResolution.text = String.format(
+            getString(R.string._x_),
+            NumberUtil.formatNumber(screen.x),
+            NumberUtil.formatNumber(screen.y)
+        )
+
+        // Screen size info
+        val dm = resources.displayMetrics
+        val x = (screen.x / dm.xdpi).pow(2)
+        val y = (screen.y / dm.ydpi).pow(2)
+        val screenSize = sqrt(x + y)
+        binding.lblScreenSize.text =
+            String.format(getString(R.string._inch), NumberUtil.formatNumber(screenSize, 1))
+
+        // Storage info
+        val internalStorage = StatFs(requireActivity().filesDir.absolutePath)
+        val internalTotal =
+            (internalStorage.blockSizeLong * internalStorage.blockCountLong) / GIGABYTE
+        val internalAvailable =
+            (internalStorage.blockSizeLong * internalStorage.availableBlocksLong) / GIGABYTE
+        binding.lblStorage.text = String.format(
+            getString(R.string._gb_free),
+            NumberUtil.formatNumber(internalAvailable, 1),
+            NumberUtil.formatNumber(internalTotal, 1)
+        )
+
+        // Android version
+        binding.lblAndroidVersion.text = Build.VERSION.RELEASE
     }
 
     private fun fillBatteryInfo(model: BatteryModel) {

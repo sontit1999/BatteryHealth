@@ -1,6 +1,6 @@
 <resources>
     <!-- Untranslatable text -->
-    <string name="ads_app_id" translatable="false">ca-app-pub-2238530878125342~5210937149</string>
+    <string name="ads_app_id" translatable="false">ca-app-pub-7254202909466206~1438668895</string>
     <string name="ad" translatable="false">Ad</string>
     <string name="_percentage" translatable="false">%1$s%%</string>
     <string name="_voltage" translatable="false">%1$s V</string>

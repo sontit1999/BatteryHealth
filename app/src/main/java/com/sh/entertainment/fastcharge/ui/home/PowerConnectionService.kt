@@ -321,7 +321,7 @@ class PowerConnectionService : Service() {
                 }
 
             notificationBuilder = NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.icon_app)
                 .setContentTitle(chargeBattery)
                 .setCustomContentView(layoutCustomNotification)
                 .setAutoCancel(true)

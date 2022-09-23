@@ -23,8 +23,8 @@ import com.sh.entertainment.fastcharge.ui.home.BatteryStatusReceiver
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-private const val GIGABYTE = 1024 * 1024 * 1024f
-private const val MEGA_PIXEL = 1000 * 1000f
+const val GIGABYTE = 1024 * 1024 * 1024f
+const val MEGA_PIXEL = 1000 * 1000f
 
 class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
 

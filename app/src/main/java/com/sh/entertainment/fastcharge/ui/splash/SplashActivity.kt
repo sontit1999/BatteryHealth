@@ -5,7 +5,6 @@ import android.os.Handler
 import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.ContentLoadingProgressBar
 import com.google.android.gms.ads.AdError
@@ -29,7 +28,7 @@ import com.sh.entertainment.fastcharge.ui.main.MainActivity
 class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashView {
 
     private val progressBar by lazy { findViewById<ContentLoadingProgressBar>(R.id.progress) }
-    private val mImgAppName by lazy { findViewById<ImageView>(R.id.img_app_name) }
+    private val mImgAppName by lazy { findViewById<TextView>(R.id.img_app_name) }
     private val txtLoading by lazy { findViewById<TextView>(R.id.txt_loading) }
     private val mHandler = Handler()
 
