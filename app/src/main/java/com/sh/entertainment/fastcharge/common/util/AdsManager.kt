@@ -10,11 +10,11 @@ import com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
 
 object AdsManager {
 
-    private val OPEN_AD_KEY: String
-    private val REWARDED_AD_KEY: String
-    private val NATIVE_AD_KEY: String
-    private val BANNER_AD_KEY: String
-    private var INTERSTITIAL_AD_KEY: String
+    val OPEN_AD_KEY: String
+    val REWARDED_AD_KEY: String
+    val NATIVE_AD_KEY: String
+    val BANNER_AD_KEY: String
+    var INTERSTITIAL_AD_KEY: String
 
     private val adRequest by lazy { AdRequest.Builder().build() }
     private var interstitialAdOptimizationResult: InterstitialAd? = null
@@ -40,7 +40,7 @@ object AdsManager {
     }
 
     fun showNativeAd(ctx: Context?, layoutNativeAd: LayoutNativeAd, adId: String) {
-        if (ctx?.shouldShowAds() == true) {
+       /* if (ctx?.shouldShowAds() == true) {
             // Assign ad id
             val nativeAdId = if (BuildConfig.DEBUG) {
                 NATIVE_AD_KEY
@@ -50,7 +50,8 @@ object AdsManager {
 
             // Load and show native ad
             layoutNativeAd.showAd(adRequest, nativeAdId)
-        }
+        }*/
+        layoutNativeAd.showAd(adRequest, adId)
     }
 
     fun destroyNativeAd(layoutNativeAd: LayoutNativeAd) {

@@ -23,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
 import com.airbnb.lottie.LottieAnimationView
-import com.google.android.gms.ads.AdRequest
 import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.*
@@ -114,20 +113,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         }
     }
 
-    companion object {
-        private const val ARG_FORCE_OPTIMIZE = "arg_force_optimize"
 
-        private const val RC_WRITE_SETTINGS = 256
-        private const val RC_DRAW_OVERLAY = 257
-
-        fun newInstance(forceOptimize: Boolean): HomeFragment {
-            val fragment = HomeFragment()
-            bundleOf(ARG_FORCE_OPTIMIZE to forceOptimize).apply {
-                fragment.arguments = this
-            }
-            return fragment
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -207,9 +193,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         presenter.listenAppSettingsChanged()
         BatteryStatusReceiver.register(ctx, batteryStatusReceiver)
 
-
-        val adRequest = AdRequest.Builder()
-            .build()
         try {
             if (MyApplication.remoteConfigModel.is_native_home) {
                 //  nativeAdView.showAd(adRequest, MyApplication.KEY_NATIVE)
@@ -225,6 +208,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         }
         // Fill UI
         updateOptimizeButton()
+
+        loadNativeAds()
+    }
+
+    private fun loadNativeAds() {
+       /* if(MyApplication.remoteConfigModel.is_native_home){
+            AdsManager.showNativeAd(requireContext(),binding.nativeAdView,AdsManager.NATIVE_AD_KEY)
+        }*/
+        AdsManager.showNativeAd(requireContext(),binding.nativeAdView,AdsManager.NATIVE_AD_KEY)
     }
 
     @Deprecated("Deprecated in Java")
@@ -771,5 +763,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     override fun getLayoutID(): Int {
         return R.layout.fragment_home
+    }
+
+    companion object {
+        private const val ARG_FORCE_OPTIMIZE = "arg_force_optimize"
+
+        private const val RC_WRITE_SETTINGS = 256
+        private const val RC_DRAW_OVERLAY = 257
+
+        fun newInstance(forceOptimize: Boolean): HomeFragment {
+            val fragment = HomeFragment()
+            bundleOf(ARG_FORCE_OPTIMIZE to forceOptimize).apply {
+                fragment.arguments = this
+            }
+            return fragment
+        }
     }
 }

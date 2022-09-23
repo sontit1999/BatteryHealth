@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_main_light">
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/label_title"
         style="@style/TextView.Medium"
         android:layout_width="@dimen/zero"
@@ -30,7 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_title" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_normal_charge"
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
@@ -42,9 +42,9 @@
         app:layout_constraintEnd_toEndOf="@+id/vw_turtle"
         app:layout_constraintStart_toStartOf="@+id/vw_turtle"
         app:layout_constraintTop_toTopOf="@+id/vw_turtle"
-        app:srcCompat="@drawable/ic_turtle" />
+        app:srcCompat="@drawable/icon_turtle" />
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/label_normal_charge"
         style="@style/TextView.Regular"
         android:layout_width="@dimen/zero"
@@ -67,7 +67,7 @@
         app:layout_constraintStart_toEndOf="@+id/vw_turtle"
         app:layout_constraintTop_toTopOf="@+id/vw_turtle" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/zero"
         android:layout_height="@dimen/zero"
         android:layout_margin="@dimen/dimen_05x"
@@ -78,9 +78,9 @@
         app:layout_constraintEnd_toEndOf="@+id/vw_rocket"
         app:layout_constraintStart_toStartOf="@+id/vw_rocket"
         app:layout_constraintTop_toTopOf="@+id/vw_rocket"
-        app:srcCompat="@drawable/ic_rocket" />
+        app:srcCompat="@drawable/icon_rocket" />
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         style="@style/TextView.Regular"
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="@+id/vw_rocket"
         app:layout_constraintStart_toStartOf="@+id/vw_rocket" />
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/btn_no"
         style="@style/Button.Grey"
         android:layout_width="@dimen/zero"
@@ -106,7 +106,7 @@
         app:layout_constraintStart_toStartOf="@+id/vw_turtle"
         app:layout_constraintTop_toBottomOf="@+id/label_normal_charge" />
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/btn_yes"
         style="@style/Button.Green"
         android:layout_width="@dimen/zero"
@@ -119,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="@+id/vw_rocket"
         app:layout_constraintStart_toStartOf="@+id/vw_rocket" />
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         style="@style/TextView.Regular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -130,13 +130,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
+    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/label_app_name"
         style="@style/TextView.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/dimen_1x"
-        android:text="@string/x2_charger"
+        android:text="@string/app_name"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_14"
