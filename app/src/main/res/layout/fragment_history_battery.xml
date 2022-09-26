@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:aapt="http://schemas.android.com/aapt"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,13 +11,13 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:orientation="horizontal">
 
-            <TextView
+            <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
@@ -28,7 +27,7 @@
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>
 
-        <TextView
+        <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -53,8 +52,6 @@
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerInParent="true"
             app:tabBackground="@drawable/tab_selector_history"
             app:tabGravity="center"
             app:tabIndicatorHeight="0dp" />

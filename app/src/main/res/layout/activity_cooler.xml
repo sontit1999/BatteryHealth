@@ -5,6 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/color_gray_bg"
         android:orientation="vertical">
 
         <com.skyfishjy.library.RippleBackground
@@ -12,6 +13,7 @@
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
             android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
             android:background="@drawable/bg_curved_circle"
             android:visibility="visible"
             app:rb_color="#00ffffff"
@@ -113,18 +115,21 @@
             </FrameLayout>
         </com.skyfishjy.library.RippleBackground>
 
-        <TextView
+        <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
             android:id="@+id/btnOptimize"
-            style="@style/Button.Yellow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/dimen_2x"
-            android:layout_marginTop="@dimen/dimen_120"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/btn_yellow"
             android:drawablePadding="@dimen/dimen_1x"
             android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
             android:minWidth="@dimen/dimen_200"
+            android:padding="@dimen/dimen_1x"
             android:text="@string/cpu_cooler"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_22" />
 
         <com.airbnb.lottie.LottieAnimationView
@@ -136,5 +141,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_rawRes="@raw/snow" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animDone"
+            android:layout_width="@dimen/dimen_200"
+            android:layout_height="@dimen/dimen_200"
+            android:layout_gravity="center"
+            android:layout_marginBottom="80dp"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_rawRes="@raw/done" />
+
+        <com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
+            android:id="@+id/nativeAdView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:padding="@dimen/dimen_1x" />
     </FrameLayout>
 </layout>

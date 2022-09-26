@@ -1,4 +1,4 @@
-package com.procharger.fastprocharrging.quickcharge.ui.base
+package com.sh.entertainment.fastcharge.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

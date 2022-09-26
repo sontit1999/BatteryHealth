@@ -131,6 +131,11 @@
     <string name="booster">Bootser</string>
     <string name="saver">Saver</string>
     <string name="txt_phone_cooler">Cooler</string>
+    <string name="cooler_optimized">Cooler Optimized</string>
+    <string name="last_charge_history">Last Charge record</string>
+    <string name="mgs_normal">Normal</string>
+    <string name="mgs_healthy">Healthy</string>
+    <string name="over_charge">Overcharged</string>
 
 
 </resources>

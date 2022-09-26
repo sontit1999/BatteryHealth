@@ -85,7 +85,7 @@
     <string name="go_since_the_last_full_charge">Lần sạc đầy cuối cùng</string>
     <string name="du_no_charger_record">Không có hồ sơ</string>
     <string name="bd_charge_duration">Thời gian sạc</string>
-    <string name="go_charge_quantity">Số lần sạc pin</string>
+    <string name="go_charge_quantity">Chất lượng sạc</string>
     <string name="bd_charger_type">Loại sạc</string>
     <string name="bd_charge_history">Lịch sử sạc pin</string>
     <string name="go_last_3_days">Kỷ lục sạc 3 ngày qua</string>

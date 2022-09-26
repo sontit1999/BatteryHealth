@@ -1,13 +1,10 @@
 package com.sh.entertainment.fastcharge.ui.chargehistory
 
 import android.annotation.SuppressLint
-import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.OnPageChangeListener
@@ -21,52 +18,44 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.MPPointF
 import com.google.android.material.tabs.TabLayout
 import com.sh.entertainment.fastcharge.R
+import com.sh.entertainment.fastcharge.common.util.AdsManager
+import com.sh.entertainment.fastcharge.databinding.ActivityChargeHistoryBinding
+import com.sh.entertainment.fastcharge.ui.base.BaseActivityBinding
 import java.lang.String
 import java.text.DateFormat
 import java.util.*
+import java.util.concurrent.TimeUnit
 import kotlin.Array
 import kotlin.Float
 import kotlin.Int
 import kotlin.Long
-import kotlin.getValue
-import kotlin.lazy
 import kotlin.math.roundToInt
 
-class ChargeHistoryActivity : AppCompatActivity() {
+class ChargeHistoryActivity : BaseActivityBinding<ActivityChargeHistoryBinding>() {
     private lateinit var chargeAdapter: ChartAdapter
     private lateinit var vpPager: ViewPager
     private lateinit var chart: PieChart
 
     var imgColor: ImageView? = null
     var indicator: TabLayout? = null
-    var tvChargeType: TextView? = null
-    var tvCount: TextView? = null
     var tvDate: TextView? = null
-    var tvHealthy: TextView? = null
-    var tvLastFull: TextView? = null
-    var tvNormal: TextView? = null
-    var tvOver: TextView? = null
-    var tvQuantity: TextView? = null
-    var tvTimeCharge: TextView? = null
-    private val btnBack by lazy { findViewById<LinearLayout>(R.id.lr_back) }
 
+    override val layoutId = R.layout.activity_charge_history
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_charge_history)
+    override fun initializeView() {
         initView()
         registerListener()
     }
 
+    override fun initializeData() {
+        AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+    }
+
+    override fun onClick() {
+
+    }
+
     private fun initView() {
-        tvNormal = findViewById<View>(R.id.tvNormal) as TextView
-        tvOver = findViewById<View>(R.id.tvOver) as TextView
-        tvHealthy = findViewById<View>(R.id.tvHealthy) as TextView
-        tvLastFull = findViewById<View>(R.id.tvLastFull) as TextView
-        tvChargeType = findViewById<View>(R.id.tvChargeType) as TextView
-        tvTimeCharge = findViewById<View>(R.id.tvTimeCharge) as TextView
-        tvQuantity = findViewById<View>(R.id.tvQuantity) as TextView
-        tvCount = findViewById<View>(R.id.tvCount) as TextView
         imgColor = findViewById<View>(R.id.imgColor) as ImageView
         tvDate = findViewById<View>(R.id.tvDate) as TextView
         vpPager = (findViewById<View>(R.id.viewPager) as ViewPager)
@@ -82,24 +71,20 @@ class ChargeHistoryActivity : AppCompatActivity() {
         initChart()
         chart.setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
             override fun onValueSelected(entry: Entry, highlight: Highlight) {
-                if (entry != null) {
-                    Log.i(
-                        "VAL SELECTED",
-                        "Value: " + entry.y + ", index: " + highlight.x + ", DataSet index: " + highlight.dataSetIndex
-                    )
-                    imgColor!!.visibility = View.VISIBLE
-                    setPercent(highlight.x)
-                }
+                imgColor!!.visibility = View.VISIBLE
+                setPercent(highlight.x)
             }
 
             override fun onNothingSelected() {
                 imgColor!!.visibility = View.INVISIBLE
-                tvCount!!.text = String.valueOf(SharePreferenceUtils.getInstance(this@ChargeHistoryActivity).chargeNormal)
+                dataBinding.tvCount.text =
+                    String.valueOf(SharePreferenceUtils.getInstance(this@ChargeHistoryActivity).chargeNormal)
             }
         })
         viewPagerListenItem()
     }
 
+    @SuppressLint("SetTextI18n")
     fun setPercent(f: Float) {
         val chargeNormal = SharePreferenceUtils.getInstance(this).chargeNormal.toFloat()
         val chargeHealthy = SharePreferenceUtils.getInstance(this).chargeHealthy.toFloat()
@@ -108,17 +93,16 @@ class ChargeHistoryActivity : AppCompatActivity() {
         when (f) {
             0.0f -> {
                 imgColor!!.setBackgroundResource(R.drawable.shape_status_normal)
-                val textView = tvCount
-                textView!!.text = (chargeNormal / f2 * 100.0f).roundToInt().toString() + "%"
+                dataBinding.tvCount.text =
+                    (chargeNormal / f2 * 100.0f).roundToInt().toString() + "%"
             }
             1.0f -> {
-                val textView2 = tvCount
-                textView2!!.text = (chargeHealthy / f2 * 100.0f).roundToInt().toString() + "%"
+                dataBinding.tvCount.text =
+                    (chargeHealthy / f2 * 100.0f).roundToInt().toString() + "%"
                 imgColor!!.setBackgroundResource(R.drawable.shape_status_healthy)
             }
             else -> {
-                val textView3 = tvCount
-                textView3!!.text = (chargeOver / f2 * 100.0f).roundToInt().toString() + "%"
+                dataBinding.tvCount.text = (chargeOver / f2 * 100.0f).roundToInt().toString() + "%"
                 imgColor!!.setBackgroundResource(R.drawable.shape_status_over)
             }
         }
@@ -174,7 +158,7 @@ class ChargeHistoryActivity : AppCompatActivity() {
     }
 
     private fun registerListener() {
-        btnBack.setOnClickListener { finish() }
+        dataBinding.lrBack.setOnClickListener { finish() }
     }
 
     override fun onResume() {
@@ -185,56 +169,42 @@ class ChargeHistoryActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun intData() {
         if (SharePreferenceUtils.getInstance(this).chargeNormal != 0L) {
-            tvNormal!!.text = String.valueOf(
+            dataBinding.tvNormal.text = String.valueOf(
                 SharePreferenceUtils.getInstance(this).chargeNormal
             )
         }
         if (SharePreferenceUtils.getInstance(this).chargeOver != 0L) {
-            tvOver!!.text = String.valueOf(
+            dataBinding.tvOver.text = String.valueOf(
                 SharePreferenceUtils.getInstance(this).chargeOver
             )
         }
         if (SharePreferenceUtils.getInstance(this).chargeHealthy != 0L) {
-            tvHealthy!!.text = String.valueOf(
+            dataBinding.tvHealthy.text = String.valueOf(
                 SharePreferenceUtils.getInstance(this).chargeHealthy
             )
         }
         if (SharePreferenceUtils.getInstance(this).chargeFull != null) {
-            tvLastFull!!.text = SharePreferenceUtils.getInstance(this).chargeFull
+            dataBinding.tvLastFull.text = SharePreferenceUtils.getInstance(this).chargeFull
         }
-        tvChargeType!!.text = SharePreferenceUtils.getInstance(this).chargeType
-        tvTimeCharge!!.text =
-            formatHourMinutune(SharePreferenceUtils.getInstance(this).timeCharge)
-        val textView = tvQuantity
-        textView!!.text = SharePreferenceUtils.getInstance(this).chargeQuantity.toString() + "%"
+        dataBinding.tvChargeType.text = SharePreferenceUtils.getInstance(this).chargeType
+        dataBinding.tvTimeCharge.text =
+            formatToDigitalClock(SharePreferenceUtils.getInstance(this).timeCharge)
+        dataBinding.tvQuantity.text =
+            SharePreferenceUtils.getInstance(this).chargeQuantity.toString() + "%"
         setData()
     }
 
-    fun formatHourMinutune(j: Long): kotlin.String {
-        val str: kotlin.String
-        val j2 = j / 1000 % 60
-        val j3 = j / 60 * 1000 % 60
-        val j4 = j / 3600000
-        val sb = StringBuilder()
-        var str2 = "00"
-        str = if (j4 == 0L) {
-            str2
-        } else if (j4 < 10) {
-            "0$j4"
-        } else {
-            j4.toString()
+    @SuppressLint("DefaultLocale")
+    private fun formatToDigitalClock(miliSeconds: Long): kotlin.String {
+        val hours = TimeUnit.MILLISECONDS.toHours(miliSeconds).toInt() % 24
+        val minutes = TimeUnit.MILLISECONDS.toMinutes(miliSeconds).toInt() % 60
+        val seconds = TimeUnit.MILLISECONDS.toSeconds(miliSeconds).toInt() % 60
+        return when {
+            hours > 0 -> String.format("%d:%02d:%02d", hours, minutes, seconds)
+            minutes > 0 -> String.format("%02d:%02d", minutes, seconds)
+            seconds > 0 -> String.format("00:%02d", seconds)
+            else -> "00:00"
         }
-        sb.append(str)
-        sb.append(":")
-        if (j3 != 0L) {
-            str2 = if (j3 < 10) {
-                "0$j3"
-            } else {
-                j3.toString()
-            }
-        }
-        sb.append(str2)
-        return sb.toString()
     }
 
     private fun setData() {

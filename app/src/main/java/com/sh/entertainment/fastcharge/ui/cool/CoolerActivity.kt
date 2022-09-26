@@ -1,7 +1,8 @@
-package com.procharger.fastprocharrging.quickcharge.ui.cooler
+package com.sh.entertainment.fastcharge.ui.cool
 
 import android.animation.Animator
 import android.app.ActivityManager
+import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -11,17 +12,20 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.ImageView
-import com.procharger.fastprocharrging.quickcharge.R
-import com.procharger.fastprocharrging.quickcharge.common.extension.gone
-import com.procharger.fastprocharrging.quickcharge.common.extension.visible
-import com.procharger.fastprocharrging.quickcharge.common.util.Utils
-import com.procharger.fastprocharrging.quickcharge.data.model.TaskInfo
-import com.procharger.fastprocharrging.quickcharge.databinding.ActivityCoolerBinding
-import com.procharger.fastprocharrging.quickcharge.ui.base.BaseActivityBinding
+import androidx.core.content.ContextCompat
+import com.sh.entertainment.fastcharge.R
+import com.sh.entertainment.fastcharge.common.extension.gone
+import com.sh.entertainment.fastcharge.common.extension.visible
+import com.sh.entertainment.fastcharge.common.util.AdsManager
+import com.sh.entertainment.fastcharge.common.util.Utils
+import com.sh.entertainment.fastcharge.data.model.TaskInfo
+import com.sh.entertainment.fastcharge.databinding.ActivityCoolerBinding
+import com.sh.entertainment.fastcharge.ui.base.BaseActivityBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import java.util.*
+
 
 class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
@@ -39,6 +43,8 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
     private var chargeBoostContainers: ArrayList<FrameLayout> = ArrayList()
 
+    var didCooler = false
+
     override val layoutId = R.layout.activity_cooler
 
     override fun initializeView() {
@@ -50,11 +56,18 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
     override fun initializeData() {
         dataBinding.animSnow.gone()
+        dataBinding.animDone.gone()
+
         setupAnim()
+        AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
     }
 
     override fun onClick() {
         dataBinding.btnOptimize.setOnClickListener {
+            if (didCooler) {
+                finish()
+                return@setOnClickListener
+            }
             handleOptimizeCooler()
             dataBinding.animSnow.visible()
             dataBinding.animSnow.apply {
@@ -62,7 +75,6 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                 cancelAnimation()
                 addAnimatorListener(object : Animator.AnimatorListener {
                     override fun onAnimationStart(p0: Animator?) {
-                        //TODO
                     }
 
                     override fun onAnimationEnd(p0: Animator?) {
@@ -81,27 +93,76 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
     }
 
     private fun handleOptimizeCooler() {
-       dataBinding. lytListItem.visible()
+        dataBinding.lytListItem.visible()
         val animationView = AnimationUtils.loadAnimation(this, R.anim.rote_charge_anim)
         dataBinding.ivScan.startAnimation(animationView)
+        dataBinding.ivScan2.startAnimation(animationView)
         animationView.apply {
             start()
             setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationStart(p0: Animation?) {
-                    //TODO
+                    optimizeCoolerCore()
+                    killAllAppOnBackground()
                 }
 
                 override fun onAnimationEnd(p0: Animation?) {
+                    didCooler = true
+                    dataBinding.btnOptimize.apply {
+                        background =
+                            ContextCompat.getDrawable(this@CoolerActivity, R.drawable.btn_green)
+                        text = getString(R.string.cooler_optimized)
+                    }
+                    endTaskAndStartAnimDone()
                 }
 
                 override fun onAnimationRepeat(p0: Animation?) {
-                    TODO("Not yet implemented")
                 }
             })
         }
     }
 
-    //----------------------------------------------------------------------------------------------
+    private fun endTaskAndStartAnimDone() {
+        dataBinding.chargeBoostRippleBackground.gone()
+        dataBinding.animDone.visible()
+        dataBinding.animDone.apply {
+            removeAllAnimatorListeners()
+            cancelAnimation()
+            addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(p0: Animator?) {
+                }
+
+                override fun onAnimationEnd(p0: Animator?) {
+                }
+
+                override fun onAnimationCancel(p0: Animator?) {
+                }
+
+                override fun onAnimationRepeat(p0: Animator?) {
+                }
+            })
+            playAnimation()
+        }
+    }
+
+    private fun optimizeCoolerCore() {
+
+    }
+
+    private  fun killAllAppOnBackground(){
+        val packages: List<ApplicationInfo>
+        val pm: PackageManager = packageManager
+        packages = pm.getInstalledApplications(0)
+
+        val packageInfos = mPackageManager!!.getInstalledApplications(PackageManager.GET_META_DATA)
+        val myPackage = applicationContext.packageName
+        for (packageInfo in packageInfos) {
+            if (packageInfo.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
+            if (packageInfo.packageName == myPackage) continue
+            (getSystemService(ACTIVITY_SERVICE) as ActivityManager).killBackgroundProcesses(packageInfo.packageName)
+        }
+    }
+
+   //----------------------------------------------------------------------------------------------
     private suspend fun getAppIcon() = withContext(Dispatchers.IO) {
         mPackageManager = this@CoolerActivity.packageManager
         mActivityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
