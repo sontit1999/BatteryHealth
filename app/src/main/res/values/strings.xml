@@ -128,7 +128,7 @@
     <string name="clean_apps">Clean up apps</string>
     <string name="minute">m</string>
     <string name="cpu_cooler">CPU Cooler</string>
-    <string name="booster">Bootser</string>
+    <string name="booster">Booster</string>
     <string name="saver">Saver</string>
     <string name="txt_phone_cooler">Cooler</string>
     <string name="cooler_optimized">Cooler Optimized</string>
@@ -136,6 +136,8 @@
     <string name="mgs_normal">Normal</string>
     <string name="mgs_healthy">Healthy</string>
     <string name="over_charge">Overcharged</string>
+    <string name="scan_ram">Scanning RAM</string>
+    <string name="ram_free">RAM free</string>
 
 
 </resources>

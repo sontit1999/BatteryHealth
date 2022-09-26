@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_blue_500">
+
+        <FrameLayout
+            android:id="@+id/lytAnimation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="250dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottieAnimation"
+                android:layout_width="@dimen/dimen_250"
+                android:layout_height="@dimen/dimen_250"
+                android:layout_gravity="center"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/boost" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/doneAnimation"
+                android:layout_width="@dimen/dimen_250"
+                android:layout_height="@dimen/dimen_250"
+                android:layout_gravity="center"
+                android:scaleType="fitXY"
+                app:lottie_autoPlay="false"
+                app:lottie_rawRes="@raw/done" />
+
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:padding="12dp" />
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:text="@string/scan_ram"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lytAnimation" />
+
+        <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+            android:id="@+id/btnOptimize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/dimen_2x"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_yellow"
+            android:drawablePadding="@dimen/dimen_1x"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center"
+            android:minWidth="@dimen/dimen_200"
+            android:padding="@dimen/dimen_1x"
+            android:text="@string/booster"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_22"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMessage" />
+
+        <com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
+            android:id="@+id/nativeAdView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/dimen_1x"
+            android:padding="@dimen/dimen_1x"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

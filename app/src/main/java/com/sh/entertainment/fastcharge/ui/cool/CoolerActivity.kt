@@ -14,8 +14,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import com.sh.entertainment.fastcharge.R
-import com.sh.entertainment.fastcharge.common.extension.gone
-import com.sh.entertainment.fastcharge.common.extension.visible
+import com.sh.entertainment.fastcharge.common.extension.*
 import com.sh.entertainment.fastcharge.common.util.AdsManager
 import com.sh.entertainment.fastcharge.common.util.Utils
 import com.sh.entertainment.fastcharge.data.model.TaskInfo
@@ -145,7 +144,10 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
     }
 
     private fun optimizeCoolerCore() {
-
+        if(canWriteSettings()){
+            toggleAutoRotation(0)
+            toggleAutoSync(false)
+        }
     }
 
     private  fun killAllAppOnBackground(){
@@ -153,9 +155,8 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
         val pm: PackageManager = packageManager
         packages = pm.getInstalledApplications(0)
 
-        val packageInfos = mPackageManager!!.getInstalledApplications(PackageManager.GET_META_DATA)
         val myPackage = applicationContext.packageName
-        for (packageInfo in packageInfos) {
+        for (packageInfo in packages) {
             if (packageInfo.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
             if (packageInfo.packageName == myPackage) continue
             (getSystemService(ACTIVITY_SERVICE) as ActivityManager).killBackgroundProcesses(packageInfo.packageName)

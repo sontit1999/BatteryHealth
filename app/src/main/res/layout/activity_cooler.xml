@@ -5,7 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/color_gray_bg"
+        android:background="@color/md_blue_500"
         android:orientation="vertical">
 
         <com.skyfishjy.library.RippleBackground
