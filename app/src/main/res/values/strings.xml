@@ -130,6 +130,7 @@
     <string name="cpu_cooler">CPU Cooler</string>
     <string name="booster">Booster</string>
     <string name="saver">Saver</string>
+    <string name="scan_app_background">Scanning app background</string>
     <string name="txt_phone_cooler">Cooler</string>
     <string name="cooler_optimized">Cooler Optimized</string>
     <string name="last_charge_history">Last Charge record</string>

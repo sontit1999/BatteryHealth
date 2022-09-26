@@ -113,6 +113,13 @@
             android:name=".ui.cool.CoolerActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".ui.booster.BoosterActivity"
             android:launchMode="singleTop"

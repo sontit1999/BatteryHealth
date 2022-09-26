@@ -37,6 +37,7 @@ import com.sh.entertainment.fastcharge.ui.booster.BoosterActivity
 import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
 import com.sh.entertainment.fastcharge.ui.cool.CoolerActivity
 import com.sh.entertainment.fastcharge.ui.info.GIGABYTE
+import com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity
 import com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
 import java.util.*
 import kotlin.math.pow
@@ -560,6 +561,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     fun startOptimizing(forceOptimize: Boolean = false) {
+        openActivity(OptimizeActivity::class.java)
         if (!didOptimize || forceOptimize) {
             if (currentPercentage != 100f && ctx?.appSettingsModel?.batteryPercentage != 100f) {
                 presenter.optimise(animViewOptimization, isCharging)
