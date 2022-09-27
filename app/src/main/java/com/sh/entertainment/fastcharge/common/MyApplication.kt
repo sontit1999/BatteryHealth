@@ -1,5 +1,6 @@
 package com.sh.entertainment.fastcharge.common
 
+import android.util.DisplayMetrics
 import androidx.lifecycle.MutableLiveData
 import androidx.multidex.MultiDexApplication
 import com.google.android.gms.ads.AdLoader
@@ -16,11 +17,14 @@ import com.sh.entertainment.fastcharge.common.util.SharedPreferencesUtil
 import com.sh.entertainment.fastcharge.data.model.AdsConfigModel
 import com.sh.entertainment.fastcharge.data.model.RemoteConfig
 
+
 class MyApplication : MultiDexApplication() {
 
     val sharedPref by lazy { SharedPreferencesUtil.customPrefs(ctx) }
     val appSettingsModel by lazy { CommonUtil.getAppSettingsModel(ctx) }
     val adsConfigModel by lazy { AdsConfigModel() }
+
+    var displayMetrics: DisplayMetrics? = null
 
 
     companion object {
@@ -37,9 +41,9 @@ class MyApplication : MultiDexApplication() {
         var timeShowOpenAd = 0L
 
         var KEY_INTEL = "ca-app-pub-2238530878125342/7321071062"
-        var KEY_OPEN_ADS ="ca-app-pub-2238530878125342/6361721926"
-        var KEY_NATIVE ="ca-app-pub-2238530878125342/6302535268"
-        var KEY_NATIVE_EXIT ="ca-app-pub-2238530878125342/6302535268"
+        var KEY_OPEN_ADS = "ca-app-pub-2238530878125342/6361721926"
+        var KEY_NATIVE = "ca-app-pub-2238530878125342/6302535268"
+        var KEY_NATIVE_EXIT = "ca-app-pub-2238530878125342/6302535268"
 
         var showRateDialog = MutableLiveData<Boolean>()
     }

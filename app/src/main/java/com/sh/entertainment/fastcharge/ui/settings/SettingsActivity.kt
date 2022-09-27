@@ -156,10 +156,12 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
 
     override fun initWidgets() {
         // Init toolbar
+
         showTitle(R.string.settings)
         chbPlaySound.isChecked
         rbAuto.isChecked = CommonUtil.getIsAuto(this)
         hideShowSoundPlayingUI()
+        hideToolbarBase()
         enableHomeAsUp {
             showInter()
         }

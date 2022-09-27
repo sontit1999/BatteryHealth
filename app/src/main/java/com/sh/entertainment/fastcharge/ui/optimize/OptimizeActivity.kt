@@ -6,6 +6,7 @@ import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.util.AdsManager
 import com.sh.entertainment.fastcharge.databinding.FragmentOptimizeBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseActivityBinding
+import com.sh.entertainment.fastcharge.ui.dialog.CongratulationDialog
 
 class OptimizeActivity : BaseActivityBinding<FragmentOptimizeBinding>() {
 
@@ -17,7 +18,11 @@ class OptimizeActivity : BaseActivityBinding<FragmentOptimizeBinding>() {
 
             override fun onAnimationEnd(animation: Animator) {
                 super.onAnimationEnd(animation)
-                finish()
+                val dialogCongratulation = CongratulationDialog()
+                dialogCongratulation.onClickClose = {
+                    finish()
+                }
+                dialogCongratulation.show(supportFragmentManager, "dialogCongratulation")
             }
 
             override fun onAnimationRepeat(animation: Animator) {
@@ -46,7 +51,6 @@ class OptimizeActivity : BaseActivityBinding<FragmentOptimizeBinding>() {
         loadNativeAds()
         bindingAction()
     }
-
     override fun initializeData() {
 
     }
