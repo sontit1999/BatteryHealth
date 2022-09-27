@@ -21,6 +21,7 @@ import com.sh.entertainment.fastcharge.common.util.CommonUtil
 import com.sh.entertainment.fastcharge.common.util.NumberUtil
 import com.sh.entertainment.fastcharge.common.util.PermissionUtil
 import com.sh.entertainment.fastcharge.data.model.BatteryModel
+import com.sh.entertainment.fastcharge.ui.chargehistory.HistoryPref
 import com.sh.entertainment.fastcharge.ui.main.ActionHandlerActivity
 import com.sh.entertainment.fastcharge.ui.main.MainActivity
 import io.reactivex.Observable
@@ -136,6 +137,8 @@ class PowerConnectionService : Service() {
             } else {
                 releaseBatteryNotificationResource()
             }
+
+            HistoryPref.putLevel(ctx, getBatteryLevel(ctx))
         }
     }
 

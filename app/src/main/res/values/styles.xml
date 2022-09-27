@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/bgMainTop</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorAccent</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--        <item name="android:statusBarColor" tools:targetApi="LOLLIPOP">@color/transparent</item>-->
     </style>
@@ -27,15 +27,15 @@
     <style name="BoResultTheme" parent="AppTheme">
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:navigationBarColor" tools:targetApi="LOLLIPOP">
-            @color/bgMainBottom
+            @color/colorAccent
         </item>
     </style>
 
     <style name="IntroTheme" parent="AppTheme">
         <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:statusBarColor" tools:targetApi="LOLLIPOP">@color/bgIntroTop</item>
+        <item name="android:statusBarColor" tools:targetApi="LOLLIPOP">@color/colorAccent</item>
         <item name="android:navigationBarColor" tools:targetApi="LOLLIPOP">
-            @color/bgIntroBottom
+            @color/colorAccent
         </item>
     </style>
     <!-- End of themes -->

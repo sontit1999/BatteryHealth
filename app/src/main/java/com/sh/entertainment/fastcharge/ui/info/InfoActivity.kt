@@ -2,8 +2,12 @@ package com.sh.entertainment.fastcharge.ui.info
 
 import android.app.ActivityManager
 import android.content.Context
+import android.graphics.ImageFormat
+import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraManager
 import android.os.Build
 import android.os.StatFs
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
@@ -14,9 +18,12 @@ import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.ctx
+import com.sh.entertainment.fastcharge.common.extension.logE
 import com.sh.entertainment.fastcharge.common.extension.manufacturer
+import com.sh.entertainment.fastcharge.common.extension.setOnSafeClickListener
 import com.sh.entertainment.fastcharge.common.util.CommonUtil
 import com.sh.entertainment.fastcharge.common.util.NumberUtil
+import com.sh.entertainment.fastcharge.common.util.PermissionUtil
 import com.sh.entertainment.fastcharge.data.model.BatteryModel
 import com.sh.entertainment.fastcharge.ui.base.BaseActivity
 import com.sh.entertainment.fastcharge.ui.home.BatteryStatusReceiver
@@ -38,6 +45,7 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
     private val lblAndroidVersion by lazy { findViewById<TextView>(R.id.lbl_android_version) }
     private val lblScreenSize by lazy { findViewById<TextView>(R.id.lbl_screen_size) }
     private val lblScreenResolution by lazy { findViewById<TextView>(R.id.lbl_screen_resolution) }
+    private val lnBack by lazy { findViewById<LinearLayout>(R.id.lnBack) }
 
     private val batteryStatusReceiver by lazy {
         BatteryStatusReceiver {
@@ -46,7 +54,6 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
     }
 
     override fun onDestroy() {
-        // Unregister battery status receiver
         BatteryStatusReceiver.unregister(ctx, batteryStatusReceiver)
 
         super.onDestroy()
@@ -60,9 +67,7 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
         return InfoPresenterImp(ctx)
     }
 
-    override fun getLayoutId(): Int? {
-        return R.layout.activity_info
-    }
+    override fun getLayoutId() = R.layout.activity_info
 
     override fun onBackPressed() {
         showInter()
@@ -70,17 +75,15 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
 
     override fun initWidgets() {
         // Init toolbar
-        showTitle(R.string.info)
+        hideToolbarBase()
         handleLoadInter()
-        enableHomeAsUp {
-            showInter()
-        }
 
-        // Listeners
         BatteryStatusReceiver.register(ctx, batteryStatusReceiver)
-
-        // Fill device info
         fillDeviceInfo()
+
+        lnBack.setOnSafeClickListener {
+            finish()
+        }
     }
 
     private fun fillBatteryInfo(model: BatteryModel) {
@@ -156,7 +159,7 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
         lblAndroidVersion.text = Build.VERSION.RELEASE
 
         // Camera info
-        /*if (PermissionUtil.isApi21orHigher()) {
+        if (PermissionUtil.isApi21orHigher()) {
             val camManager = getSystemService(Context.CAMERA_SERVICE) as? CameraManager
             camManager?.run {
                 for (cam in cameraIdList) {
@@ -175,7 +178,7 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
                     }
                 }
             }
-        }*/
+        }
     }
 
     private fun showInter() {
@@ -183,7 +186,7 @@ class InfoActivity : BaseActivity<InfoView, InfoPresenterImp>(), InfoView {
             finish()
             return
         }
-        if ((System.currentTimeMillis() - MyApplication.timeShowIntel) < MyApplication.remoteConfigModel.timeShowInter*1000) {
+        if ((System.currentTimeMillis() - MyApplication.timeShowIntel) < MyApplication.remoteConfigModel.timeShowInter * 1000) {
             finish()
             return
         }

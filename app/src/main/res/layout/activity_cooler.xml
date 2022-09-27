@@ -5,7 +5,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/md_blue_500"
+        android:background="@drawable/layer_splash"
         android:orientation="vertical">
 
         <com.skyfishjy.library.RippleBackground
@@ -16,7 +16,6 @@
             android:layout_marginBottom="80dp"
             android:background="@drawable/bg_curved_circle"
             android:visibility="visible"
-            app:rb_color="#00ffffff"
             app:rb_duration="1200"
             app:rb_radius="56dp"
             app:rb_rippleAmount="2"
@@ -36,7 +35,7 @@
                         android:id="@+id/ivDoneHoloCirular"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:alpha="0.4"
+                        android:alpha="0.8"
                         android:contentDescription="@null"
                         android:visibility="visible" />
 
