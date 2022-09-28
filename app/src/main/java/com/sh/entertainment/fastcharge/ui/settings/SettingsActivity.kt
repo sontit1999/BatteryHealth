@@ -67,6 +67,8 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
     }
     private val rbAuto by lazy { findViewById<SwitchCompat>(R.id.chb_auto) }
     private val cstAuto by lazy { findViewById<androidx.constraintlayout.widget.ConstraintLayout>(R.id.info_automation) }
+    private val ivBack by lazy { findViewById<ImageView>(R.id.ivBack) }
+
 
     private var menuItemAd: MenuItem? = null
     private var mediaPlayer: MediaPlayer? = null
@@ -174,28 +176,6 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
             lblWifi.visible()
         }
 
-        /*if (PermissionUtil.isApi23orHigher()) {
-            if (isXiaomiDevice) {
-                imgHelp.visible()
-                if (canDrawOverlay()) {
-                    updateHelpIcon()
-                }
-            } else {
-                if (!canDrawOverlay()) {
-                    imgHelp.visible()
-                }
-            }
-            imgHelp.setOnSafeClickListener {
-                if (canDrawOverlay()) {
-                    if (isXiaomiDevice) {
-                        showOtherPermissionsDescXiaomiDialog()
-                    }
-                } else {
-                    showDrawOverlayPermissionDescDialog(self, RC_DRAW_OVERLAY)
-                }
-            }
-        }*/
-
         imgPlaySound.setOnSafeClickListener {
             playBatteryFullSound()
         }
@@ -216,6 +196,7 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
         lblToLabel.setOnSafeClickListener {
             showTimePicker(lblToValue)
         }
+
         rbAuto.setOnCheckedChangeListener { _, _ ->
             CommonUtil.saveIsAuto(this, rbAuto.isChecked)
             updateAutoUI()
@@ -229,18 +210,11 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
                 })
             }
         }
-        /*   if (PermissionUtil.isApi23orHigher()) {
-               ctx?.run {
-                   if (!canDrawOverlay()) {
-                       if (appSettingsModel.appOpenedTimes >= 2) {
-                           //  imgHelp.visible()
-                           imgHelp.setOnSafeClickListener {
-                               showDrawOverlayPermissionDescDialog(self, RC_DRAW_OVERLAY)
-                           }
-                       }
-                   }
-               }
-           }*/
+
+        ivBack.setOnClickListener {
+            finish()
+        }
+
         presenter.listenAppSettingsChanged()
 
         // Fill app settings

@@ -1,35 +1,36 @@
 package com.sh.entertainment.fastcharge.ui.home
 
-import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.Dialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
-import android.os.*
+import android.os.BatteryManager
+import android.os.Build
+import android.os.Bundle
+import android.os.StatFs
 import android.provider.Settings
 import android.provider.Settings.SettingNotFoundException
 import android.provider.Settings.System.SCREEN_BRIGHTNESS
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.*
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.widget.NestedScrollView
-import com.airbnb.lottie.LottieAnimationView
 import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.*
-import com.sh.entertainment.fastcharge.common.util.*
+import com.sh.entertainment.fastcharge.common.util.AdsManager
+import com.sh.entertainment.fastcharge.common.util.CommonUtil
+import com.sh.entertainment.fastcharge.common.util.NumberUtil
+import com.sh.entertainment.fastcharge.common.util.PermissionUtil
 import com.sh.entertainment.fastcharge.data.model.AppSettingsModel
 import com.sh.entertainment.fastcharge.data.model.BatteryModel
-import com.sh.entertainment.fastcharge.data.model.TaskInfo
 import com.sh.entertainment.fastcharge.databinding.FragmentHomeBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseFragment
 import com.sh.entertainment.fastcharge.ui.battery.BatteryActivity
@@ -38,8 +39,6 @@ import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
 import com.sh.entertainment.fastcharge.ui.cool.CoolerActivity
 import com.sh.entertainment.fastcharge.ui.info.GIGABYTE
 import com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity
-import com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
-import java.util.*
 import kotlin.math.pow
 import kotlin.math.sqrt
 
@@ -47,28 +46,15 @@ import kotlin.math.sqrt
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterImp>(), HomeView {
 
     private lateinit var scrollView: NestedScrollView
-    private lateinit var animViewOptimization: LottieAnimationView
     private lateinit var btnOptimize: TextView
     private lateinit var lblOptimizationDescProcess: TextView
     private lateinit var lblWarnUsbCharging: TextView
     private lateinit var lblPercentage: TextView
-    private lateinit var nativeAdView: LayoutNativeAd
-
     private lateinit var txtInfo: TextView
     private lateinit var txtMin: TextView
     private lateinit var txtHours: TextView
     private lateinit var viewTimeLeft: LinearLayout
 
-    private var arrGravity1: IntArray = intArrayOf(49, 19, 83)
-    private var arrGravity2: IntArray = intArrayOf(51, 49, 21)
-    private var arrGravity3: IntArray = intArrayOf(53, 21, 81)
-    private var arrGravity4: IntArray = intArrayOf(85, 81, 19)
-
-    private var arrGravitys: Array<IntArray> =
-        arrayOf(arrGravity1, arrGravity2, arrGravity3, arrGravity4)
-    var curIndex = 0
-    private var mPackageManager: PackageManager? = null
-    private var mActivityManager: ActivityManager? = null
     private var currentPercentage: Float? = null
     private var isCharging = false
     private var didOptimize = false
@@ -140,6 +126,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     private fun checkPermission() {
+        if (!requireContext().canWriteSettings()) {
+            requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
+                if (!requireContext().canWriteSettings()) requireContext().requestWriteSettingsPermission(
+                    self,
+                    RC_WRITE_SETTINGS
+                )
+
+            }, onCancelListener = {
+
+            })
+        }
+
+    }
+
+    private fun checkCanOverlayPermission() {
         if (!requireContext().canDrawOverlay()) {
             requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
                 requireContext().requestDrawOverlayPermission(
@@ -165,7 +166,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == RC_WRITE_SETTINGS && ctx?.canWriteSettings() == true) {
-            startOptimizing()
+            checkCanOverlayPermission()
         } else if (requestCode == RC_DRAW_OVERLAY && ctx?.canDrawOverlay() == true) {
 
         } else {
@@ -199,14 +200,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             lblOptimizationDescProcess = findViewById(R.id.lbl_optimization_desc_process)
             lblWarnUsbCharging = findViewById(R.id.lbl_warn_usb_charging)
             lblPercentage = findViewById(R.id.lbl_percentage)
-            // nativeAdView = findViewById(R.id.nativeAdView)
             viewTimeLeft = findViewById(R.id.view_time_left)
             txtInfo = findViewById(R.id.txtInfo)
             txtMin = findViewById(R.id.tvMin)
             txtHours = findViewById(R.id.tvHour)
         }
-
-        LoadRunningTask(this).execute(*arrayOfNulls(0))
 
         // Disable scroll content if ads is disabled
         ctx?.run {
@@ -239,191 +237,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     private fun loadNativeAds() {
-        /* if(MyApplication.remoteConfigModel.is_native_home){
-             AdsManager.showNativeAd(requireContext(),binding.nativeAdView,AdsManager.NATIVE_AD_KEY)
-         }*/
         AdsManager.showNativeAd(requireContext(), binding.nativeAdView, AdsManager.NATIVE_AD_KEY)
     }
 
-    @Deprecated("Deprecated in Java")
-    private class LoadRunningTask(var homeFragment: HomeFragment) :
-        AsyncTask<Void, Drawable, Void>() {
-        val activity = homeFragment.requireActivity()
-
-        @SuppressLint("QueryPermissionsNeeded")
-        override fun doInBackground(vararg voidArr: Void): Nothing? {
-            val activityManager =
-                activity.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-            val runningAppProcesses = activityManager.runningAppProcesses
-            ArrayList<Any?>()
-            return when {
-                Build.VERSION.SDK_INT <= 21 -> {
-                    for (runningAppProcessInfo in runningAppProcesses) {
-                        try {
-                            if (homeFragment.mPackageManager == null) {
-                                return null
-                            }
-                            val str = runningAppProcessInfo.processName
-                            val applicationInfo =
-                                homeFragment.mPackageManager!!.getApplicationInfo(str, 0)
-                            if (!str.contains(activity.packageName)
-                                && Utils.isUserApp(applicationInfo) && !Utils.checkLockedItem(
-                                    activity,
-                                    str
-                                )
-                            ) {
-                                val taskInfo = TaskInfo(activity, applicationInfo)
-                                homeFragment.mActivityManager!!.killBackgroundProcesses(taskInfo.appinfo.packageName)
-                                val applicationIcon =
-                                    activity.packageManager.getApplicationIcon(
-                                        taskInfo.appinfo.packageName ?: ""
-                                    )
-                                publishProgress(*arrayOf(applicationIcon))
-                                try {
-                                    Thread.sleep(150)
-                                } catch (e: InterruptedException) {
-                                    e.printStackTrace()
-                                }
-                            }
-                        } catch (unused: java.lang.Exception) {
-                            Log.e("fff", "")
-                        }
-                    }
-                    null
-                }
-                Build.VERSION.SDK_INT < 26 -> {
-                    for (next in activityManager.getRunningServices(Int.MAX_VALUE)) {
-                        try {
-                            if (homeFragment.mPackageManager == null) {
-                                return null
-                            }
-                            val packageInfo = homeFragment.mPackageManager!!.getPackageInfo(
-                                next.service.packageName,
-                                PackageManager.GET_ACTIVITIES
-                            )
-
-                            if (packageInfo != null) {
-                                val applicationInfo2 =
-                                    homeFragment.mPackageManager!!.getApplicationInfo(
-                                        packageInfo.packageName,
-                                        0
-                                    )
-                                if (!packageInfo.packageName.contains(activity.packageName)
-                                    && Utils.isUserApp(applicationInfo2)
-                                    && !Utils.checkLockedItem(activity, packageInfo.packageName)
-                                ) {
-                                    val taskInfo2 = TaskInfo(activity, applicationInfo2)
-                                    homeFragment.mActivityManager!!.killBackgroundProcesses(
-                                        taskInfo2.appinfo.packageName
-                                    )
-                                    val applicationIcon2 =
-                                        activity.packageManager.getApplicationIcon(
-                                            taskInfo2.appinfo.packageName ?: ""
-                                        )
-                                    publishProgress(*arrayOf(applicationIcon2))
-                                    try {
-                                        Thread.sleep(150)
-                                    } catch (e2: InterruptedException) {
-                                        e2.printStackTrace()
-                                    }
-                                }
-                            }
-                        } catch (unused2: java.lang.Exception) {
-                        }
-                    }
-                    null
-                }
-                else -> {
-                    val packageInfo =
-                        homeFragment.mPackageManager!!.getInstalledApplications(PackageManager.GET_META_DATA)
-                    for (next2 in packageInfo) {
-                        if (homeFragment.mPackageManager == null) {
-                            return null
-                        }
-                        try {
-                            if (!next2.packageName.contains(activity.packageName)
-                                && Utils.isUserApp(next2)
-                                && !Utils.checkLockedItem(activity, next2.packageName)
-                            ) {
-                                val taskInfo3 = TaskInfo(activity, next2)
-                                homeFragment.mActivityManager!!.killBackgroundProcesses(taskInfo3.appinfo.packageName)
-                                val applicationIcon3 =
-                                    activity.packageManager.getApplicationIcon(taskInfo3.appinfo.packageName)
-                                publishProgress(*arrayOf(applicationIcon3))
-                                try {
-                                    Thread.sleep(150)
-                                } catch (e3: InterruptedException) {
-                                    e3.printStackTrace()
-                                }
-                            }
-                        } catch (e4: PackageManager.NameNotFoundException) {
-                            e4.printStackTrace()
-                        }
-                    }
-                    null
-                }
-            }
-        }
-
-        override fun onProgressUpdate(vararg drawableArr: Drawable) {
-            val nextInt = Random().nextInt(homeFragment.arrGravity1.size - 1 + 1) + 0
-            val sb = StringBuilder()
-            sb.append("RANDOM: ")
-            sb.append(nextInt)
-            sb.append(" curIndex: ")
-            sb.append(homeFragment.curIndex)
-            val dimension = activity.resources.getDimension(R.dimen.icon_size).toInt()
-            val layoutParams = FrameLayout.LayoutParams(-2, -2)
-            layoutParams.height = dimension
-            layoutParams.width = dimension
-            layoutParams.gravity = homeFragment.arrGravitys[homeFragment.curIndex][nextInt]
-            val animation = when (homeFragment.curIndex) {
-                0 -> {
-                    AnimationUtils.loadAnimation(activity, R.anim.anim_item_boost_1)
-                }
-                1 -> {
-                    AnimationUtils.loadAnimation(activity, R.anim.anim_item_boost_2)
-                }
-                2 -> {
-                    AnimationUtils.loadAnimation(activity, R.anim.anim_item_boost_3)
-                }
-                3 -> {
-                    AnimationUtils.loadAnimation(activity, R.anim.anim_item_boost_4)
-                }
-                else -> {
-                    AnimationUtils.loadAnimation(activity, R.anim.anim_item_boost_0)
-                }
-            }
-            val imageView = ImageView(activity)
-
-            imageView.setImageDrawable(drawableArr[0])
-            imageView.startAnimation(animation)
-            animation.setAnimationListener(object : Animation.AnimationListener {
-                override fun onAnimationRepeat(animation: Animation) {
-                    Log.e("dd", "")
-                }
-
-                override fun onAnimationStart(animation: Animation) {
-                    Log.e("dd", "")
-                }
-
-                override fun onAnimationEnd(animation: Animation) {
-                    imageView.visibility = View.GONE
-                }
-            })
-            super.onProgressUpdate(*drawableArr)
-        }
-
-        public override fun onPostExecute(voidR: Void?) {
-            super.onPostExecute(voidR)
-        }
-
-        init {
-            homeFragment.mPackageManager = activity.packageManager
-            homeFragment.mActivityManager =
-                activity.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        }
-    }
 
     override fun hasOptimizationOptionsSelected(): Boolean {
         return ctx?.let {
@@ -493,7 +309,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     override fun onOptimizationSuccess() {
         // Show success screen
         showOptimizationResultScreen(true)
-        animViewOptimization.visible()
         // Update flags
         didOptimize = true
         isJustOpenedApp = false
@@ -504,10 +319,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     override fun onAppSettingsChanged(model: AppSettingsModel) {
-        if (ctx?.shouldShowAds() != true) {
-            // Update UI
-//            frlBannerAd.gone()
-        }
     }
 
     override fun showOptimizationDescDialog() {
@@ -564,7 +375,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         openActivity(OptimizeActivity::class.java)
         if (!didOptimize || forceOptimize) {
             if (currentPercentage != 100f && ctx?.appSettingsModel?.batteryPercentage != 100f) {
-                presenter.optimise(animViewOptimization, isCharging)
                 updateBrightness()
             }
         } else {

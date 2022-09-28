@@ -16,6 +16,7 @@ import com.sh.entertainment.fastcharge.common.util.CommonUtil
 import com.sh.entertainment.fastcharge.common.util.SharedPreferencesUtil
 import com.sh.entertainment.fastcharge.data.model.AdsConfigModel
 import com.sh.entertainment.fastcharge.data.model.RemoteConfig
+import com.sh.entertainment.fastcharge.ui.base.AppConfig
 
 
 class MyApplication : MultiDexApplication() {
@@ -51,7 +52,7 @@ class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-
+        AppConfig.setUp(this)
         // Init mobile ads SDK
         AdsManager.initMobileAdSdk(this)
         setupRemoteConfig()

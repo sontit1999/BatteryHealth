@@ -21,7 +21,6 @@ import com.sh.entertainment.fastcharge.common.extension.openActivity
 import com.sh.entertainment.fastcharge.common.extension.visible
 import com.sh.entertainment.fastcharge.common.util.CommonUtil
 import com.sh.entertainment.fastcharge.data.model.RemoteConfig
-import com.sh.entertainment.fastcharge.ui.base.AppConfig
 import com.sh.entertainment.fastcharge.ui.base.BaseActivity
 import com.sh.entertainment.fastcharge.ui.intro.IntroSliderActivity
 import com.sh.entertainment.fastcharge.ui.main.MainActivity
@@ -63,10 +62,8 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashVie
     }
 
     override fun initWidgets() {
-        AppConfig.setUp(this)
         hideToolbarBase()
         hideNavigationBar()
-        //loadAnimationImage();
     }
 
     override fun openHomePage() {
