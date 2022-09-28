@@ -32,6 +32,7 @@ import com.sh.entertainment.fastcharge.data.model.BatteryModel
 import com.sh.entertainment.fastcharge.data.model.TaskInfo
 import com.sh.entertainment.fastcharge.databinding.FragmentHomeBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseFragment
+import com.sh.entertainment.fastcharge.ui.battery.BatteryActivity
 import com.sh.entertainment.fastcharge.ui.booster.BoosterActivity
 import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
 import com.sh.entertainment.fastcharge.ui.cool.CoolerActivity
@@ -131,6 +132,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         }
         binding.bgBooster.setOnSafeClickListener {
             openActivity(BoosterActivity::class.java)
+        }
+        binding.bgBatterySaved.setOnSafeClickListener {
+            openActivity(BatteryActivity::class.java)
         }
     }
 

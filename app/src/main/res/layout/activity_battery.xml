@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/boost" />
+                app:lottie_rawRes="@raw/battery_scan" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/doneAnimation"
@@ -61,15 +61,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginHorizontal="@dimen/dimen_2x"
             android:layout_marginTop="56dp"
             android:background="@drawable/btn_yellow"
-            android:drawablePadding="@dimen/dimen_1x"
             android:fontFamily="@font/roboto_regular"
             android:gravity="center"
             android:minWidth="@dimen/dimen_200"
             android:padding="@dimen/dimen_1x"
-            android:text="@string/booster"
+            android:text="@string/battery_saver"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_size_22"
             app:layout_constraintBottom_toBottomOf="parent"

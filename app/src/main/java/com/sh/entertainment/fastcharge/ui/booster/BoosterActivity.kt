@@ -62,7 +62,7 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
                     dataBinding.btnOptimize.apply {
                         background =
                             ContextCompat.getDrawable(this@BoosterActivity, R.drawable.btn_green)
-                        text = getString(R.string.cooler_optimized)
+                        text = getString(R.string.booster_optimized)
                     }
                     handlerStartAminDone()
                 }

@@ -138,6 +138,10 @@
     <string name="over_charge">Overcharged</string>
     <string name="scan_ram">Scanning RAM</string>
     <string name="ram_free">RAM free</string>
+    <string name="battery_saver">Battery saver</string>
+    <string name="battery_optimized">Battery Optimized</string>
+    <string name="booster_optimized">Booster Optimized</string>
+    <string name="battery_free">Battery saver</string>
 
 
 </resources>

@@ -14,6 +14,7 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.net.wifi.WifiManager
 import android.os.Build
+import android.os.PowerManager
 import android.provider.Settings
 import android.util.Log
 import android.view.Window
@@ -204,6 +205,13 @@ fun Context.toggleWifi(enable: Boolean) {
     if (!PermissionUtil.isApi29orHigher()) {
         val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager?
         wifiManager?.isWifiEnabled = enable
+    }
+}
+
+fun Context.toggleSaveBattery(enable: Boolean) {
+    if (!PermissionUtil.isApi29orHigher()) {
+        val powerManager = applicationContext.getSystemService(Context.POWER_SERVICE) as PowerManager?
+        powerManager?.isPowerSaveMode
     }
 }
 
