@@ -24,7 +24,7 @@ class AppSettingsModel : BaseModel() {
 
     // Battery optimization settings fields
     var isClearRam = true
-    var isTurnOffBluetooth = true
+    var isTurnOffBluetooth = false
     var isTurnOffWifi = false
     var isTurnOffAutoSync = false
     var isTurnOffScreenRotation = true

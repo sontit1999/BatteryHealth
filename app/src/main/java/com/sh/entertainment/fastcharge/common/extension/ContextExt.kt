@@ -1,5 +1,6 @@
 package com.sh.entertainment.fastcharge.common.extension
 
+import android.Manifest
 import android.app.Dialog
 import android.app.usage.UsageStats
 import android.app.usage.UsageStatsManager
@@ -9,6 +10,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
@@ -22,6 +24,7 @@ import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.sh.entertainment.fastcharge.BuildConfig
 import com.sh.entertainment.fastcharge.R
@@ -216,12 +219,35 @@ fun Context.toggleSaveBattery(enable: Boolean) {
 }
 
 fun Context.toggleBluetooth(enable: Boolean): Boolean {
+    val targetSdkVersion = applicationInfo.targetSdkVersion
     val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-    return if (enable) {
-        bluetoothAdapter?.enable()
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S && targetSdkVersion >= Build.VERSION_CODES.S) {
+        return if (ActivityCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT)
+            != PackageManager.PERMISSION_GRANTED) {
+            return false
+        } else {
+            if (enable) {
+                bluetoothAdapter?.enable()
+            } else {
+                bluetoothAdapter?.disable()
+            } ?: false
+        }
     } else {
-        bluetoothAdapter?.disable()
-    } ?: false
+        return if (enable) {
+            bluetoothAdapter?.enable()
+        } else {
+            bluetoothAdapter?.disable()
+        } ?: false
+    }
+}
+
+fun Context.checkPermissions(permissions: Array<String>): Array<String> {
+    val array = mutableListOf<String>()
+    for (p in permissions) {
+        if (PackageManager.PERMISSION_GRANTED != packageManager.checkPermission(p, packageName))
+            array.add(p)
+    }
+    return array.toTypedArray()
 }
 
 fun Context.openOtherPermissionsPageOnXiaomiDevice() {

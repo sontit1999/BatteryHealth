@@ -1,5 +1,6 @@
 package com.sh.entertainment.fastcharge.ui.settings
 
+import android.Manifest
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.BlendMode
@@ -7,6 +8,7 @@ import android.graphics.BlendModeColorFilter
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import android.media.MediaPlayer
+import android.os.Build
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -14,6 +16,9 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdError
@@ -72,6 +77,20 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
 
     private var menuItemAd: MenuItem? = null
     private var mediaPlayer: MediaPlayer? = null
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+            if (it[Manifest.permission.BLUETOOTH_SCAN] == true && it[Manifest.permission.BLUETOOTH_CONNECT] == true) {
+                chbBluetooth.isChecked = true
+            } else {
+                Toast.makeText(
+                    this,
+                    "Enable Bluetooth permission to using Bluetooth feature ",
+                    Toast.LENGTH_SHORT
+                ).show()
+                chbBluetooth.isChecked = false
+            }
+        }
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
         if (shouldShowAdsRemovalFeature()) {
@@ -211,6 +230,22 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
             }
         }
 
+        chbBluetooth.setOnCheckedChangeListener { _, b ->
+            if (b) {
+                if (appSettingsModel.isTurnOffBluetooth
+                    && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    && applicationInfo.targetSdkVersion >= Build.VERSION_CODES.S
+                    && !hasPermissionBlueTooth()
+                ) {
+                    requestPermissionBlueTooth()
+                } else {
+                    chbBluetooth.isChecked = true
+                }
+            } else {
+                chbBluetooth.isChecked = false
+            }
+        }
+
         ivBack.setOnClickListener {
             finish()
         }
@@ -243,6 +278,23 @@ class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), Set
                 NumberUtil.getTwoDigitsNumber(dontPlaySoundToMin)
             )
         }
+    }
+
+    //----------------------------------------------------------------------------------------------
+    @RequiresApi(Build.VERSION_CODES.S)
+    private fun requestPermissionBlueTooth() {
+        requestPermissionLauncher.launch(
+            arrayOf(
+                Manifest.permission.BLUETOOTH_SCAN,
+                Manifest.permission.BLUETOOTH_CONNECT
+            )
+        )
+    }
+
+    @RequiresApi(Build.VERSION_CODES.S)
+    fun hasPermissionBlueTooth(): Boolean {
+        return checkPermissions(arrayOf(Manifest.permission.BLUETOOTH_CONNECT))
+            .isEmpty()
     }
 
     private fun hideShowSoundPlayingUI() {
