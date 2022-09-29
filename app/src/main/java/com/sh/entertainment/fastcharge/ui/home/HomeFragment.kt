@@ -83,6 +83,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
                 } else {
                     txtInfo.gone()
                     viewTimeLeft.gone()
+                    updateTextInfo(it)
                 }
             } else {
                 txtInfo.visible()

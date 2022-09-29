@@ -106,14 +106,12 @@ class OptimizeActivity(var isCharging: Boolean = false) :
                     add(getString(R.string.clear_ram))
                 }
 
-                if (isCharging && isReduceScreenTimeOut) {
-                    add(getString(R.string.reduce_screen_timeout))
-                }
+                add(getString(R.string.reduce_screen_timeout))
             }
         }
         CoroutineScope(Dispatchers.Main).launch {
             arrOptimizationDescProcess.forEach {
-                delay(300)
+                delay(500)
                 dataBinding.tvDetailOptimize.text = it
             }
         }
