@@ -5,20 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-
-   <!-- <ImageView
-        android:layout_width="@dimen/dimen_x4x"
-        android:layout_height="@dimen/dimen_x4x"
-        android:visibility="gone"
-        android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/_4sdp"
-        android:contentDescription="@string/app_name"
-        android:src="@mipmap/ic_launcher" />-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start|center_vertical"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/img_battery"
@@ -55,13 +46,13 @@
                 style="@style/TextAppearance.Compat.Notification.Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pin dang duoc sac" />
+                android:text="@string/batteryCharging" />
 
             <TextView
                 android:id="@+id/txtTimeLeft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Time left "
+                android:text="@string/time_left"
                 android:textSize="@dimen/text_size_12" />
         </LinearLayout>
 
@@ -78,7 +69,6 @@
             android:orientation="vertical">
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,7 +79,7 @@
                     android:layout_height="@dimen/dimen_2x"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_temperature"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
                 <TextView
                     android:id="@+id/lbl_temperature"
@@ -99,7 +89,7 @@
                     android:layout_marginStart="@dimen/dimen_05x"
                     android:text="50.6*C/ 65.8*F"
                     android:textSize="11dp"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
             </LinearLayout>
         </LinearLayout>
 
@@ -109,13 +99,13 @@
             style="@style/TextView.Regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="@dimen/dimen_50"
             android:layout_gravity="end|center_vertical"
             android:background="@drawable/btn_green_round"
             android:ellipsize="end"
             android:gravity="center"
             android:maxWidth="@dimen/dimen_110"
             android:maxLines="1"
+            android:minWidth="@dimen/dimen_50"
             android:paddingHorizontal="@dimen/dimen_1x"
             android:paddingVertical="@dimen/dimen_1x"
             android:text="@string/optimize"

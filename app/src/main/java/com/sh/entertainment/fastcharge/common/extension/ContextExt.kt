@@ -356,6 +356,19 @@ fun Context.showDrawOverlayPermissionDescDialog( onOkListener:() -> Unit, onCanc
     )
 }
 
+fun Context.showWriteSettingPermissionDescDialog( onOkListener:() -> Unit, onCancelListener:() ->Unit) {
+    val message =  getString(R.string.desc_permission_write_setting) + "\n" + "\n"+ getString(R.string.guide_access_permission_v5)
+    DialogUtil.showConfirmationDialog(
+        ctx, R.string.launch_app_when_plugged, message,
+        R.string.ok, R.string.cancel,
+        okListener = {
+            onOkListener.invoke()
+        }, cancelListener = {
+            onCancelListener.invoke()
+        }
+    )
+}
+
 fun Context.showOtherPermissionsDescXiaomiDialog() {
     DialogUtil.showConfirmationDialog(
         ctx, R.string.launch_app_when_plugged, R.string.desc_other_permissions_on_xiaomi_device,

@@ -145,6 +145,12 @@
     <string name="battery_optimized">Battery Optimized</string>
     <string name="booster_optimized">Booster Optimized</string>
     <string name="battery_free">Battery saver</string>
+    <string name="time_left">Time left</string>
+    <string name="batteryCharging">Battery Charging</string>
+    <string name="desc_permission_write_setting">Để ứng dụng có thể thực hiện các tác vụ tối ưu pin. \n\n Đối với một số điện thoại Android, bạn sẽ cần cấp quyền sửa đổi cài đặt, cho phép ứng dụng này có thể thực hiện các hành động để tiết kiệm pin.</string>
+    <string name="cpu_cooler_suggest">If you find your CPU is overheating. Let\'s try cooling now</string>
+    <string name="booster_suggest">Your phone is slow. Let\'s try to speed up</string>
+    <string name="saver_suggest">The battery is draining too fast. Optimize battery saving now</string>
     <string name="scan_app_battery">Scan for battery-draining apps</string>
     <string name="scan_app_battery_done">Scan done, let optimize</string>
     <string name="app_draining_battery">App draining battery</string>

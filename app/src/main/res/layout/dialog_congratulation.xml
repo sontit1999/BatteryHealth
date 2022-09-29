@@ -11,6 +11,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingBottom="20dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -83,6 +84,113 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titleTv" />
+
+            <View
+                android:id="@+id/bgCooler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_marginEnd="9dp"
+                android:background="@drawable/bg_cooler"
+                app:layout_constraintDimensionRatio="1:0.45"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nativeAdDialog"
+                app:layout_constraintWidth_percent="0.3" />
+
+            <View
+                android:id="@+id/bgBatterySaved"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_saver"
+                app:layout_constraintDimensionRatio="1:0.45"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/bgBooster" />
+
+
+            <View
+                android:id="@+id/bgBooster"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/bg_booster"
+                app:layout_constraintDimensionRatio="1:0.45"
+                app:layout_constraintEnd_toStartOf="@id/bgBatterySaved"
+                app:layout_constraintStart_toEndOf="@id/bgCooler"
+                app:layout_constraintTop_toBottomOf="@+id/bgCooler" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLibrary"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:src="@drawable/icon_fan"
+                app:layout_constraintEnd_toEndOf="@id/bgCooler"
+                app:layout_constraintStart_toStartOf="@id/bgCooler"
+                app:layout_constraintTop_toTopOf="@id/bgCooler" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:gravity="center"
+                android:text="@string/cpu_cooler_suggest"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/bgCooler"
+                app:layout_constraintStart_toStartOf="@id/bgCooler"
+                app:layout_constraintTop_toBottomOf="@id/ivLibrary" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivCamera"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/icon_rocket"
+                app:layout_constraintEnd_toEndOf="@id/bgBooster"
+                app:layout_constraintStart_toStartOf="@id/bgBooster"
+                app:layout_constraintTop_toTopOf="@id/bgBooster" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:text="@string/booster_suggest"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/bgBooster"
+                app:layout_constraintStart_toStartOf="@id/bgBooster"
+                app:layout_constraintTop_toBottomOf="@id/ivCamera" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSaved"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/icon_battery_saver"
+                app:layout_constraintEnd_toEndOf="@id/bgBatterySaved"
+                app:layout_constraintStart_toStartOf="@id/bgBatterySaved"
+                app:layout_constraintTop_toTopOf="@id/bgBatterySaved" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:text="@string/saver_suggest"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@id/bgBatterySaved"
+                app:layout_constraintStart_toStartOf="@id/bgBatterySaved"
+                app:layout_constraintTop_toBottomOf="@id/ivSaved" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -60,6 +60,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     private var isJustOpenedApp = true // Always allow user to optimize when open app
     private var percentageCurrent = 0
 
+
     private val batteryInfoReceiver by lazy {
         BatteryStatusReceiver {
             fillBatteryInfo(it)
@@ -105,7 +106,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkPermission()
+        checkWriteSettingPermission()
         fillDeviceInfo()
         BatteryStatusReceiver.register(ctx, batteryInfoReceiver)
         // Check if #forceOptimize is true then call #startOptimizing() method immediately
@@ -124,14 +125,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         }
     }
 
-    private fun checkPermission() {
+    private fun checkWriteSettingPermission() {
         if (!requireContext().canWriteSettings()) {
-            requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
-                if (!requireContext().canWriteSettings()) requireContext().requestWriteSettingsPermission(
+            requireContext().showWriteSettingPermissionDescDialog(onOkListener = {
+                requireContext().requestWriteSettingsPermission(
                     self,
                     RC_WRITE_SETTINGS
                 )
-
             }, onCancelListener = {
 
             })
@@ -142,12 +142,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     private fun checkCanOverlayPermission() {
         if (!requireContext().canDrawOverlay()) {
             requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
-                requireContext().requestDrawOverlayPermission(
-                    self,
-                    RC_DRAW_OVERLAY
-                )
             }, onCancelListener = {
-
             })
         }
     }
@@ -168,7 +163,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         if (requestCode == RC_WRITE_SETTINGS && ctx?.canWriteSettings() == true) {
             checkCanOverlayPermission()
         } else if (requestCode == RC_DRAW_OVERLAY && ctx?.canDrawOverlay() == true) {
-
+            checkCanOverlayPermission()
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
@@ -466,10 +461,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             val plugged = getPlugged(requireContext())
             val usbCharge = plugged == BatteryManager.BATTERY_PLUGGED_USB
             val time: Int = if (usbCharge) {
+                BatteryPref.initilaze(requireContext())!!
+                    .getTimeChargingUsb(requireContext(), getBatteryLevel(requireContext()))
                 lblWarnUsbCharging.visible()
                 BatteryPref.initilaze(context)!!
                     .getTimeChargingUsb(requireContext(), getBatteryLevel(requireContext()))
             } else {
+                BatteryPref.initilaze(requireContext())!!
+                    .getTimeChargingAc(requireContext(), getBatteryLevel(requireContext()))
                 lblWarnUsbCharging.gone()
                 BatteryPref.initilaze(context)!!
                     .getTimeChargingAc(requireContext(), getBatteryLevel(requireContext()))
