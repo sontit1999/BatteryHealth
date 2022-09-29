@@ -27,13 +27,50 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
 
     override fun initializeView() {
         dataBinding.imgAvatar.gone()
+        dataBinding.optimize.gone()
         dataBinding.doneAnimation.gone()
-        dataBinding.txtMessage.invisible()
-
+        dataBinding.btnOptimize.gone()
         AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
     }
 
     override fun initializeData() {
+        dataBinding.scanApp.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(animation: Animator?) {
+                dataBinding.txtMessage.text = getString(R.string.scan_app_battery)
+                CoroutineScope(Dispatchers.Main).launch {
+                    val list = packageManager.getInstalledApplications(0).filter {
+                        packageManager.getLaunchIntentForPackage(it.packageName) != null
+                    }
+                    dataBinding.txtCountApp.text = list.size.toString()
+                    list.forEach {
+                        delay(200)
+                        dataBinding.txtDescription.text = it.loadLabel(packageManager)
+                    }
+                }
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                dataBinding.txtMessage.text = getString(R.string.scan_app_battery_done)
+
+                dataBinding.scanApp.gone()
+                dataBinding.txtDescription.gone()
+                dataBinding.btnOptimize.visible()
+                dataBinding.optimize.apply {
+                    visible()
+                    pauseAnimation()
+                }
+            }
+
+            override fun onAnimationCancel(animation: Animator?) {
+            }
+
+            override fun onAnimationRepeat(animation: Animator?) {
+            }
+        })
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(300)
+            dataBinding.scanApp.playAnimation()
+        }
     }
 
     override fun onClick() {
@@ -48,7 +85,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
     }
 
     private fun handleSaverBattery() {
-        dataBinding.lottieAnimation.apply {
+        dataBinding.optimize.apply {
             repeatCount = 4
             setAnimation(R.raw.scan)
             removeAllAnimatorListeners()
@@ -63,7 +100,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
 
                 override fun onAnimationEnd(p0: Animator?) {
                     didOptimized = true
-                    dataBinding.lottieAnimation.gone()
+                    dataBinding.optimize.gone()
                     dataBinding.btnOptimize.apply {
                         background =
                             ContextCompat.getDrawable(this@BatteryActivity, R.drawable.btn_green)
@@ -84,7 +121,6 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
     }
 
     private fun handlerStartAminDone() {
-        dataBinding.lottieAnimation.gone()
         dataBinding.doneAnimation.visible()
         dataBinding.imgAvatar.gone()
 
@@ -116,6 +152,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
                     dataBinding.imgAvatar.setImageDrawable(avatar)
                     if (it.packageName != packageName) {
                         activityManager.killBackgroundProcesses(it.packageName)
+                        optimizeParticularApp(it.packageName)
                     }
                 }
             }
@@ -129,6 +166,26 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
         toggleAutoSync(false)
         toggleScreenRotation(0)
         updateBrightness()
+        CoroutineScope(Dispatchers.IO).launch {
+            packageManager.getInstalledApplications(0).forEach {
+                optimizeParticularApp(it.packageName)
+                enableStandbyApp(it.packageName)
+            }
+        }
+    }
+
+    //Turn on Battery Optimization for a particular app
+    private fun optimizeParticularApp(packageName: String) {
+        val cmd = "dumpsys deviceidle whitelist +$packageName"
+        Runtime.getRuntime().exec(cmd)
+    }
+
+    //Force the app into App Standby mode by running the following commands
+    private fun enableStandbyApp(packageName: String) {
+        val cmdDumpsys = "dumpsys battery unplug"
+        Runtime.getRuntime().exec(cmdDumpsys)
+        val cmdInActive = "am set-inactive $packageName true"
+        Runtime.getRuntime().exec(cmdInActive)
     }
 
     private fun updateBrightness() {

@@ -11,19 +11,26 @@
             android:id="@+id/lytAnimation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@+id/txtMessage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/lottieAnimation"
+                android:id="@+id/scanApp"
+                android:layout_width="@dimen/dimen_250"
+                android:layout_height="@dimen/dimen_250"
+                android:layout_gravity="center"
+                app:lottie_rawRes="@raw/battery_scan"
+                app:lottie_repeatCount="2" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/optimize"
                 android:layout_width="@dimen/dimen_250"
                 android:layout_height="@dimen/dimen_250"
                 android:layout_gravity="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_rawRes="@raw/battery_scan" />
+                app:lottie_rawRes="@raw/scan" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/doneAnimation"
@@ -33,6 +40,38 @@
                 android:scaleType="fitXY"
                 app:lottie_autoPlay="false"
                 app:lottie_rawRes="@raw/done" />
+
+            <FrameLayout
+                android:id="@+id/viewInfo"
+                android:visibility="gone"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_curved_circle"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtCountApp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:gravity="center"
+                    android:text="25"
+                    android:textColor="@color/red500"
+                    android:textSize="@dimen/_20sdp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:gravity="center"
+                    android:text="@string/app_draining_battery"
+                    android:textColor="@color/red500"
+                    android:textSize="@dimen/_12sdp" />
+            </FrameLayout>
 
             <ImageView
                 android:id="@+id/imgAvatar"
@@ -51,10 +90,24 @@
             android:fontFamily="@font/quicksand_bold"
             android:gravity="center"
             android:text="@string/scan_ram"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/_18sdp"
+            app:layout_constraintBottom_toTopOf="@+id/txtDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12sdp"
             app:layout_constraintBottom_toTopOf="@+id/btnOptimize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
         <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
             android:id="@+id/btnOptimize"

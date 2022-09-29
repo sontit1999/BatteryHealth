@@ -37,4 +37,5 @@
     <color name="color_main">#0EBF57</color>
     <color name="color_gray_bg">#ECECEC</color>
     <color name="md_blue_500">#2196F3</color>
+    <color name="red500">#ED1F2F</color>
 </resources>

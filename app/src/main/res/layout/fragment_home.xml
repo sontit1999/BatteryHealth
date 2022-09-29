@@ -27,6 +27,7 @@
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="@dimen/dimen_10"
                     android:background="@drawable/btn_white_round"
+                    android:paddingBottom="@dimen/_12sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -49,13 +50,14 @@
                         android:id="@+id/linearLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp"
                         android:orientation="vertical"
-                        android:layout_marginTop="10dp"
-                        app:layout_constraintEnd_toEndOf="@+id/btn_optimize"
-                        app:layout_constraintStart_toStartOf="@+id/btn_optimize"
-                        app:layout_constraintTop_toBottomOf="@+id/btn_optimize">
+                        app:layout_constraintBottom_toTopOf="@+id/lbl_warn_usb_charging"
+                        app:layout_constraintEnd_toEndOf="@+id/lytBattery"
+                        app:layout_constraintStart_toStartOf="@+id/lytBattery"
+                        app:layout_constraintTop_toBottomOf="@+id/lytBattery">
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                             android:id="@+id/txtInfo"
                             style="@style/TextView.Regular"
                             android:layout_width="wrap_content"
@@ -72,23 +74,22 @@
                             android:layout_gravity="center_horizontal"
                             android:orientation="horizontal">
 
-                            <androidx.appcompat.widget.AppCompatTextView
+                            <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                                 android:id="@+id/tvHour"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom|center_vertical|center_horizontal|center"
                                 android:text="00"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
                             <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="bottom|center_vertical|center_horizontal|center"
                                 android:layout_marginStart="2dp"
                                 android:text="h"
-                                android:textColor="@color/white"
-                                android:textSize="@dimen/_12sdp" />
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
 
                             <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                                 android:id="@+id/tvMin"
@@ -97,63 +98,65 @@
                                 android:layout_gravity="bottom|center_vertical|center_horizontal|center"
                                 android:layout_marginStart="2dp"
                                 android:textColor="@color/black"
-                                android:textSize="12sp"
+                                android:textSize="14sp"
                                 tools:text="00" />
 
                             <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="bottom|center_vertical|center_horizontal|center"
                                 android:layout_marginStart="2dp"
                                 android:text="@string/minute"
-                                android:textColor="@color/white"
-                                android:textSize="12sp" />
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
                         </LinearLayout>
 
                     </LinearLayout>
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/lbl_percentage"
-                        style="@style/TextView.Regular"
+                    <LinearLayout
+                        android:id="@+id/lytBattery"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@color/black"
-                        android:textSize="11sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/anim_percentage"
-                        app:layout_constraintEnd_toEndOf="@+id/anim_percentage"
-                        app:layout_constraintStart_toStartOf="@+id/anim_percentage"
-                        app:layout_constraintTop_toTopOf="@+id/anim_percentage"
-                        app:layout_constraintVertical_bias="0.9"
-                        tools:text="40%" />
+                        android:layout_marginTop="6dp"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_optimize"
+                        app:layout_constraintStart_toStartOf="@+id/btn_optimize"
+                        app:layout_constraintTop_toBottomOf="@+id/btn_optimize">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center_vertical"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_battery_home" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/lbl_percentage"
+                            style="@style/TextView.Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="6dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            tools:text="40%" />
+                    </LinearLayout>
 
                     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                         android:id="@+id/btn_optimize"
                         style="@style/Button.Yellow"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_20sdp"
                         android:drawablePadding="@dimen/dimen_1x"
                         android:fontFamily="@font/roboto_regular"
                         android:text="@string/optimize"
-                        app:layout_constraintVertical_bias="0.3"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/anim_percentage"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/anim_percentage"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
-                        android:id="@+id/lbl_optimization_desc_process"
-                        style="@style/TextView.Regular"
-                        android:layout_width="@dimen/zero"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:textColor="@color/black"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/anim_percentage"
-                        tools:layout_editor_absoluteY="112dp" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3" />
 
                     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                         android:id="@+id/lbl_warn_usb_charging"
@@ -161,7 +164,6 @@
                         android:layout_width="@dimen/zero"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-                        android:layout_marginTop="@dimen/dimen_2x"
                         android:background="@drawable/bg_bluelight50_with_border_radius"
                         android:drawablePadding="@dimen/dimen_x1x"
                         android:paddingHorizontal="@dimen/dimen_2x"
@@ -171,9 +173,10 @@
                         android:textSize="@dimen/text_size_12"
                         android:visibility="gone"
                         app:drawableStartCompat="@drawable/ic_warn"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/lbl_optimization_desc_process" />
+                        app:layout_constraintTop_toBottomOf="@+id/anim_percentage" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

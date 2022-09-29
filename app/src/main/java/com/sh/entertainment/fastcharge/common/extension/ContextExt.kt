@@ -211,10 +211,10 @@ fun Context.toggleWifi(enable: Boolean) {
     }
 }
 
-fun Context.toggleSaveBattery(enable: Boolean) {
+fun Context.durationBattery() {
     if (!PermissionUtil.isApi29orHigher()) {
         val powerManager = applicationContext.getSystemService(Context.POWER_SERVICE) as PowerManager?
-        powerManager?.isPowerSaveMode
+        powerManager?.batteryDischargePrediction
     }
 }
 

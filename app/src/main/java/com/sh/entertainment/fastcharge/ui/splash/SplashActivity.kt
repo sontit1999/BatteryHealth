@@ -38,10 +38,10 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashVie
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         presenter.checkVipStatus()
-        //presenter.getRemoteConfiguration(self)
         loadAnimationImage()
-        progressBar.max = 4000
-//        presenter.startProgressAnimator(self, progressBar)
+        progressBar.max = 3000
+
+        MyApplication.didOptimized = false
     }
 
     override fun onDestroy() {
@@ -128,14 +128,14 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashVie
                 if (task.isSuccessful) {
                     MyApplication.remoteConfig.fetchAndActivate()
                     val dataString = MyApplication.remoteConfig.getString("remote_config")
-                    Log.d("HaiHT",dataString)
+                    Log.d("HaiHT", dataString)
                     MyApplication.remoteConfigModel =
                         Gson().fromJson(dataString, RemoteConfig::class.java)
 
-                    Log.d("HaiHT",MyApplication.remoteConfigModel.toString())
+                    Log.d("HaiHT", MyApplication.remoteConfigModel.toString())
                 } else {
                     MyApplication.remoteConfigModel = RemoteConfig()
-                    Log.d("HaiHT","null")
+                    Log.d("HaiHT", "null")
                 }
             }
     }
@@ -156,9 +156,10 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashVie
     }
 
     private fun showOpenAds() {
-        Log.d("HaiHT",MyApplication.remoteConfigModel.is_open_app.toString())
+        Log.d("HaiHT", MyApplication.remoteConfigModel.is_open_app.toString())
         if (appOpenAd != null && MyApplication.remoteConfigModel.is_open_app
-            && (System.currentTimeMillis() - MyApplication.timeShowOpenAd) > MyApplication.remoteConfigModel.timeShowAdsOpenApp * 1000) {
+            && (System.currentTimeMillis() - MyApplication.timeShowOpenAd) > MyApplication.remoteConfigModel.timeShowAdsOpenApp * 1000
+        ) {
             val fullScreenContentCallback: FullScreenContentCallback =
                 object : FullScreenContentCallback() {
                     override fun onAdDismissedFullScreenContent() {

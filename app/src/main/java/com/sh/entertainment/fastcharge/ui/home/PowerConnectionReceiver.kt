@@ -23,6 +23,7 @@ class PowerConnectionReceiver : BroadcastReceiver() {
 
     override fun onReceive(ctx: Context?, intent: Intent?) {
         if (intent?.action == Intent.ACTION_POWER_CONNECTED) {
+            MyApplication.didOptimized = false
             ctx?.run {
                 if (appSettingsModel.batteryPercentage != 0f) {
                     // Open app when plugged

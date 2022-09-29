@@ -1,5 +1,6 @@
 package com.sh.entertainment.fastcharge.ui.home
 
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.app.Dialog
 import android.content.BroadcastReceiver
@@ -35,7 +36,6 @@ import com.sh.entertainment.fastcharge.databinding.FragmentHomeBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseFragment
 import com.sh.entertainment.fastcharge.ui.battery.BatteryActivity
 import com.sh.entertainment.fastcharge.ui.booster.BoosterActivity
-import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
 import com.sh.entertainment.fastcharge.ui.cool.CoolerActivity
 import com.sh.entertainment.fastcharge.ui.info.GIGABYTE
 import com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity
@@ -57,7 +57,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     private var currentPercentage: Float? = null
     private var isCharging = false
-    private var didOptimize = false
     private var isJustOpenedApp = true // Always allow user to optimize when open app
     private var percentageCurrent = 0
 
@@ -73,9 +72,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             currentPercentage = it.percentage
 
             fillBatteryInfo(it)
+            updateOptimizeButton()
 
             if (isCharging) {
-                if (didOptimize) {
+                if (MyApplication.didOptimized) {
                     txtInfo.visible()
                     viewTimeLeft.visible()
                     updateTextInfo(it)
@@ -89,8 +89,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
                 updateTextInfo(it)
             }
             // Update "Optimize button" text
-            if (!didOptimize) {
-
+            if (!MyApplication.didOptimized) {
                 if (currentPercentage != 100f) {
                     btnOptimize.text = getString(R.string.optimize)
                 } else {
@@ -145,7 +144,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
                 requireContext().requestDrawOverlayPermission(
                     self,
-                    OptimizationResultActivity.RC_DRAW_OVERLAY
+                    RC_DRAW_OVERLAY
                 )
             }, onCancelListener = {
 
@@ -156,6 +155,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     override fun onResume() {
         super.onResume()
 
+        updateOptimizeButton()
         // Check if device is needed to optimize or not
         ctx?.run {
             if (!isXiaomiDevice) {
@@ -197,7 +197,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         rootView.run {
             scrollView = findViewById(R.id.scrollview)
             btnOptimize = findViewById(R.id.btn_optimize)
-            lblOptimizationDescProcess = findViewById(R.id.lbl_optimization_desc_process)
             lblWarnUsbCharging = findViewById(R.id.lbl_warn_usb_charging)
             lblPercentage = findViewById(R.id.lbl_percentage)
             viewTimeLeft = findViewById(R.id.view_time_left)
@@ -254,51 +253,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
 
     override fun onOptimizing() {
-        didOptimize = false
-        // Update UI
-        updateOptimizeButton(true)
-
-        val arrOptimizationDescProcess = arrayListOf<String>().apply {
-            ctx?.appSettingsModel?.run {
-                if (isCharging) {
-                    add(getString(R.string.clean_apps))
-                }
-                if (isTurnOffBluetooth) {
-                    add(getString(R.string.turn_off_bluetooth))
-                }
-                if (!PermissionUtil.isApi29orHigher() && isTurnOffWifi) {
-                    add(getString(R.string.turn_off_wifi))
-                }
-                if (isTurnOffAutoSync) {
-                    add(getString(R.string.turn_off_auto_sync))
-                }
-                if (isTurnOffScreenRotation) {
-                    add(getString(R.string.turn_off_screen_rotation))
-                }
-
-                if (isClearRam) {
-                    add(getString(R.string.clear_ram))
-                }
-
-                if (isCharging && isReduceScreenTimeOut) {
-                    add(getString(R.string.reduce_screen_timeout))
-                }
-            }
-        }
-        presenter.showOptimizationDescProcess(arrOptimizationDescProcess.size) {
-            lblOptimizationDescProcess.text = arrOptimizationDescProcess[it]
-        }
-
-        // Save optimization times
-        ctx?.appSettingsModel?.run {
-            optimizedTimes += 1
-            CommonUtil.saveAppSettingsModel(ctx, this)
-
-            // Load interstitial ad before
-            if (!isShowRateDialog()) {
-                AdsManager.loadInterstitialOptimizationResult(ctx)
-            }
-        }
     }
 
     override fun onDestroy() {
@@ -307,15 +261,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     override fun onOptimizationSuccess() {
-        // Show success screen
-        showOptimizationResultScreen(true)
-        // Update flags
-        didOptimize = true
-        isJustOpenedApp = false
-
-        // Update UI
-        updateOptimizeButton()
-        lblOptimizationDescProcess.text = ""
     }
 
     override fun onAppSettingsChanged(model: AppSettingsModel) {
@@ -372,13 +317,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     fun startOptimizing(forceOptimize: Boolean = false) {
-        openActivity(OptimizeActivity::class.java)
-        if (!didOptimize || forceOptimize) {
+        if (!MyApplication.didOptimized || forceOptimize) {
+            openActivity(OptimizeActivity(isCharging)::class.java)
             if (currentPercentage != 100f && ctx?.appSettingsModel?.batteryPercentage != 100f) {
                 updateBrightness()
             }
         } else {
-            showOptimizationResultScreen(false)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.your_device_ready_for_quick_charge),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -413,20 +362,21 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     fun refreshOptimizationUIState() {
-        Log.d("HaiHT", "refreshOptimizationUIState")
-        if (didOptimize) {
-            if (shouldOptimize()) {
-                didOptimize = false
-                updateOptimizeButton()
-            }
-        } else {
-            if (!shouldOptimize()) {
-                didOptimize = true
-                updateOptimizeButton()
-            }
-        }
+//        Log.d("HaiHT", "refreshOptimizationUIState")
+//        if (didOptimize) {
+//            if (shouldOptimize()) {
+//                didOptimize = false
+//                updateOptimizeButton()
+//            }
+//        } else {
+//            if (!shouldOptimize()) {
+//                didOptimize = true
+//                updateOptimizeButton()
+//            }
+//        }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun fillDeviceInfo() {
         // CPU model
         binding.lblModel.text = "${requireContext().manufacturer} - ${Build.MODEL}"
@@ -513,21 +463,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     private fun updateTextInfo(model: BatteryModel) {
         if (model.isCharging) {
-            val plugged = getPlugged(context!!)
+            val plugged = getPlugged(requireContext())
             val usbCharge = plugged == BatteryManager.BATTERY_PLUGGED_USB
             val time: Int = if (usbCharge) {
+                lblWarnUsbCharging.visible()
                 BatteryPref.initilaze(context)!!
-                    .getTimeChargingUsb(context!!, getBatteryLevel(context!!))
+                    .getTimeChargingUsb(requireContext(), getBatteryLevel(requireContext()))
             } else {
+                lblWarnUsbCharging.gone()
                 BatteryPref.initilaze(context)!!
-                    .getTimeChargingAc(context!!, getBatteryLevel(context!!))
+                    .getTimeChargingAc(requireContext(), getBatteryLevel(requireContext()))
             }
             txtInfo.text = getString(R.string.time_charging_left)
             txtHours.text = (time / 60).toString()
             txtMin.text = (time % 60).toString()
         } else {
             val time = BatteryPref.initilaze(context)!!
-                .getTimeRemainning(context!!, getBatteryLevel(context!!))
+                .getTimeRemainning(requireContext(), getBatteryLevel(requireContext()))
             txtInfo.text = getString(R.string.time_using_left)
             txtHours.text = (time / 60).toString()
             txtMin.text = (time % 60).toString()
@@ -558,14 +510,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         }
     }
 
-    private fun showOptimizationResultScreen(checkShowingRateDialog: Boolean) {
-        bundleOf(com.sh.entertainment.fastcharge.common.Constants.KEY_CHECK_SHOWING_RATE_DIALOG to checkShowingRateDialog).run {
-            openActivity(OptimizationResultActivity::class.java, this)
-        }
-    }
-
-    private fun updateOptimizeButton(isOptimizing: Boolean = false) {
-        if (didOptimize) {
+    private fun updateOptimizeButton() {
+        if (MyApplication.didOptimized) {
             btnOptimize.apply {
                 isEnabled = true
                 text = getString(R.string.optimized)
@@ -574,20 +520,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             }
         } else {
             btnOptimize.apply {
-                text = if (isOptimizing) {
-                    isEnabled = false
-                    setBackgroundResource(R.drawable.btn_blue_black)
-                    getString(R.string.optimizing)
-                } else {
-                    isEnabled = true
-                    setBackgroundResource(R.drawable.btn_yellow)
-                    getString(R.string.optimize)
-                }
+                text = getString(R.string.optimize)
+                setBackgroundResource(R.drawable.btn_yellow)
                 setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
             }
         }
     }
-
 
     private fun shouldOptimize(): Boolean {
         return ctx?.let { ctx ->

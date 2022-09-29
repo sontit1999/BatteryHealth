@@ -31,6 +31,9 @@ class MyApplication : MultiDexApplication() {
     companion object {
         lateinit var instance: MyApplication
             private set
+
+        var didOptimized = false
+
         var countOptimize = 0
         var interstitialAd: InterstitialAd? = null
         var nativeAdExit: UnifiedNativeAd? = null

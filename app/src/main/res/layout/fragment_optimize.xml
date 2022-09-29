@@ -12,16 +12,18 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
-            app:lottie_rawRes="@raw/lt_optimization_effect" />
+            app:lottie_rawRes="@raw/lt_optimization_effect"
+            app:lottie_repeatCount="2" />
 
         <com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
             android:id="@+id/nativeAdView"
@@ -44,8 +46,8 @@
             android:text="@string/scan_app_background"
             android:textColor="@color/white"
             android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@id/nativeAdView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animationView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

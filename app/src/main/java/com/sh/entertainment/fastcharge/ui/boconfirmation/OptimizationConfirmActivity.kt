@@ -41,11 +41,7 @@ class OptimizationConfirmActivity :
 
         // Fill UI
         with(appSettingsModel) {
-            val img = if (isShowSnailIcon) {
-                R.drawable.ic_snail
-            } else {
-                R.drawable.ic_turtle
-            }
+            val img =R.drawable.icon_turtle
             imgNormalCharge.setImageResource(img)
         }
 

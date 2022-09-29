@@ -141,10 +141,13 @@
     <string name="ram_free">RAM free</string>
     <string name="congratulation">Chúc mừng bạn đã tối ưu thành công. Trải nghiệm cảm giác mượt mà ngay nào !</string>
     <string name="congratulation_title">Congratulations</string>
-    <string name="battery_saver">Battery saver</string>
+    <string name="battery_saver">Optimize Battery</string>
     <string name="battery_optimized">Battery Optimized</string>
     <string name="booster_optimized">Booster Optimized</string>
     <string name="battery_free">Battery saver</string>
+    <string name="scan_app_battery">Scan for battery-draining apps</string>
+    <string name="scan_app_battery_done">Scan done, let optimize</string>
+    <string name="app_draining_battery">App draining battery</string>
 
 
 </resources>
