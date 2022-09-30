@@ -6,7 +6,7 @@ object Constants {
     const val LINK_APP_ON_STORE =
         "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
     //const val LINK_POLICY = "https://sites.google.com/view/x2charger"
-    const val LINK_POLICY = "https://sites.google.com/view/privacypolicy-masterbattery/"
+    const val LINK_POLICY = "https://pages.flycricket.io/fast-charging-pro/privacy.html"
 
     const val ACTION_EXIT_APP = "action_exit_app"
     const val ACTION_OPTIMIZE = "action_optimize"
