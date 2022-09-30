@@ -43,12 +43,12 @@
 
             <FrameLayout
                 android:id="@+id/viewInfo"
-                android:visibility="gone"
                 android:layout_width="@dimen/_150sdp"
                 android:layout_height="@dimen/_150sdp"
                 android:layout_gravity="center"
                 android:background="@drawable/bg_curved_circle"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/txtCountApp"
@@ -100,29 +100,11 @@
             android:id="@+id/txtDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="66dp"
             android:fontFamily="@font/quicksand_bold"
             android:gravity="center"
             android:textColor="@android:color/white"
             android:textSize="@dimen/_12sdp"
-            app:layout_constraintBottom_toTopOf="@+id/btnOptimize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-
-        <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
-            android:id="@+id/btnOptimize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="56dp"
-            android:background="@drawable/btn_yellow"
-            android:fontFamily="@font/roboto_regular"
-            android:gravity="center"
-            android:minWidth="@dimen/dimen_200"
-            android:padding="@dimen/dimen_1x"
-            android:text="@string/battery_saver"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/text_size_22"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

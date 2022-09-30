@@ -2,6 +2,12 @@ package com.sh.entertainment.fastcharge.ui.optimize
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.addToCompositeDisposable
@@ -38,7 +44,7 @@ class OptimizeActivity(var isCharging: Boolean = false) :
                 super.onAnimationEnd(animation)
                 val dialogCongratulation = CongratulationDialog()
                 dialogCongratulation.onClickClose = {
-                    finish()
+                    showInter()
                 }
                 dialogCongratulation.show(supportFragmentManager, "dialogCongratulation")
             }
@@ -117,13 +123,55 @@ class OptimizeActivity(var isCharging: Boolean = false) :
         }
     }
 
+    private fun showInter() {
+        if (MyApplication.interstitialAd == null) {
+            finish()
+            return
+        }
+        if ((System.currentTimeMillis() - MyApplication.timeShowIntel) < MyApplication.remoteConfigModel.timeShowInter * 1000) {
+            finish()
+            return
+        }
+        MyApplication.interstitialAd!!.fullScreenContentCallback = object :
+            FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+                finish()
+                MyApplication.timeShowIntel = System.currentTimeMillis()
+            }
+
+            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                finish()
+                MyApplication.interstitialAd = null
+            }
+
+            override fun onAdImpression() {}
+            override fun onAdShowedFullScreenContent() {
+            }
+        }
+        MyApplication.interstitialAd!!.show(this)
+    }
+
+    private fun handleLoadInter() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, MyApplication.KEY_INTEL, adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    MyApplication.interstitialAd = ad
+                }
+
+                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                    MyApplication.interstitialAd = null
+                }
+            })
+    }
+
     override fun initializeView() {
         loadNativeAds()
         bindingAction()
     }
 
     override fun initializeData() {
-
+        handleLoadInter()
     }
 
     override fun onClick() {

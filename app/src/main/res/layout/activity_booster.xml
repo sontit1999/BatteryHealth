@@ -51,6 +51,7 @@
             android:fontFamily="@font/quicksand_bold"
             android:gravity="center"
             android:text="@string/scan_ram"
+            android:textColor="@android:color/white"
             android:textSize="@dimen/_18sdp"
             app:layout_constraintBottom_toTopOf="@+id/btnOptimize"
             app:layout_constraintEnd_toEndOf="parent"

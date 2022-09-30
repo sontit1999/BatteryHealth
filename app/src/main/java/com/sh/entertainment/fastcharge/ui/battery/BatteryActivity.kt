@@ -35,7 +35,6 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
         dataBinding.imgAvatar.gone()
         dataBinding.optimize.gone()
         dataBinding.doneAnimation.gone()
-        dataBinding.btnOptimize.gone()
         AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
     }
 
@@ -58,15 +57,10 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                dataBinding.txtMessage.text = getString(R.string.scan_app_battery_done)
-
                 dataBinding.scanApp.gone()
                 dataBinding.txtDescription.gone()
-                dataBinding.btnOptimize.visible()
-                dataBinding.optimize.apply {
-                    visible()
-                    pauseAnimation()
-                }
+                dataBinding.optimize.visible()
+                handleSaverBattery()
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -82,19 +76,19 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
     }
 
     override fun onClick() {
-        dataBinding.btnOptimize.setOnSafeClickListener {
-            if (didOptimized) {
-                finish()
-                return@setOnSafeClickListener
-            }
-            handleSaverBattery()
-            dataBinding.txtMessage.visible()
-        }
+//        dataBinding.btnOptimize.setOnSafeClickListener {
+//            if (didOptimized) {
+//                finish()
+//                return@setOnSafeClickListener
+//            }
+//            handleSaverBattery()
+//            dataBinding.txtMessage.visible()
+//        }
     }
 
     private fun handleSaverBattery() {
         dataBinding.optimize.apply {
-            repeatCount = 4
+            repeatCount = 3
             setAnimation(R.raw.scan)
             removeAllAnimatorListeners()
             cancelAnimation()
@@ -109,12 +103,6 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
                 override fun onAnimationEnd(p0: Animator?) {
                     didOptimized = true
                     dataBinding.optimize.gone()
-                    dataBinding.btnOptimize.gone()
-                    dataBinding.btnOptimize.apply {
-                        background =
-                            ContextCompat.getDrawable(this@BatteryActivity, R.drawable.btn_green)
-                        text = getString(R.string.battery_optimized)
-                    }
                     handlerStartAminDone()
                 }
 
@@ -140,6 +128,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
 
             override fun onAnimationEnd(animation: Animator?) {
                 dataBinding.txtMessage.text = getString(R.string.battery_free)
+                showInter()
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -155,7 +144,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
             finish()
             return
         }
-        if ((System.currentTimeMillis() - MyApplication.timeShowIntel) < MyApplication.remoteConfigModel.timeShowInter*1000) {
+        if ((System.currentTimeMillis() - MyApplication.timeShowIntel) < MyApplication.remoteConfigModel.timeShowInter * 1000) {
             finish()
             return
         }

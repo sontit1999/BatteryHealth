@@ -4,7 +4,14 @@ import android.animation.Animator
 import android.app.ActivityManager
 import android.content.pm.ApplicationInfo
 import androidx.core.content.ContextCompat
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.sh.entertainment.fastcharge.R
+import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.gone
 import com.sh.entertainment.fastcharge.common.extension.invisible
 import com.sh.entertainment.fastcharge.common.extension.setOnSafeClickListener
@@ -30,6 +37,7 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
     }
 
     override fun initializeData() {
+        handleLoadInter()
     }
 
     override fun onClick() {
@@ -79,17 +87,19 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
     }
 
     private fun handlerStartAminDone() {
+        dataBinding.btnOptimize.gone()
         dataBinding.lottieAnimation.gone()
         dataBinding.doneAnimation.visible()
         dataBinding.imgAvatar.gone()
 
+        dataBinding.txtMessage.text = getString(R.string.ram_free)
         dataBinding.doneAnimation.playAnimation()
         dataBinding.doneAnimation.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                dataBinding.txtMessage.text = getString(R.string.ram_free)
+                showInter()
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -114,6 +124,48 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
                 }
             }
         }
+    }
+
+    private fun showInter() {
+        if (MyApplication.interstitialAd == null) {
+            finish()
+            return
+        }
+        if ((System.currentTimeMillis() - MyApplication.timeShowIntel) < MyApplication.remoteConfigModel.timeShowInter * 1000) {
+            finish()
+            return
+        }
+        MyApplication.interstitialAd!!.fullScreenContentCallback = object :
+            FullScreenContentCallback() {
+            override fun onAdDismissedFullScreenContent() {
+                finish()
+                MyApplication.timeShowIntel = System.currentTimeMillis()
+            }
+
+            override fun onAdFailedToShowFullScreenContent(adError: AdError) {
+                finish()
+                MyApplication.interstitialAd = null
+            }
+
+            override fun onAdImpression() {}
+            override fun onAdShowedFullScreenContent() {
+            }
+        }
+        MyApplication.interstitialAd!!.show(this)
+    }
+
+    private fun handleLoadInter() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, MyApplication.KEY_INTEL, adRequest,
+            object : InterstitialAdLoadCallback() {
+                override fun onAdLoaded(ad: InterstitialAd) {
+                    MyApplication.interstitialAd = ad
+                }
+
+                override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                    MyApplication.interstitialAd = null
+                }
+            })
     }
 
 }
