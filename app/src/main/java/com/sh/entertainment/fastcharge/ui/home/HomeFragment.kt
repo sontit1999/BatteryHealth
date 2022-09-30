@@ -36,6 +36,7 @@ import com.sh.entertainment.fastcharge.databinding.FragmentHomeBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseFragment
 import com.sh.entertainment.fastcharge.ui.battery.BatteryActivity
 import com.sh.entertainment.fastcharge.ui.booster.BoosterActivity
+import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
 import com.sh.entertainment.fastcharge.ui.cool.CoolerActivity
 import com.sh.entertainment.fastcharge.ui.info.GIGABYTE
 import com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity
@@ -142,9 +143,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     private fun checkCanOverlayPermission() {
         if (!requireContext().canDrawOverlay()) {
-            requireContext().showDrawOverlayPermissionDescDialog(onOkListener = {
-            }, onCancelListener = {
-            })
+            showToast(getString(R.string.guild_grant_permission_overlay))
+            requireContext().requestDrawOverlayPermission(
+                self,
+                OptimizationResultActivity.RC_DRAW_OVERLAY
+            )
         }
     }
 

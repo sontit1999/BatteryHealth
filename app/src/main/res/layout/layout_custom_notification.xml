@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frl_custom_notification"
     android:layout_width="match_parent"
+    android:padding="5dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
     <LinearLayout
@@ -13,25 +14,17 @@
 
         <ImageView
             android:id="@+id/img_battery"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dimen_2x"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_battery" />
-
-        <TextView
-            android:id="@+id/lbl_percentage"
-            style="@style/TextAppearance.Compat.Notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_05x"
-            android:textSize="@dimen/text_size_12" />
+            android:src="@mipmap/icon_app" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginStart="@dimen/dimen_6x"
+        android:layout_marginStart="60dp"
         android:gravity="center_vertical">
 
         <LinearLayout
@@ -45,6 +38,7 @@
                 android:id="@+id/txt_status_charge"
                 style="@style/TextAppearance.Compat.Notification.Title"
                 android:layout_width="wrap_content"
+                android:textSize="12sp"
                 android:layout_height="wrap_content"
                 android:text="@string/batteryCharging" />
 
@@ -53,7 +47,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/time_left"
-                android:textSize="@dimen/text_size_12" />
+                android:textSize="10sp"
+                tools:ignore="SmallSp" />
         </LinearLayout>
 
         <TextView
@@ -75,10 +70,10 @@
                 android:layout_marginTop="3dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="16dp"
                     android:layout_height="@dimen/dimen_2x"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_temperature"
+                    android:src="@drawable/icon_temperature"
                     android:visibility="visible" />
 
                 <TextView
@@ -87,20 +82,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_05x"
-                    android:text="50.6*C/ 65.8*F"
-                    android:textSize="11dp"
+                    android:textSize="10sp"
+                    android:visibility="visible"
+                    tools:ignore="SmallSp"
+                    tools:text="50.6*C/ 65.8*F" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="@dimen/dimen_2x"
+                    android:contentDescription="@string/app_name"
+                    android:src="@drawable/icon_flash"
                     android:visibility="visible" />
+                <TextView
+                    android:id="@+id/lbl_percentage"
+                    style="@style/TextAppearance.Compat.Notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/dimen_05x"
+                    android:textSize="@dimen/text_size_12"
+                    tools:text="100%" />
             </LinearLayout>
         </LinearLayout>
 
         <TextView
             android:layout_marginStart="3dp"
             android:id="@+id/btn_optimize"
-            style="@style/TextView.Regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/ic_rocket"
             android:layout_gravity="end|center_vertical"
-            android:background="@drawable/btn_green_round"
+            android:padding="15dp"
             android:ellipsize="end"
             android:gravity="center"
             android:maxWidth="@dimen/dimen_110"
@@ -108,7 +125,6 @@
             android:minWidth="@dimen/dimen_50"
             android:paddingHorizontal="@dimen/dimen_1x"
             android:paddingVertical="@dimen/dimen_1x"
-            android:text="@string/optimize"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/text_size_14" />

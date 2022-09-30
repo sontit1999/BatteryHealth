@@ -6,6 +6,4 @@
         android:angle="270"
         android:endColor="@color/bgMainBottomLight"
         android:startColor="@color/color_main" />
-
-    <corners android:radius="10dp"/>
 </shape>

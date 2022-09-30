@@ -77,21 +77,21 @@ class PowerConnectionService : Service() {
             // Update notification content
             var iconCharge = 0
             layoutCustomNotification?.run {
-                val imgRes = it.percentage?.let { percent ->
-                    when {
-                        percent == 100f -> {
-                            R.drawable.battery_full
-                        }
-                        percent < 20f -> {
-                            R.drawable.ic_battery_low
-                        }
-                        else -> {
-                            R.drawable.ic_battery
-                        }
-                    }
-                } ?: R.drawable.ic_battery
-                iconCharge = imgRes
-                setImageViewResource(R.id.img_battery, imgRes)
+                /*  val imgRes = it.percentage?.let { percent ->
+                      when {
+                          percent == 100f -> {
+                              R.drawable.battery_full
+                          }
+                          percent < 20f -> {
+                              R.drawable.ic_battery_low
+                          }
+                          else -> {
+                              R.drawable.ic_battery
+                          }
+                      }
+                  } ?: R.drawable.ic_battery*/
+                iconCharge = R.mipmap.icon_app
+                setImageViewResource(R.id.img_battery, iconCharge)
                 setTextViewText(
                     R.id.lbl_percentage,
                     String.format(
@@ -101,10 +101,16 @@ class PowerConnectionService : Service() {
                 )
                 if (it.status == 2) {
                     setTextViewText(R.id.txt_status_charge, getString(R.string.charing))
-                    setTextViewText(R.id.txtTimeLeft, getString(R.string.time_charging_left) +" : "+ getTextTimeLeft(it,ctx))
+                    setTextViewText(
+                        R.id.txtTimeLeft,
+                        getString(R.string.time_charging_left) + " : " + getTextTimeLeft(it, ctx)
+                    )
                 } else {
                     setTextViewText(R.id.txt_status_charge, getString(R.string.not_charing))
-                    setTextViewText(R.id.txtTimeLeft, getString(R.string.time_using_left)+ " : "+getTextTimeLeft(it,ctx))
+                    setTextViewText(
+                        R.id.txtTimeLeft,
+                        getString(R.string.time_using_left) + " : " + getTextTimeLeft(it, ctx)
+                    )
                 }
                 setTextViewText(
                     R.id.lbl_temperature, String.format(
@@ -142,7 +148,7 @@ class PowerConnectionService : Service() {
         }
     }
 
-    private fun getTextTimeLeft(model: BatteryModel, context: Context) : String{
+    private fun getTextTimeLeft(model: BatteryModel, context: Context): String {
         if (model.isCharging) {
             val plugged = getPlugged(context)
             Log.d("HaiHT", "plugged:$plugged")
@@ -150,17 +156,21 @@ class PowerConnectionService : Service() {
             val time: Int = if (usbCharge) {
                 BatteryPref.initilaze(context)!!
                     .getTimeChargingUsb(context, getBatteryLevel(context))
-                Log.d("HaiHT", "time USB:${BatteryPref.initilaze(context)!!
-                    .getTimeChargingUsb(context, getBatteryLevel(context))}")
+                Log.d(
+                    "HaiHT", "time USB:${
+                        BatteryPref.initilaze(context)!!
+                            .getTimeChargingUsb(context, getBatteryLevel(context))
+                    }"
+                )
             } else {
                 BatteryPref.initilaze(context)!!
                     .getTimeChargingAc(context, getBatteryLevel(context))
             }
-             return (time / 60).toString() +"h"+(time % 60).toString()+"m"
+            return (time / 60).toString() + "h" + (time % 60).toString() + "m"
         } else {
             val time = BatteryPref.initilaze(context)!!
                 .getTimeRemainning(context, getBatteryLevel(context))
-            return (time / 60).toString() +"h"+(time % 60).toString()+"m"
+            return (time / 60).toString() + "h" + (time % 60).toString() + "m"
         }
     }
 
@@ -170,7 +180,7 @@ class PowerConnectionService : Service() {
                 null as BroadcastReceiver?,
                 IntentFilter("android.intent.action.BATTERY_CHANGED")
             )
-            return  registerReceiver!!.getIntExtra("level", -1)
+            return registerReceiver!!.getIntExtra("level", -1)
         } catch (unused: java.lang.Exception) {
             -1
         }
@@ -182,7 +192,7 @@ class PowerConnectionService : Service() {
                 null as BroadcastReceiver?,
                 IntentFilter("android.intent.action.BATTERY_CHANGED")
             )
-            return  registerReceiver!!.getIntExtra("plugged", -1)
+            return registerReceiver!!.getIntExtra("plugged", -1)
         } catch (unused: java.lang.Exception) {
             -1
         }

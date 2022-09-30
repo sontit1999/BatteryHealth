@@ -154,6 +154,7 @@
     <string name="scan_app_battery">Scan for battery-draining apps</string>
     <string name="scan_app_battery_done">Scan done, let optimize</string>
     <string name="app_draining_battery">App draining battery</string>
+    <string name="guild_grant_permission_overlay">Allow overlay  permission for optimal battery when charging</string>
 
 
 </resources>
