@@ -5,17 +5,23 @@
     android:layout_height="@dimen/dimen_200"
     android:background="@drawable/bg_main_light">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.cardview.widget.CardView
         android:id="@+id/img_logo_full"
-        android:layout_width="@dimen/dimen_96"
+        android:layout_width="@dimen/dimen_120"
         android:layout_height="@dimen/dimen_120"
         android:layout_marginTop="@dimen/dimen_10"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/logo_splash"
+        app:cardCornerRadius="26dp"
         app:layout_constraintBottom_toTopOf="@id/img_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/icon_app" />
+    </androidx.cardview.widget.CardView>
 
     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/img_name"
@@ -38,6 +44,7 @@
         android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginEnd="@dimen/dimen_10"
         android:contentDescription="@string/appbar_scrolling_view_behavior"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_back" />

@@ -33,6 +33,7 @@
                     android:contentDescription="@null"
                     android:padding="14dp"
                     app:srcCompat="@drawable/ic_back" />
+
                 <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     style="@style/TextView.Medium"
                     android:layout_width="match_parent"
