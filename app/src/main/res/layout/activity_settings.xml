@@ -26,7 +26,7 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
-                android:padding="@dimen/dimen_10"
+                android:padding="18dp"
                 app:srcCompat="@drawable/ic_back" />
 
             <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
@@ -47,7 +47,7 @@
             android:background="@drawable/bg_white_radius"
             android:paddingBottom="@dimen/dimen_6">
 
-            <TextView
+            <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                 android:id="@+id/lbl_play_sound"
                 style="@style/TextView.Medium"
                 android:layout_width="@dimen/zero"
@@ -94,7 +94,6 @@
                 app:layout_constraintEnd_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_play_sound">
 
-
                 <View
                     android:id="@+id/vw_play_sound"
                     style="@style/HorizontalDivider"
@@ -102,7 +101,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:id="@+id/lbl_dont_disturb"
                     style="@style/TextView.Regular"
                     android:layout_width="@dimen/zero"
@@ -120,24 +119,27 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_1x"
+                    android:checked="true"
+                    app:buttonTint="@color/blue"
                     app:layout_constraintBaseline_toBaselineOf="@+id/lbl_dont_disturb"
                     app:layout_constraintEnd_toEndOf="parent" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/label_desc_dont_disturb"
-                    style="@style/TextView.Italic"
                     android:layout_width="@dimen/zero"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dimen_2x"
                     android:layout_marginEnd="@dimen/dimen_1x"
+                    android:fontFamily="@font/quicksand_regular"
                     android:text="@string/battery_full_sound_not_played_while"
                     android:textSize="@dimen/text_size_13"
+                    android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_dont_disturb" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:id="@+id/lbl_from_label"
                     style="@style/TextView.Regular"
                     android:layout_width="@dimen/zero"
@@ -166,7 +168,7 @@
                     app:layout_constraintBaseline_toBaselineOf="@+id/lbl_from_label"
                     app:layout_constraintEnd_toEndOf="parent" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:id="@+id/lbl_to_label"
                     style="@style/TextView.Regular"
                     android:layout_width="@dimen/zero"
@@ -203,7 +205,7 @@
             android:layout_marginTop="@dimen/dimen_1x"
             android:background="@drawable/bg_white_radius">
 
-            <TextView
+            <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                 android:id="@+id/label_auto"
                 style="@style/TextView.Medium"
                 android:layout_width="wrap_content"
@@ -229,14 +231,15 @@
                 app:thumbTint="@color/white"
                 app:track="@drawable/custom_track" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/txt_define"
-                style="@style/TextView.Italic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/dimen_2x"
                 android:layout_marginEnd="@dimen/dimen_1x"
+                android:fontFamily="@font/quicksand_regular"
                 android:text="@string/automatic_definition"
+                android:textStyle="italic"
                 app:layout_constraintTop_toBottomOf="@+id/label_auto" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -255,7 +258,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:id="@+id/lbl_launch_app"
                     style="@style/TextView.Regular"
                     android:layout_width="@dimen/zero"
@@ -274,11 +277,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/dimen_1x"
                     android:checked="true"
+                    app:buttonTint="@color/blue"
                     app:layout_constraintBottom_toBottomOf="@+id/lbl_launch_app"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/lbl_launch_app" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:id="@+id/lbl_exit_app"
                     style="@style/TextView.Regular"
                     android:layout_width="@dimen/zero"
@@ -295,11 +299,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    app:buttonTint="@color/blue"
                     app:layout_constraintBottom_toBottomOf="@+id/lbl_exit_app"
                     app:layout_constraintEnd_toEndOf="@+id/chb_launch_app"
                     app:layout_constraintTop_toTopOf="@+id/lbl_exit_app" />
 
-                <TextView
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                     android:id="@+id/lbl_restore_state"
                     style="@style/TextView.Regular"
                     android:layout_width="@dimen/zero"
@@ -316,6 +321,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checked="true"
+                    app:buttonTint="@color/blue"
                     app:layout_constraintBottom_toBottomOf="@+id/lbl_restore_state"
                     app:layout_constraintEnd_toEndOf="@+id/chb_launch_app"
                     app:layout_constraintTop_toTopOf="@+id/lbl_restore_state" />
@@ -328,14 +334,15 @@
             android:layout_marginTop="@dimen/dimen_1x"
             android:background="@drawable/bg_white_radius">
 
-            <TextView
+            <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                 android:id="@+id/label_optimization_option"
-                style="@style/TextView.Medium"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand_bold"
                 android:paddingHorizontal="@dimen/dimen_2x"
                 android:paddingVertical="@dimen/dimen_x1x"
                 android:text="@string/optimization_options"
+                android:textColor="@android:color/black"
                 android:textSize="@dimen/text_size_16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -348,19 +355,30 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/label_optimization_option" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/lbl_clear_ram"
-                style="@style/TextView.Regular"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_2x"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingVertical="@dimen/dimen_x1x"
-                android:text="@string/clear_ram"
-                app:drawableStartCompat="@drawable/ic_clear_black"
                 app:layout_constraintEnd_toStartOf="@+id/chb_ram"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/vw_optimization_option" />
+                app:layout_constraintTop_toBottomOf="@+id/vw_optimization_option">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@null"
+                    android:padding="4dp"
+                    android:src="@drawable/sweeping" />
+
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/clear_ram" />
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/chb_ram"
@@ -369,46 +387,74 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/dimen_1x"
                 android:checked="true"
+                app:buttonTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/lbl_clear_ram"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/lbl_clear_ram" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/lbl_disable_wifi"
-                style="@style/TextView.Regular"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingVertical="@dimen/dimen_x1x"
-                android:text="@string/turn_off_wifi"
-                android:visibility="gone"
-                app:drawableStartCompat="@drawable/ic_disable_wifi_black"
                 app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
                 app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_clear_ram" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_clear_ram">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@null"
+                    android:padding="4dp"
+                    android:src="@drawable/no_wifi" />
+
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/turn_off_wifi"
+                    android:visibility="visible" />
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/chb_wifi"
                 style="@style/CheckBoxStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:visibility="visible"
+                app:buttonTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_wifi"
                 app:layout_constraintEnd_toEndOf="@+id/chb_ram"
                 app:layout_constraintTop_toTopOf="@+id/lbl_disable_wifi" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/lbl_disable_bluetooth"
-                style="@style/TextView.Regular"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingVertical="@dimen/dimen_x1x"
-                android:text="@string/turn_off_bluetooth"
-                app:drawableStartCompat="@drawable/ic_bluetooth_black"
                 app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
                 app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_wifi" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_wifi">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@null"
+                    android:padding="4dp"
+                    android:src="@drawable/bluetooth" />
+
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/turn_off_bluetooth" />
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/chb_bluetooth"
@@ -416,22 +462,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                app:buttonTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_bluetooth"
                 app:layout_constraintEnd_toEndOf="@+id/chb_ram"
                 app:layout_constraintTop_toTopOf="@+id/lbl_disable_bluetooth" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/lbl_disable_rotation"
-                style="@style/TextView.Regular"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingVertical="@dimen/dimen_x1x"
-                android:text="@string/turn_off_screen_rotation"
-                app:drawableStartCompat="@drawable/ic_rotation_black"
                 app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
                 app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_bluetooth" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_bluetooth">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@null"
+                    android:padding="4dp"
+                    android:src="@drawable/rotate" />
+
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/turn_off_screen_rotation" />
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/chb_screen_rotation"
@@ -439,44 +499,73 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                app:buttonTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_rotation"
                 app:layout_constraintEnd_toEndOf="@+id/chb_ram"
                 app:layout_constraintTop_toTopOf="@+id/lbl_disable_rotation" />
 
-            <TextView
+
+            <LinearLayout
                 android:id="@+id/lbl_disable_sync"
-                style="@style/TextView.Regular"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingVertical="@dimen/dimen_x1x"
-                android:text="@string/turn_off_auto_sync"
-                app:drawableStartCompat="@drawable/ic_disable_sync_black"
                 app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
                 app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_rotation" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_rotation">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@null"
+                    android:padding="4dp"
+                    android:src="@drawable/sync" />
+
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/turn_off_auto_sync" />
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/chb_sync"
                 style="@style/CheckBoxStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:buttonTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/lbl_disable_sync"
                 app:layout_constraintEnd_toEndOf="@+id/chb_ram"
                 app:layout_constraintTop_toTopOf="@+id/lbl_disable_sync" />
 
-            <TextView
+            <LinearLayout
                 android:id="@+id/lbl_screen_timeout"
-                style="@style/TextView.Regular"
                 android:layout_width="@dimen/zero"
                 android:layout_height="wrap_content"
-                android:drawablePadding="@dimen/dimen_x1x"
-                android:paddingVertical="@dimen/dimen_x1x"
-                android:text="@string/reduce_screen_timeout"
-                app:drawableStartCompat="@drawable/ic_sun"
                 app:layout_constraintEnd_toEndOf="@+id/lbl_clear_ram"
                 app:layout_constraintStart_toStartOf="@+id/lbl_clear_ram"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_sync" />
+                app:layout_constraintTop_toBottomOf="@+id/lbl_disable_sync">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center_vertical"
+                    android:contentDescription="@null"
+                    android:padding="4dp"
+                    android:src="@drawable/brightness" />
+
+                <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                    style="@style/TextView.Regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:drawablePadding="@dimen/dimen_x1x"
+                    android:paddingVertical="@dimen/dimen_x1x"
+                    android:text="@string/reduce_screen_timeout" />
+            </LinearLayout>
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/chb_screen_timeout"
@@ -484,6 +573,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
+                app:buttonTint="@color/blue"
                 app:layout_constraintBottom_toBottomOf="@+id/lbl_screen_timeout"
                 app:layout_constraintEnd_toEndOf="@+id/chb_ram"
                 app:layout_constraintTop_toTopOf="@+id/lbl_screen_timeout" />

@@ -43,7 +43,6 @@ import com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterImp>(), HomeView {
 
     private lateinit var scrollView: NestedScrollView
@@ -75,6 +74,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
             fillBatteryInfo(it)
             updateOptimizeButton()
+            val plugged = getPlugged(requireContext())
+            val usbCharge = plugged == BatteryManager.BATTERY_PLUGGED_USB
+            if (usbCharge) {
+                lblWarnUsbCharging.visible()
+            } else {
+                lblWarnUsbCharging.gone()
+            }
 
             if (isCharging) {
                 if (MyApplication.didOptimized) {
@@ -467,13 +473,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             val time: Int = if (usbCharge) {
                 BatteryPref.initilaze(requireContext())!!
                     .getTimeChargingUsb(requireContext(), getBatteryLevel(requireContext()))
-                lblWarnUsbCharging.visible()
                 BatteryPref.initilaze(context)!!
                     .getTimeChargingUsb(requireContext(), getBatteryLevel(requireContext()))
             } else {
                 BatteryPref.initilaze(requireContext())!!
                     .getTimeChargingAc(requireContext(), getBatteryLevel(requireContext()))
-                lblWarnUsbCharging.gone()
                 BatteryPref.initilaze(context)!!
                     .getTimeChargingAc(requireContext(), getBatteryLevel(requireContext()))
             }
@@ -515,6 +519,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
 
     private fun updateOptimizeButton() {
         if (MyApplication.didOptimized) {
+            binding.lytProblem.gone()
             btnOptimize.apply {
                 isEnabled = true
                 text = getString(R.string.optimized)
@@ -522,6 +527,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
                 setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_tick_circle, 0, 0, 0)
             }
         } else {
+            binding.lytProblem.visible()
             btnOptimize.apply {
                 text = getString(R.string.optimize)
                 setBackgroundResource(R.drawable.btn_yellow)

@@ -142,6 +142,33 @@
                             tools:text="40%" />
                     </LinearLayout>
 
+                    <LinearLayout
+                        android:id="@+id/lytProblem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_optimize"
+                        app:layout_constraintEnd_toEndOf="@+id/btn_optimize"
+                        app:layout_constraintStart_toStartOf="@+id/btn_optimize">
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            app:lottie_autoPlay="true"
+                            app:lottie_loop="true"
+                            app:lottie_rawRes="@raw/cycle_point"
+                            app:lottie_repeatMode="restart" />
+
+                        <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
+                            android:id="@+id/txtProblem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/some_problem"
+                            android:textColor="@color/red500"
+                            android:textSize="11dp" />
+                    </LinearLayout>
+
                     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
                         android:id="@+id/btn_optimize"
                         style="@style/Button.Yellow"

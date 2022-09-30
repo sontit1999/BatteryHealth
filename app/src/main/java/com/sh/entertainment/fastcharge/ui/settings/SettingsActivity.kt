@@ -37,12 +37,10 @@ import com.sh.entertainment.fastcharge.common.util.PermissionUtil
 import com.sh.entertainment.fastcharge.data.model.AppSettingsModel
 import com.sh.entertainment.fastcharge.ui.base.BaseActivity
 
-
 class SettingsActivity : BaseActivity<SettingsView, SettingsPresenterImp>(), SettingsView {
 
     companion object {
         private const val RC_DRAW_OVERLAY = 256
-//        private const val RC_DRAW_OVERLAY = 257
     }
 
     private val chbBluetooth by lazy { findViewById<MaterialCheckBox>(R.id.chb_bluetooth) }
