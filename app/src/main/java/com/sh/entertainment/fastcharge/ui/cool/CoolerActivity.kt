@@ -67,36 +67,58 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
         handleLoadInter()
         setupAnim()
         AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+
+        handleOptimizeCooler()
+        dataBinding.animSnow.visible()
+        dataBinding.animSnow.apply {
+            removeAllAnimatorListeners()
+            cancelAnimation()
+            addAnimatorListener(object : Animator.AnimatorListener {
+                override fun onAnimationStart(p0: Animator?) {
+                }
+
+                override fun onAnimationEnd(p0: Animator?) {
+                    dataBinding.animSnow.gone()
+                }
+
+                override fun onAnimationCancel(p0: Animator?) {
+                }
+
+                override fun onAnimationRepeat(p0: Animator?) {
+                }
+            })
+            playAnimation()
+        }
     }
 
     override fun onClick() {
-        dataBinding.btnOptimize.setOnClickListener {
-            if (didCooler) {
-                finish()
-                return@setOnClickListener
-            }
-            handleOptimizeCooler()
-            dataBinding.animSnow.visible()
-            dataBinding.animSnow.apply {
-                removeAllAnimatorListeners()
-                cancelAnimation()
-                addAnimatorListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(p0: Animator?) {
-                    }
-
-                    override fun onAnimationEnd(p0: Animator?) {
-                        dataBinding.animSnow.gone()
-                    }
-
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                })
-                playAnimation()
-            }
-        }
+//        dataBinding.btnOptimize.setOnClickListener {
+//            if (didCooler) {
+//                finish()
+//                return@setOnClickListener
+//            }
+//            handleOptimizeCooler()
+//            dataBinding.animSnow.visible()
+//            dataBinding.animSnow.apply {
+//                removeAllAnimatorListeners()
+//                cancelAnimation()
+//                addAnimatorListener(object : Animator.AnimatorListener {
+//                    override fun onAnimationStart(p0: Animator?) {
+//                    }
+//
+//                    override fun onAnimationEnd(p0: Animator?) {
+//                        dataBinding.animSnow.gone()
+//                    }
+//
+//                    override fun onAnimationCancel(p0: Animator?) {
+//                    }
+//
+//                    override fun onAnimationRepeat(p0: Animator?) {
+//                    }
+//                })
+//                playAnimation()
+//            }
+//        }
     }
 
     private fun handleOptimizeCooler() {
@@ -114,7 +136,8 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
                 override fun onAnimationEnd(p0: Animation?) {
                     didCooler = true
-                    dataBinding.btnOptimize.gone()
+                    dataBinding.txtMessage.text = getString(R.string.optimized)
+//                    dataBinding.btnOptimize.gone()
 //                    dataBinding.btnOptimize.apply {
 //                        background =
 //                            ContextCompat.getDrawable(this@CoolerActivity, R.drawable.btn_green)
@@ -154,13 +177,13 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
     }
 
     private fun optimizeCoolerCore() {
-        if(canWriteSettings()){
+        if (canWriteSettings()) {
             toggleAutoRotation(0)
             toggleAutoSync(false)
         }
     }
 
-    private  fun killAllAppOnBackground(){
+    private fun killAllAppOnBackground() {
         val packages: List<ApplicationInfo>
         val pm: PackageManager = packageManager
         packages = pm.getInstalledApplications(0)
@@ -169,13 +192,15 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
         for (packageInfo in packages) {
             if (packageInfo.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
             if (packageInfo.packageName == myPackage) continue
-            if(packageInfo.packageName != ctx.packageName){
-                (getSystemService(ACTIVITY_SERVICE) as ActivityManager).killBackgroundProcesses(packageInfo.packageName)
+            if (packageInfo.packageName != ctx.packageName) {
+                (getSystemService(ACTIVITY_SERVICE) as ActivityManager).killBackgroundProcesses(
+                    packageInfo.packageName
+                )
             }
         }
     }
 
-   //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
     private suspend fun getAppIcon() = withContext(Dispatchers.IO) {
         mPackageManager = this@CoolerActivity.packageManager
         mActivityManager = getSystemService(ACTIVITY_SERVICE) as ActivityManager
@@ -199,7 +224,7 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                                     )
                                 ) {
                                     val taskInfo = TaskInfo(this@CoolerActivity, applicationInfo)
-                                    if(taskInfo.appinfo.packageName != ctx.packageName){
+                                    if (taskInfo.appinfo.packageName != ctx.packageName) {
                                         mActivityManager!!.killBackgroundProcesses(taskInfo.appinfo.packageName)
                                     }
                                     val applicationIcon =
@@ -240,7 +265,7 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                                     ) {
                                         val taskInfo2 =
                                             TaskInfo(this@CoolerActivity, applicationInfo2)
-                                        if(taskInfo2.appinfo.packageName != ctx.packageName){
+                                        if (taskInfo2.appinfo.packageName != ctx.packageName) {
                                             mActivityManager!!.killBackgroundProcesses(taskInfo2.appinfo.packageName)
                                         }
                                         val applicationIcon2 =
@@ -272,7 +297,7 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                                     )
                                 ) {
                                     val taskInfo3 = TaskInfo(this@CoolerActivity, next2)
-                                    if(taskInfo3.appinfo.packageName != ctx.packageName){
+                                    if (taskInfo3.appinfo.packageName != ctx.packageName) {
                                         mActivityManager!!.killBackgroundProcesses(taskInfo3.appinfo.packageName)
                                     }
                                     val applicationIcon3 =
@@ -383,7 +408,7 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
     private fun handleLoadInter() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,MyApplication.remoteConfigModel.keyIntel, adRequest,
+        InterstitialAd.load(this, MyApplication.remoteConfigModel.keyIntel, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     MyApplication.interstitialAd = ad

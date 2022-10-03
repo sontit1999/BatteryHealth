@@ -430,27 +430,6 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
             val btnNotNow = findViewById<TextView>(R.id.btn_not_now)
             val btnRate = findViewById<TextView>(R.id.btn_rate)
             val ckbNotShow = findViewById<CheckBox>(R.id.ckb_dont_show_again)
-            val image = findViewById<LottieAnimationView>(R.id.imgRate)
-            image.apply {
-                removeAllAnimatorListeners()
-                cancelAnimation()
-                addAnimatorListener(object : Animator.AnimatorListener {
-                    override fun onAnimationStart(p0: Animator?) {
-
-                    }
-
-                    override fun onAnimationEnd(p0: Animator?) {
-
-                    }
-
-                    override fun onAnimationCancel(p0: Animator?) {
-                    }
-
-                    override fun onAnimationRepeat(p0: Animator?) {
-                    }
-                })
-                playAnimation()
-            }
             ckbNotShow.visibility = View.GONE
 //            if (appSettingsModel.dontShowRateDialogAgain) {
 //                ckbNotShow.visibility = View.GONE

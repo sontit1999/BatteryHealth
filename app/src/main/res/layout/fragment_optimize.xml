@@ -28,8 +28,9 @@
         <com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
             android:id="@+id/nativeAdView"
             android:layout_width="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
             android:id="@+id/tvDetailOptimize"

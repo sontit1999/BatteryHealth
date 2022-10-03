@@ -15,15 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.airbnb.lottie.LottieAnimationView
+        <ImageView
             android:id="@+id/imgRate"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
             android:layout_gravity="center"
             android:layout_marginTop="6dp"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            app:lottie_rawRes="@raw/rate_us" />
+            android:contentDescription="@null"
+            android:src="@drawable/rating" />
     </FrameLayout>
 
     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView

@@ -38,17 +38,20 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
 
     override fun initializeData() {
         handleLoadInter()
+
+        handleBooster()
+        dataBinding.txtMessage.visible()
     }
 
     override fun onClick() {
-        dataBinding.btnOptimize.setOnSafeClickListener {
-            if(didOptimized){
-                finish()
-                return@setOnSafeClickListener
-            }
-            handleBooster()
-            dataBinding.txtMessage.visible()
-        }
+//        dataBinding.btnOptimize.setOnSafeClickListener {
+//            if(didOptimized){
+//                finish()
+//                return@setOnSafeClickListener
+//            }
+//            handleBooster()
+//            dataBinding.txtMessage.visible()
+//        }
     }
 
     private fun handleBooster() {
@@ -67,11 +70,11 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
                 override fun onAnimationEnd(p0: Animator?) {
                     didOptimized =true
                     dataBinding.lottieAnimation.gone()
-                    dataBinding.btnOptimize.apply {
-                        background =
-                            ContextCompat.getDrawable(this@BoosterActivity, R.drawable.btn_green)
-                        text = getString(R.string.booster_optimized)
-                    }
+//                    dataBinding.btnOptimize.apply {
+//                        background =
+//                            ContextCompat.getDrawable(this@BoosterActivity, R.drawable.btn_green)
+//                        text = getString(R.string.booster_optimized)
+//                    }
                     handlerStartAminDone()
                 }
 
@@ -87,7 +90,6 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
     }
 
     private fun handlerStartAminDone() {
-        dataBinding.btnOptimize.gone()
         dataBinding.lottieAnimation.gone()
         dataBinding.doneAnimation.visible()
         dataBinding.imgAvatar.gone()

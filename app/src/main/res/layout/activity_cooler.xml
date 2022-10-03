@@ -128,7 +128,8 @@
             android:padding="@dimen/dimen_1x"
             android:text="@string/cpu_cooler"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/text_size_22" />
+            android:textSize="@dimen/text_size_22"
+            android:visibility="gone" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animSnow"
@@ -151,6 +152,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_rawRes="@raw/done" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="350dp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:gravity="center"
+            android:text="@string/cpu_cooler"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_18sdp"
+            app:layout_constraintBottom_toTopOf="@+id/btnOptimize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
             android:id="@+id/nativeAdView"
