@@ -169,7 +169,9 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
         for (packageInfo in packages) {
             if (packageInfo.flags and ApplicationInfo.FLAG_SYSTEM == 1) continue
             if (packageInfo.packageName == myPackage) continue
-            (getSystemService(ACTIVITY_SERVICE) as ActivityManager).killBackgroundProcesses(packageInfo.packageName)
+            if(packageInfo.packageName != ctx.packageName){
+                (getSystemService(ACTIVITY_SERVICE) as ActivityManager).killBackgroundProcesses(packageInfo.packageName)
+            }
         }
     }
 
@@ -197,7 +199,9 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                                     )
                                 ) {
                                     val taskInfo = TaskInfo(this@CoolerActivity, applicationInfo)
-                                    mActivityManager!!.killBackgroundProcesses(taskInfo.appinfo.packageName)
+                                    if(taskInfo.appinfo.packageName != ctx.packageName){
+                                        mActivityManager!!.killBackgroundProcesses(taskInfo.appinfo.packageName)
+                                    }
                                     val applicationIcon =
                                         this@CoolerActivity.packageManager.getApplicationIcon(
                                             taskInfo.appinfo.packageName ?: ""
@@ -236,9 +240,9 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                                     ) {
                                         val taskInfo2 =
                                             TaskInfo(this@CoolerActivity, applicationInfo2)
-                                        mActivityManager!!.killBackgroundProcesses(
-                                            taskInfo2.appinfo.packageName
-                                        )
+                                        if(taskInfo2.appinfo.packageName != ctx.packageName){
+                                            mActivityManager!!.killBackgroundProcesses(taskInfo2.appinfo.packageName)
+                                        }
                                         val applicationIcon2 =
                                             this@CoolerActivity.packageManager.getApplicationIcon(
                                                 taskInfo2.appinfo.packageName ?: ""
@@ -268,7 +272,9 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                                     )
                                 ) {
                                     val taskInfo3 = TaskInfo(this@CoolerActivity, next2)
-                                    mActivityManager!!.killBackgroundProcesses(taskInfo3.appinfo.packageName)
+                                    if(taskInfo3.appinfo.packageName != ctx.packageName){
+                                        mActivityManager!!.killBackgroundProcesses(taskInfo3.appinfo.packageName)
+                                    }
                                     val applicationIcon3 =
                                         this@CoolerActivity.packageManager.getApplicationIcon(
                                             taskInfo3.appinfo.packageName
@@ -377,7 +383,7 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
     private fun handleLoadInter() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, MyApplication.KEY_INTEL, adRequest,
+        InterstitialAd.load(this,MyApplication.remoteConfigModel.keyIntel, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     MyApplication.interstitialAd = ad

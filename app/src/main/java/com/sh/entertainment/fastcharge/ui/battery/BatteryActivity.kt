@@ -267,7 +267,9 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
             val activityManager = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?
             activityManager?.run {
                 for (packageInfo in packages) {
-                    killBackgroundProcesses(packageInfo.packageName)
+                    if(packageInfo.packageName != ctx.packageName){
+                        killBackgroundProcesses(packageInfo.packageName)
+                    }
                 }
             }
         } catch (e: Exception) {

@@ -14,24 +14,27 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/dimen_8x"
-            android:layout_height="@dimen/dimen_8x"
-            android:layout_marginVertical="@dimen/dimen_10"
-            android:src="@drawable/ic_smile"
-            android:layout_gravity="center"/>
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/imgRate"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="6dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/rate_us" />
     </FrameLayout>
 
     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/lbl_message"
         style="@style/TextView.quickB"
-        android:textColor="@color/white"
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:lineSpacingMultiplier="1.2"
         android:padding="@dimen/dimen_2x"
         android:text="@string/alert_content_rate_app"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_size_16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,23 +53,22 @@
         android:id="@+id/ltv_star"
         android:layout_width="@dimen/dimen_140"
         android:layout_height="@dimen/dimen_x4x"
-        android:layout_marginTop="@dimen/dimen_10"
         android:layout_gravity="end|center_vertical"
+        android:layout_marginTop="@dimen/dimen_10"
         android:layout_marginEnd="@dimen/dimen_2x"
         android:scaleType="centerCrop"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/lt_rating_stars"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vw_bar"/>
+        app:layout_constraintTop_toBottomOf="@+id/vw_bar"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/lt_rating_stars" />
 
     <com.sh.entertainment.fastcharge.ui.custom.CustomTextView
         android:id="@+id/btn_not_now"
         style="@style/Button.Grey"
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:layout_marginVertical="@dimen/dimen_2x"
         android:layout_marginStart="@dimen/dimen_2x"
         android:layout_marginEnd="@dimen/dimen_1x"
@@ -75,6 +77,7 @@
         android:text="@string/alert_button_cancel_rate_app"
         android:textAllCaps="false"
         android:textSize="@dimen/text_size_13"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/ckb_dont_show_again"
         app:layout_constraintEnd_toStartOf="@id/btn_rate"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,13 +88,13 @@
         style="@style/Button"
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
-        android:textAllCaps="true"
         android:layout_marginVertical="@dimen/dimen_2x"
         android:layout_marginStart="@dimen/dimen_1x"
         android:layout_marginEnd="@dimen/dimen_2x"
         android:background="@drawable/btn_yellow_round"
         android:paddingHorizontal="@dimen/dimen_05x"
         android:text="@string/alert_button_rate5star_app"
+        android:textAllCaps="true"
         android:textSize="@dimen/text_size_13"
         app:layout_constraintBottom_toTopOf="@+id/ckb_dont_show_again"
         app:layout_constraintEnd_toEndOf="parent"

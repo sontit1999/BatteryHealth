@@ -156,7 +156,7 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
 
     private fun handleLoadInter() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, MyApplication.KEY_INTEL, adRequest,
+        InterstitialAd.load(this, MyApplication.remoteConfigModel.keyIntel, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     MyApplication.interstitialAd = ad

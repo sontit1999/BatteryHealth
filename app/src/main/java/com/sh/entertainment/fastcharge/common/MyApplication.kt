@@ -42,11 +42,6 @@ class MyApplication : MultiDexApplication() {
         var timeShowIntel = 0L
         var timeShowOpenAd = 0L
 
-        var KEY_INTEL = "ca-app-pub-3940256099942544/8691691433"
-        var KEY_OPEN_ADS = "ca-app-pub-3940256099942544/3419835294"
-        var KEY_NATIVE = "ca-app-pub-2238530878125342/6302535268"
-        var KEY_NATIVE_EXIT = "ca-app-pub-2238530878125342/6302535268"
-
         var showRateDialog = MutableLiveData<Boolean>()
     }
 
