@@ -156,5 +156,11 @@
     <string name="app_draining_battery">App draining battery</string>
     <string name="guild_grant_permission_overlay">Allow overlay  permission for optimal battery when charging</string>
     <string name="some_problem">3+ battery problem</string>
+    <string name="dayOneNotificationTitle01">Your phone is too hot</string>
+    <string name="dayOneNotificationMessage01">Cool phone now with one click</string>
+    <string name="dayOneNotificationTitle02">" Your phone is too slow"</string>
+    <string name="dayOneNotificationMessage02">Optimize ram memory now for a smooth experience like never before</string>
+    <string name="dayOneNotificationTitle03">Your phone is draining battery too fast</string>
+    <string name="dayOneNotificationMessage03">Optimize unused tasks to increase usage time now</string>
 
 </resources>

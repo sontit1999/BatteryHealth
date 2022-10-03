@@ -33,6 +33,7 @@ import com.sh.entertainment.fastcharge.ui.home.PowerConnectionService
 import com.sh.entertainment.fastcharge.ui.info.InfoActivity
 import com.sh.entertainment.fastcharge.ui.settings.SettingsActivity
 import com.sh.entertainment.fastcharge.widget.ads.LayoutNativeAd
+import com.sh.entertainment.fastcharge.worker.NotificationWorker
 
 
 class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
@@ -176,6 +177,16 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+        NotificationWorker.schedule()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        NotificationWorker.cancel()
+    }
+
     override fun onBackPressed() {
         if (drawerMain.isDrawerOpen(GravityCompat.START)) {
             closeDrawer()
@@ -223,7 +234,7 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
         btnExit?.setOnClickListener {
             finishApp()
         }
-        if(!dialog.isShowing) {
+        if (!dialog.isShowing) {
             dialog.show()
         }
     }
@@ -406,6 +417,7 @@ class MainActivity : BaseActivity<MainView, MainPresenterImp>(), MainView,
             presenter.removeAds(self)
         }
     }
+
     private fun showRateDialog() {
         Dialog(this).apply {
             requestWindowFeature(Window.FEATURE_NO_TITLE)

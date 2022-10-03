@@ -1,5 +1,6 @@
 package com.sh.entertainment.fastcharge.common
 
+import android.app.NotificationManager
 import android.util.DisplayMetrics
 import androidx.lifecycle.MutableLiveData
 import androidx.multidex.MultiDexApplication
@@ -10,10 +11,7 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.sh.entertainment.fastcharge.common.extension.ctx
-import com.sh.entertainment.fastcharge.common.util.AdsManager
-import com.sh.entertainment.fastcharge.common.util.AppOpenManager
-import com.sh.entertainment.fastcharge.common.util.CommonUtil
-import com.sh.entertainment.fastcharge.common.util.SharedPreferencesUtil
+import com.sh.entertainment.fastcharge.common.util.*
 import com.sh.entertainment.fastcharge.data.model.AdsConfigModel
 import com.sh.entertainment.fastcharge.data.model.RemoteConfig
 import com.sh.entertainment.fastcharge.ui.base.AppConfig
@@ -60,6 +58,8 @@ class MyApplication : MultiDexApplication() {
         AdsManager.initMobileAdSdk(this)
         setupRemoteConfig()
         AppOpenManager.start()
+        val manager = this.applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        NotificationCenter.createNotificationChannel(manager,NotificationCenter.CHANNEL_ID)
     }
 
     fun loadNativeExit() {

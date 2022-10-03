@@ -13,4 +13,6 @@ object Constants {
 
     const val KEY_ACTION = "key_action"
     const val KEY_CHECK_SHOWING_RATE_DIALOG = "key_check_showing_rate_dialog"
+
+    const val KEY_POSITION_NOTIFICATION = "key_pos_notification"
 }
