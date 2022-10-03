@@ -10,5 +10,9 @@ data class RemoteConfig(
     var is_inter_back_info: Boolean = true,
     var is_inter_back_setting: Boolean = true,
     var is_inter_result: Boolean = true,
-    var is_open_app: Boolean = true
+    var is_open_app: Boolean = true,
+    var keyIntel: String = "ca-app-pub-7254202909466206/1506951650",
+    var keyOpenAds: String = "ca-app-pub-7254202909466206/9577013365",
+    var keyNative: String = "ca-app-pub-7254202909466206/8427297816",
+    var keyNativeExit: String = "ca-app-pub-7254202909466206/8427297816"
 )

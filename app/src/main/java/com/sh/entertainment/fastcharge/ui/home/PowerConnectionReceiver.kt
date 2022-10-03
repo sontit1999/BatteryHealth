@@ -151,11 +151,10 @@ class PowerConnectionReceiver : BroadcastReceiver() {
                 Settings.System.SCREEN_BRIGHTNESS_MODE,
                 Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL
             )
-            val brightness =
+            val brightness = if(MyApplication.brightnessValue != 0) MyApplication.brightnessValue else 100
             Settings.System.putInt(
                 context.contentResolver,
-                Settings.System.SCREEN_BRIGHTNESS, MyApplication.brightnessValue
-            )
+                Settings.System.SCREEN_BRIGHTNESS, brightness)
         }
     }
 

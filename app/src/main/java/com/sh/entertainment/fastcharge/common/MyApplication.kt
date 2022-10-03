@@ -65,7 +65,7 @@ class MyApplication : MultiDexApplication() {
     fun loadNativeExit() {
         val adRequest = AdRequest.Builder()
             .build()
-        val adLoader = AdLoader.Builder(ctx, KEY_NATIVE_EXIT)
+        val adLoader = AdLoader.Builder(ctx, remoteConfigModel.keyNativeExit)
             .forUnifiedNativeAd { nativeAd ->
                 nativeAdExit = nativeAd
             }

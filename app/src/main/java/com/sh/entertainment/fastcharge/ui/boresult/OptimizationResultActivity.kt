@@ -70,7 +70,7 @@ class OptimizationResultActivity :
         val adRequest = AdRequest.Builder()
             .build()
         if (MyApplication.remoteConfigModel.is_native_result) {
-            nativeAd.showAd(adRequest, MyApplication.KEY_NATIVE)
+            nativeAd.showAd(adRequest, MyApplication.remoteConfigModel.keyNative)
 
         }
 
@@ -166,7 +166,7 @@ class OptimizationResultActivity :
 
     private fun handleLoadInter() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, MyApplication.KEY_INTEL, adRequest,
+        InterstitialAd.load(this, MyApplication.remoteConfigModel.keyIntel, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     MyApplication.interstitialAd = ad

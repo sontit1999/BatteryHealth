@@ -196,7 +196,7 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashVie
         }
         val request = adRequest
         AppOpenAd.load(
-            MyApplication.instance, MyApplication.KEY_OPEN_ADS, request,
+            MyApplication.instance, MyApplication.remoteConfigModel.keyOpenAds, request,
             AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, loadCallback
         )
     }
