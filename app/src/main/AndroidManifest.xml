@@ -17,17 +17,19 @@
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.POWER_SAVER"
-        tools:ignore="ProtectedPermissions" />
     <uses-permission
-        android:name="android.permission.QUERY_ALL_PACKAGES"
-        tools:ignore="QueryAllPackagesPermission" />
+        android:name="android.permission.POWER_SAVER"
+        tools:ignore="ProtectedPermissions" />
+    <!--    <uses-permission-->
+    <!--        android:name="android.permission.QUERY_ALL_PACKAGES"-->
+    <!--        tools:ignore="QueryAllPackagesPermission" />-->
 
     <application
         android:name="com.sh.entertainment.fastcharge.common.MyApplication"
@@ -89,11 +91,11 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
-<!--        <activity-->
-<!--            android:name="com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity"-->
-<!--            android:exported="true"-->
-<!--            android:launchMode="singleTop"-->
-<!--            android:screenOrientation="portrait" />-->
+        <!--        <activity-->
+        <!--            android:name="com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity"-->
+        <!--            android:exported="true"-->
+        <!--            android:launchMode="singleTop"-->
+        <!--            android:screenOrientation="portrait" />-->
         <!-- android:theme="@style/BoResultTheme" />-->
 
         <activity

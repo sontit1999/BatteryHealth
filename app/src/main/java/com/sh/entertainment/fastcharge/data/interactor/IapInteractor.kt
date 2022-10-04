@@ -34,9 +34,9 @@ class IapInteractor(private val ctx: Context) : BaseInteractor() {
                             ) {
                                 if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && purchases != null) {
                                     val purchaseHistoryRecord =
-                                        purchases.find { return@find it.sku == IAP_REMOVE_ADS }
+                                        purchases.find { return@find it.skus[0] == IAP_REMOVE_ADS }
                                     purchaseHistoryRecord?.let {
-                                        ctx.logE("--- SKU history: ${purchaseHistoryRecord.sku}")
+                                        ctx.logE("--- SKU history: ${purchaseHistoryRecord.skus[0]}")
                                         ctx.appSettingsModel.apply {
                                             didRemoveAds = true
                                         }

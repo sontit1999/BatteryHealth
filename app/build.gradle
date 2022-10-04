@@ -13,8 +13,8 @@ android {
         applicationId "com.sh.entertainment.fastcharge"
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 9
-        versionName "1.6"
+        versionCode 3
+        versionName "1.0.2"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         signingConfig signingConfigs.debug
@@ -38,6 +38,29 @@ android {
             manifestPlaceholders = [enableCrashReporting: "true"]
         }
     }
+    signingConfigs {
+        pro {
+            keyAlias 'HaiHT'
+            keyPassword 'haihoang1996@'
+            storeFile file(rootDir.getAbsolutePath() + '/keystore/fast_charging_pro.jks')
+            storePassword 'haihoang1996@'
+        }
+        dev {
+
+        }
+    }
+
+    flavorDimensions 'default'
+    productFlavors {
+        pro {
+            applicationId 'com.sh.entertainment.fastcharge'
+            signingConfig signingConfigs.pro
+        }
+        dev {
+
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -76,7 +99,7 @@ dependencies {
 
     // Google
     implementation 'com.google.android.gms:play-services-ads:19.8.0'
-    implementation 'com.android.billingclient:billing-ktx:3.0.3'
+    implementation 'com.android.billingclient:billing-ktx:5.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation platform('com.google.firebase:firebase-bom:26.2.0')
     implementation 'com.google.firebase:firebase-config-ktx'
