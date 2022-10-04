@@ -44,7 +44,11 @@ class OptimizeActivity(var isCharging: Boolean = false) :
                 super.onAnimationEnd(animation)
                 val dialogCongratulation = CongratulationDialog()
                 dialogCongratulation.onClickClose = {
-                    showInter()
+                    if (MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_inter_result) {
+                        showInter()
+                    } else {
+                        finish()
+                    }
                 }
                 dialogCongratulation.show(supportFragmentManager, "dialogCongratulation")
             }
@@ -153,7 +157,7 @@ class OptimizeActivity(var isCharging: Boolean = false) :
 
     private fun handleLoadInter() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,MyApplication.remoteConfigModel.keyIntel, adRequest,
+        InterstitialAd.load(this, MyApplication.remoteConfigModel.keyIntel, adRequest,
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
                     MyApplication.interstitialAd = ad

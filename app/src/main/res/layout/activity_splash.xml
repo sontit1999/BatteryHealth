@@ -8,8 +8,8 @@
     <ImageView
         android:id="@+id/img_logo"
         style="@style/TextView.Italic"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/app_name"
         android:src="@mipmap/icon_app_round"
         app:layout_constraintBottom_toBottomOf="parent"

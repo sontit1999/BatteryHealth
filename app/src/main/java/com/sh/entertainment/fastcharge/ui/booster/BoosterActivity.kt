@@ -3,7 +3,6 @@ package com.sh.entertainment.fastcharge.ui.booster
 import android.animation.Animator
 import android.app.ActivityManager
 import android.content.pm.ApplicationInfo
-import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -14,7 +13,6 @@ import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.gone
 import com.sh.entertainment.fastcharge.common.extension.invisible
-import com.sh.entertainment.fastcharge.common.extension.setOnSafeClickListener
 import com.sh.entertainment.fastcharge.common.extension.visible
 import com.sh.entertainment.fastcharge.common.util.AdsManager
 import com.sh.entertainment.fastcharge.databinding.ActivityBoosterBinding
@@ -32,8 +30,9 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
         dataBinding.imgAvatar.gone()
         dataBinding.doneAnimation.gone()
         dataBinding.txtMessage.invisible()
-
-        AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+        if(MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_native_result){
+            AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+        }
     }
 
     override fun initializeData() {
@@ -101,7 +100,11 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                showInter()
+                if(MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_inter_result){
+                    showInter()
+                }else{
+                    finish()
+                }
             }
 
             override fun onAnimationCancel(animation: Animator?) {

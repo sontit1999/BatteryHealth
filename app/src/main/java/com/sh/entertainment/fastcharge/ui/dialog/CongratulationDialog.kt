@@ -2,6 +2,7 @@ package com.sh.entertainment.fastcharge.ui.dialog
 
 import android.view.ViewGroup
 import com.sh.entertainment.fastcharge.R
+import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.util.AdsManager
 import com.sh.entertainment.fastcharge.databinding.DialogCongratulationBinding
 import com.sh.entertainment.fastcharge.ui.base.AppConfig
@@ -19,8 +20,14 @@ class CongratulationDialog : BaseDialogFragment<DialogCongratulationBinding>() {
             dismiss()
             onClickClose?.invoke()
         }
+        if (MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_native_congratulation) {
+            AdsManager.showNativeAd(
+                requireContext(),
+                binding.nativeAdDialog,
+                AdsManager.NATIVE_AD_KEY
+            )
+        }
 
-        AdsManager.showNativeAd(requireContext(), binding.nativeAdDialog, AdsManager.NATIVE_AD_KEY)
     }
 
     override fun onResume() {

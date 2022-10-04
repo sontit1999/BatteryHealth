@@ -12,6 +12,10 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfig
+import com.google.firebase.remoteconfig.ktx.remoteConfigSettings
 import com.google.gson.Gson
 import com.sh.entertainment.fastcharge.R
 import com.sh.entertainment.fastcharge.common.MyApplication
@@ -123,11 +127,16 @@ class SplashActivity : BaseActivity<SplashView, SplashPresenterImp>(), SplashVie
     }
 
     private fun getDataRemoteConfig() {
-        MyApplication.remoteConfig.fetchAndActivate()
+        val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
+        val configSettings = remoteConfigSettings {
+            minimumFetchIntervalInSeconds = 10
+        }
+        remoteConfig.setConfigSettingsAsync(configSettings)
+        remoteConfig.fetchAndActivate()
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    MyApplication.remoteConfig.fetchAndActivate()
-                    val dataString = MyApplication.remoteConfig.getString("remote_config")
+                    remoteConfig.fetchAndActivate()
+                    val dataString = remoteConfig.getString("remote_config")
                     Log.d("HaiHT", dataString)
                     MyApplication.remoteConfigModel =
                         Gson().fromJson(dataString, RemoteConfig::class.java)

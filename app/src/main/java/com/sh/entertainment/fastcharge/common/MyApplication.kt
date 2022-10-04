@@ -8,8 +8,6 @@ import com.google.android.gms.ads.AdLoader
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.formats.UnifiedNativeAd
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.sh.entertainment.fastcharge.common.extension.ctx
 import com.sh.entertainment.fastcharge.common.util.*
 import com.sh.entertainment.fastcharge.data.model.AdsConfigModel
@@ -36,7 +34,6 @@ class MyApplication : MultiDexApplication() {
         var countOptimize = 0
         var interstitialAd: InterstitialAd? = null
         var nativeAdExit: UnifiedNativeAd? = null
-        lateinit var remoteConfig: FirebaseRemoteConfig
         var remoteConfigModel = RemoteConfig()
         var brightnessValue = 0
 
@@ -54,11 +51,9 @@ class MyApplication : MultiDexApplication() {
         AppConfig.setUp(this)
         // Init mobile ads SDK
         AdsManager.initMobileAdSdk(this)
-        setupRemoteConfig()
         AppOpenManager.start()
         val manager = this.applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         NotificationCenter.createNotificationChannel(manager,NotificationCenter.CHANNEL_ID)
-
         val random = Random()
         problems = random.nextInt(8)+1
     }
@@ -72,13 +67,6 @@ class MyApplication : MultiDexApplication() {
             }
             .build()
         adLoader.loadAd(adRequest)
-    }
-
-    private fun setupRemoteConfig() {
-        remoteConfig = FirebaseRemoteConfig.getInstance()
-        val configSettings = FirebaseRemoteConfigSettings.Builder()
-            .setFetchTimeoutInSeconds(36000).build()
-        remoteConfig.setConfigSettingsAsync(configSettings)
     }
 
 }

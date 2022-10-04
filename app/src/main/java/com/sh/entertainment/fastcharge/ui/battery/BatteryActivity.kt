@@ -7,7 +7,6 @@ import android.content.pm.ApplicationInfo
 import android.provider.Settings
 import android.util.Log
 import android.view.Window
-import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -35,7 +34,9 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
         dataBinding.imgAvatar.gone()
         dataBinding.optimize.gone()
         dataBinding.doneAnimation.gone()
-        AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+        if (MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_native_result) {
+            AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+        }
     }
 
     override fun initializeData() {
@@ -76,14 +77,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
     }
 
     override fun onClick() {
-//        dataBinding.btnOptimize.setOnSafeClickListener {
-//            if (didOptimized) {
-//                finish()
-//                return@setOnSafeClickListener
-//            }
-//            handleSaverBattery()
-//            dataBinding.txtMessage.visible()
-//        }
+
     }
 
     private fun handleSaverBattery() {
@@ -128,7 +122,11 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
 
             override fun onAnimationEnd(animation: Animator?) {
                 dataBinding.txtMessage.text = getString(R.string.battery_free)
-                showInter()
+                if (MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_inter_result) {
+                    showInter()
+                } else {
+                    finish()
+                }
             }
 
             override fun onAnimationCancel(animation: Animator?) {
@@ -267,7 +265,7 @@ class BatteryActivity : BaseActivityBinding<ActivityBatteryBinding>() {
             val activityManager = ctx.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?
             activityManager?.run {
                 for (packageInfo in packages) {
-                    if(packageInfo.packageName != ctx.packageName){
+                    if (packageInfo.packageName != ctx.packageName) {
                         killBackgroundProcesses(packageInfo.packageName)
                     }
                 }

@@ -221,16 +221,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         presenter.listenAppSettingsChanged()
         BatteryStatusReceiver.register(ctx, batteryStatusReceiver)
 
-        try {
-            if (MyApplication.remoteConfigModel.is_native_home) {
-                //  nativeAdView.showAd(adRequest, MyApplication.KEY_NATIVE)
-            }
-            Log.d("QuangTB", "try")
-        } catch (e: Exception) {
-            e.printStackTrace()
-            Log.e("QuangTB", "catch")
-        }
-
         btnOptimize.setOnSafeClickListener {
             startOptimizing()
         }
@@ -241,7 +231,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
     }
 
     private fun loadNativeAds() {
-        AdsManager.showNativeAd(requireContext(), binding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+        if (MyApplication.remoteConfigModel.is_native_home) AdsManager.showNativeAd(
+            requireContext(),
+            binding.nativeAdView,
+            AdsManager.NATIVE_AD_KEY
+        )
     }
 
 
@@ -529,7 +523,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             }
         } else {
             binding.lytProblem.visible()
-            binding.txtProblem.text = MyApplication.problems.toString()+ "+ " + getString(R.string.some_problem)
+            binding.txtProblem.text =
+                MyApplication.problems.toString() + "+ " + getString(R.string.some_problem)
             btnOptimize.apply {
                 text = getString(R.string.optimize)
                 setBackgroundResource(R.drawable.btn_yellow)

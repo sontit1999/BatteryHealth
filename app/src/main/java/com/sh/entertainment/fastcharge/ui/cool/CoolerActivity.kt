@@ -12,7 +12,6 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -66,8 +65,9 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
 
         handleLoadInter()
         setupAnim()
-        AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
-
+        if(MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_native_result){
+            AdsManager.showNativeAd(this, dataBinding.nativeAdView, AdsManager.NATIVE_AD_KEY)
+        }
         handleOptimizeCooler()
         dataBinding.animSnow.visible()
         dataBinding.animSnow.apply {
@@ -92,33 +92,6 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
     }
 
     override fun onClick() {
-//        dataBinding.btnOptimize.setOnClickListener {
-//            if (didCooler) {
-//                finish()
-//                return@setOnClickListener
-//            }
-//            handleOptimizeCooler()
-//            dataBinding.animSnow.visible()
-//            dataBinding.animSnow.apply {
-//                removeAllAnimatorListeners()
-//                cancelAnimation()
-//                addAnimatorListener(object : Animator.AnimatorListener {
-//                    override fun onAnimationStart(p0: Animator?) {
-//                    }
-//
-//                    override fun onAnimationEnd(p0: Animator?) {
-//                        dataBinding.animSnow.gone()
-//                    }
-//
-//                    override fun onAnimationCancel(p0: Animator?) {
-//                    }
-//
-//                    override fun onAnimationRepeat(p0: Animator?) {
-//                    }
-//                })
-//                playAnimation()
-//            }
-//        }
     }
 
     private fun handleOptimizeCooler() {
@@ -137,12 +110,6 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                 override fun onAnimationEnd(p0: Animation?) {
                     didCooler = true
                     dataBinding.txtMessage.text = getString(R.string.optimized)
-//                    dataBinding.btnOptimize.gone()
-//                    dataBinding.btnOptimize.apply {
-//                        background =
-//                            ContextCompat.getDrawable(this@CoolerActivity, R.drawable.btn_green)
-//                        text = getString(R.string.cooler_optimized)
-//                    }
                     endTaskAndStartAnimDone()
                 }
 
@@ -163,7 +130,11 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
                 }
 
                 override fun onAnimationEnd(p0: Animator?) {
-                    showInter()
+                    if(MyApplication.remoteConfigModel.isEnableAds && MyApplication.remoteConfigModel.is_inter_result){
+                        showInter()
+                    }else{
+                        finish()
+                    }
                 }
 
                 override fun onAnimationCancel(p0: Animator?) {
