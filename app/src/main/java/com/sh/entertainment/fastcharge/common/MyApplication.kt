@@ -15,6 +15,7 @@ import com.sh.entertainment.fastcharge.common.util.*
 import com.sh.entertainment.fastcharge.data.model.AdsConfigModel
 import com.sh.entertainment.fastcharge.data.model.RemoteConfig
 import com.sh.entertainment.fastcharge.ui.base.AppConfig
+import java.util.*
 
 
 class MyApplication : MultiDexApplication() {
@@ -39,6 +40,8 @@ class MyApplication : MultiDexApplication() {
         var remoteConfigModel = RemoteConfig()
         var brightnessValue = 0
 
+        var problems = 0
+
         var timeShowIntel = 0L
         var timeShowOpenAd = 0L
 
@@ -55,6 +58,9 @@ class MyApplication : MultiDexApplication() {
         AppOpenManager.start()
         val manager = this.applicationContext.getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         NotificationCenter.createNotificationChannel(manager,NotificationCenter.CHANNEL_ID)
+
+        val random = Random()
+        problems = random.nextInt(8)+1
     }
 
     fun loadNativeExit() {

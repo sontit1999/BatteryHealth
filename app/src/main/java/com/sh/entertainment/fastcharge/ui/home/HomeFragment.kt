@@ -517,6 +517,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun updateOptimizeButton() {
         if (MyApplication.didOptimized) {
             binding.lytProblem.gone()
@@ -528,6 +529,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
             }
         } else {
             binding.lytProblem.visible()
+            binding.txtProblem.text = MyApplication.problems.toString()+ "+ " + getString(R.string.some_problem)
             btnOptimize.apply {
                 text = getString(R.string.optimize)
                 setBackgroundResource(R.drawable.btn_yellow)

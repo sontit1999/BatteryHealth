@@ -155,7 +155,7 @@
     <string name="scan_app_battery_done">Scan done, let optimize</string>
     <string name="app_draining_battery">App draining battery</string>
     <string name="guild_grant_permission_overlay">Allow overlay  permission for optimal battery when charging</string>
-    <string name="some_problem">3+ battery problem</string>
+    <string name="some_problem">battery problems</string>
     <string name="dayOneNotificationTitle01">Your phone is too hot</string>
     <string name="dayOneNotificationMessage01">Cool phone now with one click</string>
     <string name="dayOneNotificationTitle02">" Your phone is too slow"</string>
