@@ -87,4 +87,7 @@ dependencies {
     // work manager
     implementation "androidx.work:work-runtime-ktx:$work_version"
     androidTestImplementation "androidx.work:work-testing:$work_version"
+
+    // Event Bus
+    implementation "org.greenrobot:eventbus:3.3.1"
 }

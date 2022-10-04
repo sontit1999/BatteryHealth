@@ -3,6 +3,7 @@ package com.sh.entertainment.fastcharge.ui.booster
 import android.animation.Animator
 import android.app.ActivityManager
 import android.content.pm.ApplicationInfo
+import android.util.Log
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -15,12 +16,16 @@ import com.sh.entertainment.fastcharge.common.extension.gone
 import com.sh.entertainment.fastcharge.common.extension.invisible
 import com.sh.entertainment.fastcharge.common.extension.visible
 import com.sh.entertainment.fastcharge.common.util.AdsManager
+import com.sh.entertainment.fastcharge.data.model.AdsModel
 import com.sh.entertainment.fastcharge.databinding.ActivityBoosterBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseActivityBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
     private  var didOptimized = false
@@ -43,14 +48,32 @@ class BoosterActivity : BaseActivityBinding<ActivityBoosterBinding>() {
     }
 
     override fun onClick() {
-//        dataBinding.btnOptimize.setOnSafeClickListener {
-//            if(didOptimized){
-//                finish()
-//                return@setOnSafeClickListener
-//            }
-//            handleBooster()
-//            dataBinding.txtMessage.visible()
-//        }
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAdsModelEvent(adsModel: AdsModel) {
+        Log.d("HaiHT", "onAdsModelEvent")
+        // Do something
+        if(adsModel.type == 1) {
+            if(adsModel.isShow){
+                // hidden native ads
+                dataBinding.nativeAdView.gone()
+            } else {
+                // show native ads
+                dataBinding.nativeAdView.visible()
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun handleBooster() {

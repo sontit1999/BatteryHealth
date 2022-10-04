@@ -30,6 +30,7 @@ import com.sh.entertainment.fastcharge.common.util.AdsManager
 import com.sh.entertainment.fastcharge.common.util.CommonUtil
 import com.sh.entertainment.fastcharge.common.util.NumberUtil
 import com.sh.entertainment.fastcharge.common.util.PermissionUtil
+import com.sh.entertainment.fastcharge.data.model.AdsModel
 import com.sh.entertainment.fastcharge.data.model.AppSettingsModel
 import com.sh.entertainment.fastcharge.data.model.BatteryModel
 import com.sh.entertainment.fastcharge.databinding.FragmentHomeBinding
@@ -40,8 +41,12 @@ import com.sh.entertainment.fastcharge.ui.boresult.OptimizationResultActivity
 import com.sh.entertainment.fastcharge.ui.cool.CoolerActivity
 import com.sh.entertainment.fastcharge.ui.info.GIGABYTE
 import com.sh.entertainment.fastcharge.ui.optimize.OptimizeActivity
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import kotlin.math.pow
 import kotlin.math.sqrt
+
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterImp>(), HomeView {
 
@@ -131,6 +136,31 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeView, HomePresenterIm
         binding.bgBatterySaved.setOnSafeClickListener {
             openActivity(BatteryActivity::class.java)
         }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAdsModelEvent(adsModel: AdsModel) {
+        Log.d("HaiHT", "onAdsModelEvent")
+        // Do something
+        if(adsModel.type == 1) {
+            if(adsModel.isShow){
+                // hidden native ads
+                binding.nativeAdView.gone()
+            } else {
+                // show native ads
+                binding.nativeAdView.visible()
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun checkWriteSettingPermission() {

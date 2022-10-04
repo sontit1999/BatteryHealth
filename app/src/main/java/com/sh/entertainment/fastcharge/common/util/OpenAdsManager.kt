@@ -16,7 +16,9 @@ import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.appopen.AppOpenAd
 import com.google.android.gms.ads.appopen.AppOpenAd.AppOpenAdLoadCallback
 import com.sh.entertainment.fastcharge.common.MyApplication
+import com.sh.entertainment.fastcharge.data.model.AdsModel
 import com.sh.entertainment.fastcharge.ui.splash.SplashActivity
+import org.greenrobot.eventbus.EventBus
 
 @SuppressLint("StaticFieldLeak")
 object AppOpenManager : ActivityLifecycleCallbacks,
@@ -45,7 +47,7 @@ object AppOpenManager : ActivityLifecycleCallbacks,
     val isAdAvailable: Boolean
         get() = appOpenAd != null
 
-    fun showAdIfAvailable() {
+    private fun showAdIfAvailable() {
         Log.d("HaiHT", appOpenAd.toString())
         if (appOpenAd != null && !isShowingOpenAd && MyApplication.remoteConfigModel.is_open_app
             && (currentActivity != null && currentActivity !is SplashActivity)
@@ -57,14 +59,16 @@ object AppOpenManager : ActivityLifecycleCallbacks,
                         isShowingOpenAd = false
                         MyApplication.timeShowOpenAd = System.currentTimeMillis()
                         fetchAd()
+                        EventBus.getDefault().post(AdsModel(1,false))
                     }
 
                     override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-
+                        fetchAd()
                     }
 
                     override fun onAdShowedFullScreenContent() {
                         isShowingOpenAd = true
+                        EventBus.getDefault().post(AdsModel(1,true))
                     }
                 }
             appOpenAd!!.fullScreenContentCallback = fullScreenContentCallback
@@ -84,10 +88,11 @@ object AppOpenManager : ActivityLifecycleCallbacks,
         loadCallback = object : AppOpenAd.AppOpenAdLoadCallback() {
             override fun onAdLoaded(ad: AppOpenAd) {
                 appOpenAd = ad
+                Log.d("HaiHT", "Load Open Ads Success.")
             }
 
             override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                Log.d("HaiHT", "Load Open Ads Error.")
+                Log.d("HaiHT", "Load Open Ads Error." + loadAdError.message)
             }
         }
         val request = adRequest

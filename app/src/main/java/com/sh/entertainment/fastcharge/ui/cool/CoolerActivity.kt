@@ -23,12 +23,16 @@ import com.sh.entertainment.fastcharge.common.MyApplication
 import com.sh.entertainment.fastcharge.common.extension.*
 import com.sh.entertainment.fastcharge.common.util.AdsManager
 import com.sh.entertainment.fastcharge.common.util.Utils
+import com.sh.entertainment.fastcharge.data.model.AdsModel
 import com.sh.entertainment.fastcharge.data.model.TaskInfo
 import com.sh.entertainment.fastcharge.databinding.ActivityCoolerBinding
 import com.sh.entertainment.fastcharge.ui.base.BaseActivityBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import java.util.*
 
 
@@ -92,6 +96,31 @@ class CoolerActivity : BaseActivityBinding<ActivityCoolerBinding>() {
     }
 
     override fun onClick() {
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onAdsModelEvent(adsModel: AdsModel) {
+        Log.d("HaiHT", "onAdsModelEvent")
+        // Do something
+        if(adsModel.type == 1) {
+            if(adsModel.isShow){
+                // hidden native ads
+                dataBinding.nativeAdView.gone()
+            } else {
+                // show native ads
+                dataBinding.nativeAdView.visible()
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun handleOptimizeCooler() {
