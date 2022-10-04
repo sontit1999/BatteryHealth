@@ -139,7 +139,7 @@
     <string name="over_charge">Overcharged</string>
     <string name="scan_ram">Scanning RAM</string>
     <string name="ram_free">RAM free</string>
-    <string name="congratulation">Chúc mừng bạn đã tối ưu thành công. Trải nghiệm cảm giác mượt mà ngay nào !</string>
+    <string name="congratulation">Congratulations on your successful optimization. Experience the smooth feeling now!</string>
     <string name="congratulation_title">Congratulations</string>
     <string name="battery_saver">Optimize Battery</string>
     <string name="battery_optimized">Battery Optimized</string>

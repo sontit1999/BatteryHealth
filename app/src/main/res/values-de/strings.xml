@@ -81,6 +81,52 @@
     <string name="not_charing">Akku lädt nicht</string>
     <string name="txt_user_easy">Einfach und bequem</string>
     <string name="message_confirm_close_app">Tippen Sie erneut, um zu beenden!</string>
+  <string name="go_since_the_last_full_charge">Seit der letzten vollen Aufladung</string>
+  <string name="du_no_charger_record">Keine Aufzeichnungen</string>
+  <string name="bd_charge_duration">Ladedauer</string>
+  <string name="go_charge_quantity">Lademenge</string>
+  <string name="bd_charger_type">Gebührentyp</string>
+  <string name="bd_charge_history">Ladeverlauf</string>
+  <string name="go_last_3_days">Ladeaufzeichnung der letzten 3 Tage</string>
+  <string name="guide_access_permission_v5">Suchen Sie auf dem nächsten Bildschirm die Pro Charger-App und tippen Sie dann auf AKTIVIEREN oder ERLAUBEN.</string>
+  <string name="txt_history_charge">Batterieverlauf aufladen</string>
+  <string name="clean_apps">Apps bereinigen</string>
+  <string name="minute">m</string>
+  <string name="cpu_cooler">CPU-Kühler</string>
+  <string name="booster">Booster</string>
+  <string name="saver">Sparer</string>
+  <string name="scan_app_background">App-Hintergrund scannen</string>
+  <string name="txt_phone_cooler">Kühler</string>
+  <string name="cooler_optimized">Kühler optimiert</string>
+  <string name="last_charge_history">Letzter Ladedatensatz</string>
+  <string name="mgs_normal">Normal</string>
+  <string name="mgs_healthy">Gesund</string>
+  <string name="over_charge">Überladen</string>
+  <string name="scan_ram">RAM scannen</string>
+  <string name="ram_free">RAM frei</string>
+  <string name="congratulation">Herzlichen Glückwunsch zu Ihrer erfolgreichen Optimierung. Erleben Sie jetzt das glatte Gefühl!</string>
+  <string name="congratulation_title">Herzliche Glückwünsche</string>
+  <string name="battery_saver">Batterie optimieren</string>
+  <string name="battery_optimized">Batterieoptimiert</string>
+  <string name="booster_optimized">Booster-optimiert</string>
+  <string name="battery_free">Batterieschoner</string>
+  <string name="time_left">Übrige Zeit</string>
+  <string name="batteryCharging">Aufladen des Akkus</string>
+  <string name="desc_permission_write_setting">Damit die Anwendung Batterieoptimierungsaufgaben ausführen kann. Bei einigen Android-Telefonen müssen Sie die Berechtigung zum Ändern der Einstellungen erteilen, damit diese App Maßnahmen ergreifen kann, um den Akku zu schonen.</string>
+  <string name="cpu_cooler_suggest">Wenn Sie feststellen, dass Ihre CPU überhitzt. Versuchen wir es jetzt mit Kühlung</string>
+  <string name="booster_suggest">Ihr Telefon ist langsam. Versuchen wir es zu beschleunigen</string>
+  <string name="saver_suggest">Der Akku entlädt sich zu schnell. Jetzt Akku sparen optimieren</string>
+  <string name="scan_app_battery">Suchen Sie nach Apps, die den Akku verbrauchen</string>
+  <string name="scan_app_battery_done">Scannen fertig, optimieren lassen</string>
+  <string name="app_draining_battery">App entlädt den Akku</string>
+  <string name="guild_grant_permission_overlay">Overlay-Erlaubnis für optimalen Akku beim Laden zulassen</string>
+  <string name="some_problem">Batterieprobleme</string>
+  <string name="dayOneNotificationTitle01">Ihr Telefon ist zu heiß</string>
+  <string name="dayOneNotificationMessage01">Cooles Telefon jetzt mit einem Klick</string>
+  <string name="dayOneNotificationTitle02">Ihr Telefon ist zu langsam</string>
+  <string name="dayOneNotificationMessage02">Optimieren Sie jetzt den RAM-Speicher für ein reibungsloses Erlebnis wie nie zuvor</string>
+  <string name="dayOneNotificationTitle03">Ihr Telefon entlädt den Akku zu schnell</string>
+  <string name="dayOneNotificationMessage03">Optimieren Sie ungenutzte Aufgaben, um die Nutzungszeit jetzt zu erhöhen</string>
 
-   
+
 </resources>
