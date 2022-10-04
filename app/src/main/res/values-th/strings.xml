@@ -2,7 +2,7 @@
     <!-- Text for Translator service -->
    <!-- <string name="app_name">มาสเตอร์แบตเตอรี่</string>-->
 
-    <string name="optimize">Optimize</string>
+    <string name="optimize">เหมาะสมที่สุด</string>
     <string name="optimizing">การเพิ่มประสิทธิภาพ&#8230;</string>
     <string name="optimized">เสร็จสิ้น</string>
     <string name="technology">เทคโนโลยี</string>
@@ -143,4 +143,7 @@
     <string name="bd_charge_duration">ระยะเวลาการชาร์จ</string>
     <string name="du_no_charger_record">ไม่มีบันทึก</string>
     <string name="go_since_the_last_full_charge">ตั้งแต่ชาร์จเต็มครั้งล่าสุด</string>
+    <string name="app_name">ชาร์จแบตเตอรี่ได้เร็วมาก</string>
+    <string name="time_charging_left">เวลาในการชาร์จที่เหลืออยู่</string>
+    <string name="time_using_left">เวลาใช้งานคงเหลือ</string>
 </resources>

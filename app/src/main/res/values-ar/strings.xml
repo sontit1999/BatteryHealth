@@ -144,4 +144,7 @@
     <string name="dayOneNotificationMessage02">قم بتحسين ذاكرة الوصول العشوائي الآن للحصول على تجربة سلسة لم يسبق لها مثيل</string>
     <string name="dayOneNotificationTitle03">يستهلك هاتفك طاقة البطارية بسرعة كبيرة</string>
     <string name="dayOneNotificationMessage03">تحسين المهام غير المستخدمة لزيادة وقت الاستخدام الآن</string>
+    <string name="time_using_left" translatable="false">الوقت باستخدام اليسار</string>
+    <string name="time_charging_left">الوقت المتبقي للشحن</string>
+    <string name="app_name">شحن بطارية فائق السرعة</string>
 </resources>

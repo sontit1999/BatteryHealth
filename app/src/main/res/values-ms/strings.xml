@@ -144,4 +144,7 @@
     <string name="dayOneNotificationMessage02">Optimumkan memori ram sekarang untuk pengalaman yang lancar seperti sebelum ini</string>
     <string name="dayOneNotificationTitle03">Telefon anda menghabiskan bateri terlalu cepat</string>
     <string name="dayOneNotificationMessage03">Optimumkan tugas yang tidak digunakan untuk meningkatkan masa penggunaan sekarang</string>
+    <string name="app_name">Pengecasan bateri yang sangat pantas</string>
+    <string name="time_charging_left">Baki masa pengecasan</string>
+    <string name="time_using_left">Baki masa penggunaan</string>
 </resources>

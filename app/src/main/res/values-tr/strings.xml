@@ -2,7 +2,7 @@
     <!-- Text for Translator service -->
    <!-- <string name="app_name">Ana Batarya</string>-->
 
-    <string name="optimize">Optimize</string>
+    <string name="optimize">En uygun</string>
     <string name="optimizing">Optimize ediliyor&#8230;</string>
     <string name="optimized">Bitti</string>
     <string name="technology">Teknoloji</string>
@@ -144,4 +144,7 @@
     <string name="dayOneNotificationMessage02">Her zamankinden daha sorunsuz bir deneyim için şimdi ram belleği optimize edin</string>
     <string name="dayOneNotificationTitle03">Kullanım süresini şimdi artırmak için kullanılmayan görevleri optimize edin</string>
     <string name="dayOneNotificationMessage03">Telefonunuzun pili çok hızlı bitiyor</string>
+    <string name="app_name">Süper hızlı pil şarjı</string>
+    <string name="time_charging_left">Kalan şarj süresi</string>
+    <string name="time_using_left">Kalan kullanım süresi</string>
 </resources>

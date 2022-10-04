@@ -128,6 +128,9 @@
     <string name="dayOneNotificationMessage02">Tối ưu hóa bộ nhớ ram ngay bây giờ để có trải nghiệm mượt mà hơn bao giờ hết</string>
     <string name="dayOneNotificationTitle03">Tối ưu hóa các tác vụ không sử dụng để tăng thời gian sử dụng ngay bây giờ</string>
     <string name="dayOneNotificationMessage03">Điện thoại của bạn hết pin quá nhanh</string>
+    <string name="app_name">Sạc pin nhanh siêu cấp</string>
+    <string name="time_charging_left">Thời gian sạc</string>
+    <string name="time_using_left">Thời gian sử dụng</string>
 
 
 </resources>

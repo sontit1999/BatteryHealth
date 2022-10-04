@@ -144,4 +144,7 @@
     <string name="bd_charge_duration">Продолжительность заряда</string>
     <string name="du_no_charger_record">Нет записи</string>
     <string name="go_since_the_last_full_charge">С момента последней полной зарядки</string>
+    <string name="time_charging_left">Оставшееся время зарядки</string>
+    <string name="time_using_left">Оставшееся время использования</string>
+    <string name="app_name">Сверхбыстрая зарядка аккумулятора</string>
 </resources>

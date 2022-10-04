@@ -126,4 +126,7 @@
       <string name="dayOneNotificationMessage02">RAM メモリを今すぐ最適化して、これまでにないスムーズな体験を実現</string>
       <string name="dayOneNotificationTitle03">スマートフォンの電池の消耗が速すぎる</string>
       <string name="dayOneNotificationMessage03">未使用のタスクを最適化して使用時間を増やす</string>
+      <string name="app_name">超高速バッテリー充電</string>
+      <string name="time_charging_left">残り充電時間</string>
+      <string name="time_using_left">残り使用時間</string>
   </resources>

@@ -19,10 +19,9 @@
     <string name="_gb_free" translatable="false">%1$s GB free / %2$s GB</string>
     <string name="full" translatable="false">Battery is full</string>
     <string name="txt_loading" translatable="false">Loading...</string>
-    <string name="fast_charger" translatable="false">Pro Charger</string>
-    <string name="app_name" translatable="false">Fast charging Pro</string>
-    <string name="time_charging_left" translatable="false">Time charging left</string>
-    <string name="time_using_left" translatable="false">Time using left</string>
+    <string name="app_name">Fast charging Pro</string>
+    <string name="time_charging_left">Time charging left</string>
+    <string name="time_using_left">Time using left</string>
     <string-array name="intro_titles">
         <item>Easy and convenient</item>
         <item>Audio notification when battery is fully charged</item>

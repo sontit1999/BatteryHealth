@@ -144,4 +144,7 @@
     <string name="dayOneNotificationMessage02">Optimisez la mémoire RAM maintenant pour une expérience fluide comme jamais auparavant</string>
     <string name="dayOneNotificationTitle03">Optimisez la mémoire RAM maintenant pour une expérience fluide comme jamais auparavant</string>
     <string name="dayOneNotificationMessage03">Optimisez les tâches inutilisées pour augmenter le temps d\'utilisation maintenant</string>
+    <string name="app_name">Chargement ultra rapide de la batterie</string>
+    <string name="time_charging_left">Temps de charge restant</string>
+    <string name="time_using_left">Temps d\'utilisation restant</string>
 </resources>

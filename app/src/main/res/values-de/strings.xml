@@ -127,6 +127,9 @@
   <string name="dayOneNotificationMessage02">Optimieren Sie jetzt den RAM-Speicher für ein reibungsloses Erlebnis wie nie zuvor</string>
   <string name="dayOneNotificationTitle03">Ihr Telefon entlädt den Akku zu schnell</string>
   <string name="dayOneNotificationMessage03">Optimieren Sie ungenutzte Aufgaben, um die Nutzungszeit jetzt zu erhöhen</string>
+    <string name="app_name">Superschnelles Aufladen des Akkus</string>
+  <string name="time_charging_left">Verbleibende Ladezeit</string>
+  <string name="time_using_left">Verbleibende Nutzungsdauer</string>
 
 
 </resources>

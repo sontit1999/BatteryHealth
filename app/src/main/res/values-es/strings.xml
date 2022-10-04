@@ -144,4 +144,7 @@
     <string name="dayOneNotificationMessage02">Optimice la memoria ram ahora para una experiencia fluida como nunca antes</string>
     <string name="dayOneNotificationTitle03">Su teléfono está agotando la batería demasiado rápido</string>
     <string name="dayOneNotificationMessage03">Optimice las tareas no utilizadas para aumentar el tiempo de uso ahora</string>
+    <string name="app_name">Carga de batería súper rápida</string>
+    <string name="time_charging_left">Tiempo de carga restante</string>
+    <string name="time_using_left">Tiempo de uso restante</string>
 </resources>
