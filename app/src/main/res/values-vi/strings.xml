@@ -83,7 +83,7 @@
     <string name="txt_user_easy">Sử dụng dễ dàng và tiện lợi</string>
     <string name="message_confirm_close_app">Nhấn lần nữa để thoát!</string>
     <string name="go_since_the_last_full_charge">Lần sạc đầy cuối cùng</string>
-    <string name="du_no_charger_record">Không có hồ sơ</string>
+    <string name="du_no_charger_record">Không có bản ghi</string>
     <string name="bd_charge_duration">Thời gian sạc</string>
     <string name="go_charge_quantity">Chất lượng sạc</string>
     <string name="bd_charger_type">Loại sạc</string>
@@ -92,6 +92,42 @@
     <string name="guide_access_permission_v5">Trên màn hình tiếp theo, hãy tìm ứng dụng Pro Charger, sau đó chạm vào để BẬT hoặc CHO PHÉP.</string>
     <string name="txt_history_charge">Lịch sử sạc pin </string>
     <string name="clean_apps">Dọn dẹp các ứng dụng</string>
+    <string name="minute">Phút</string>
+    <string name="cpu_cooler">Làm mát CPU</string>
+    <string name="booster">Tăng Tốc</string>
+    <string name="saver">Tiết kiệm pin</string>
+    <string name="scan_app_background">Quét ứng dụng chạy nền</string>
+    <string name="txt_phone_cooler">Làm mát</string>
+    <string name="cooler_optimized">Tối ưu hóa bộ làm mát</string>
+    <string name="last_charge_history">Bản ghi cuối cùng</string>
+    <string name="mgs_normal">Bình thường</string>
+    <string name="mgs_healthy">Sức khỏe</string>
+    <string name="over_charge">Quá mức</string>
+    <string name="scan_ram">Quét Ram</string>
+    <string name="ram_free">Ram trống</string>
+    <string name="congratulation">Chúc mừng bạn đã tối ưu thành công. Trải nghiệm cảm giác mượt mà ngay nào !</string>
+    <string name="congratulation_title">Xin chúc mừng</string>
+    <string name="battery_saver">Tiết kiệm pin</string>
+    <string name="battery_optimized">Tối ưu pin</string>
+    <string name="booster_optimized">Tăng cường tối ưu hóa</string>
+    <string name="battery_free">Tiết kiệm pin</string>
+    <string name="time_left">Thời gian còn lại</string>
+    <string name="batteryCharging">Sạc pin</string>
+    <string name="desc_permission_write_setting">Để ứng dụng có thể thực hiện các tác vụ tối ưu pin.    Đối với một số điện thoại Android, bạn sẽ cần cấp quyền sửa đổi cài đặt, cho phép ứng dụng này có thể thực hiện các hành động để tiết kiệm pin.</string>
+    <string name="cpu_cooler_suggest">Nếu bạn thấy CPU của mình quá nóng. Hãy thử làm mát ngay bây giờ</string>
+    <string name="booster_suggest">Điện thoại của bạn bị chậm. Hãy thử tăng tốc</string>
+    <string name="saver_suggest">Pin cạn kiệt quá nhanh. Tối ưu hóa tiết kiệm pin ngay bây giờ</string>
+    <string name="scan_app_battery">Quét các ứng dụng ngốn pin</string>
+    <string name="scan_app_battery_done">Quét xong, hãy tối ưu hóa</string>
+    <string name="app_draining_battery">Ứng dụng tiêu hao pin</string>
+    <string name="guild_grant_permission_overlay">Cho phép quyền hiển thị trên ứng dụng khác để có pin tối ưu khi sạc</string>
+    <string name="some_problem">vấn đề về pin</string>
+    <string name="dayOneNotificationTitle01">Điện thoại của bạn quá nóng</string>
+    <string name="dayOneNotificationMessage01">Điện thoại mượ mà ngay bây giờ với một cú nhấp chuột</string>
+    <string name="dayOneNotificationTitle02">Điện thoại của bạn quá chậm</string>
+    <string name="dayOneNotificationMessage02">Tối ưu hóa bộ nhớ ram ngay bây giờ để có trải nghiệm mượt mà hơn bao giờ hết</string>
+    <string name="dayOneNotificationTitle03">Tối ưu hóa các tác vụ không sử dụng để tăng thời gian sử dụng ngay bây giờ</string>
+    <string name="dayOneNotificationMessage03">Điện thoại của bạn hết pin quá nhanh</string>
 
 
 </resources>

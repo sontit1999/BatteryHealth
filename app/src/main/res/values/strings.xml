@@ -147,7 +147,7 @@
     <string name="battery_free">Battery saver</string>
     <string name="time_left">Time left</string>
     <string name="batteryCharging">Battery Charging</string>
-    <string name="desc_permission_write_setting">Để ứng dụng có thể thực hiện các tác vụ tối ưu pin. \n\n Đối với một số điện thoại Android, bạn sẽ cần cấp quyền sửa đổi cài đặt, cho phép ứng dụng này có thể thực hiện các hành động để tiết kiệm pin.</string>
+    <string name="desc_permission_write_setting">So that the application can perform battery optimization tasks. For some Android phones, you\'ll need to grant permission to modify settings, allowing this app to take actions to save battery.</string>
     <string name="cpu_cooler_suggest">If you find your CPU is overheating. Let\'s try cooling now</string>
     <string name="booster_suggest">Your phone is slow. Let\'s try to speed up</string>
     <string name="saver_suggest">The battery is draining too fast. Optimize battery saving now</string>
