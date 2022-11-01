@@ -1,0 +1,131 @@
+buildscript {
+    dependencies {
+        classpath 'com.google.gms:google-services:4.3.13'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.1'
+    }
+}
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.1.1' apply false
+    id 'com.android.library' version '7.1.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.6.21' apply false
+    id 'com.google.dagger.hilt.android' version '2.41' apply false
+    id "org.jetbrains.kotlin.jvm" version "1.5.21" apply false
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    kotlin_version = '1.3.72'
+    android_support_version = '1.1.0'
+    room_version = '2.2.5'
+    dagger_version = '2.27'
+    retrofit_version = '2.9.0'
+    gson_version = '2.8.6'
+    glide_version = '4.11.0'
+    gsonVersion = '2.8.2'
+    activity = '1.1.0'
+    lifecycle = '2.2.0'
+    exoplayer = '2.11.7'
+    hilt_version = '2.28-alpha'
+    hilt_jetpack_version = "1.0.0-alpha02"
+    work_version = "2.7.1"
+
+    versions = [
+            // For project configuration
+            java            : JavaVersion.VERSION_1_8,
+            minSdk          : 26,
+            compileSdk      : 30,
+            targetSdk       : 30,
+            buildTools      : '30.0.3',
+            versionCode     : 1,
+            versionName     : '1.0.0',
+
+
+            // For app
+            fragment        : '1.4.0-alpha05',
+            appcompat       : '1.3.1',
+            kotlin          : '1.5.21',
+            material        : '1.4.0',
+            constraintlayout: '2.1.0',
+            navigation      : '2.4.0-alpha05',
+            retrofit        : '2.9.0',
+            hilt            : '2.38.1',
+            gson            : '2.9.0',
+            moshi           : '2.4.0',
+            jackson         : '2.8.1',
+            interceptor     : '5.0.0-alpha.2',
+            timber          : '4.7.1',
+            leak            : '2.2',
+            glide           : '4.12.0',
+            keyboard        : '3.0.0-RC2',
+            viewmodel       : '2.2.0',
+            motion          : '2.0.0-beta4',
+            fcm             : '20.2.4',
+            analytics       : '17.4.3',
+            crashlytics     : '17.0.1',
+            zxing           : '1.9.13',
+            coroutine       : '1.3.9',
+            rxandroid       : '2.1.1',
+            rxjava          : '2.2.19',
+            rxjava2         : '2.9.0',
+            //test
+            junit           : "4.13",
+            mockito         : "3.1.0",
+            flashphoner     : "1.1.0.37",
+            gpuimage        : "2.1.0",
+            splashscreen    : "1.0.0-beta01"
+    ]
+    libraries = [
+            fragment        : "androidx.fragment:fragment-ktx:${versions.fragment}",
+            appcompat       : "androidx.appcompat:appcompat:${versions.appcompat}",
+            kotlinGradle    : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+            kotlin          : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}",
+
+            //design
+            material        : "com.google.android.material:material:${versions.material}",
+            constraintlayout: "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}",
+
+            //navigation
+            navigation      : "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+            navigationUi    : "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+
+            //network
+            retrofit        : "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+            gson            : "com.squareup.retrofit2:converter-gson:${versions.gson}",
+            moshi           : "com.squareup.retrofit2:converter-moshi:${versions.moshi}",
+            interceptor     : "com.squareup.okhttp3:logging-interceptor:${versions.interceptor}",
+
+            //log
+            timber          : "com.jakewharton.timber:timber:${versions.timber}",
+            zxing           : "me.dm7.barcodescanner:zxing:${versions.zxing}",
+
+            //leak
+            leak            : "com.squareup.leakcanary:leakcanary-android:${versions.leak}",
+
+            //glide
+            glide           : "com.github.bumptech.glide:glide:${versions.glide}",
+            glideCompiler   : "com.github.bumptech.glide:compiler:${versions.glide}",
+
+
+            /* Hilt  */
+            hilt            : "com.google.dagger:hilt-android:${versions.hilt}",
+            hiltSupport     : "com.google.dagger:hilt-android-compiler:${versions.hilt}",
+
+            //viewModel
+            lifecycleExt    : "androidx.lifecycle:lifecycle-extensions:${versions.viewmodel}",
+            viewmodel       : "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.viewmodel}",
+            liveData        : "androidx.lifecycle:lifecycle-livedata-ktx:${versions.viewmodel}",
+
+            jackson         : "com.squareup.retrofit2:converter-jackson:${versions.jackson}",
+            coroutine       : "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutine}",
+            rxandroid       : "io.reactivex.rxjava2:rxandroid:${versions.rxandroid}",
+            rxjava          : "io.reactivex.rxjava2:rxjava:${versions.rxjava}",
+            rxjava2         : "com.squareup.retrofit2:adapter-rxjava2:${versions.rxjava2}",
+            splashscreen    : "androidx.core:core-splashscreen:${versions.splashscreen}"
+
+    ]
+}

@@ -1,0 +1,95 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 32
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:2.3.5")
+    implementation("androidx.navigation:navigation-ui-ktx:2.3.5")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.3.5")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:2.3.5")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha06")
+
+    //appcompat
+    implementation libraries.appcompat
+    implementation libraries.fragment
+
+    implementation libraries.hilt
+    kapt libraries.hiltSupport
+    //implementation libraries.hiltViewModel
+    //kapt libraries.hiltCompiler
+
+    //kotlin
+    implementation libraries.kotlin
+
+    //view
+    implementation libraries.material
+    implementation libraries.constraintlayout
+
+    //navigation
+    implementation libraries.navigation
+    implementation libraries.navigationUi
+
+    //network
+    implementation libraries.retrofit
+    implementation libraries.moshi
+    implementation libraries.interceptor
+    implementation libraries.gson
+
+    // rx android
+    implementation libraries.rxandroid
+    implementation libraries.rxjava
+    implementation libraries.rxjava2
+
+    //logger
+    implementation libraries.timber
+
+//    //ViewModel
+    implementation libraries.viewmodel
+    implementation libraries.lifecycleExt
+    kapt libraries.liveData
+
+    // Loading Image
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+
+}

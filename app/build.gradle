@@ -1,0 +1,130 @@
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.sontit.batteryhealth.entertainment"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation project(':base')
+
+    // Kotlin
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.1")
+
+    // Feature module Support
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.5.1")
+
+    // Testing Navigation
+    androidTestImplementation("androidx.navigation:navigation-testing:2.5.1")
+
+    // Jetpack Compose Integration
+    implementation("androidx.navigation:navigation-compose:2.5.1")
+
+    //appcompat
+    implementation libraries.appcompat
+    implementation libraries.fragment
+
+    implementation libraries.hilt
+    kapt libraries.hiltSupport
+
+    //kotlin
+    implementation libraries.kotlin
+
+    //view
+    implementation libraries.material
+    implementation libraries.constraintlayout
+
+    //navigation
+    implementation libraries.navigation
+    implementation libraries.navigationUi
+
+    //network
+    implementation libraries.retrofit
+    implementation libraries.moshi
+    implementation libraries.interceptor
+    implementation libraries.gson
+
+    // rx android
+    implementation libraries.rxandroid
+    implementation libraries.rxjava
+    implementation libraries.rxjava2
+
+    //logger
+    implementation libraries.timber
+
+//    //ViewModel
+    implementation libraries.viewmodel
+    implementation libraries.lifecycleExt
+    kapt libraries.liveData
+
+    // Loading Image
+    implementation libraries.glide
+    kapt libraries.glideCompiler
+
+
+    //google ads
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+
+    def lifecycle_version = "2.0.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // lottie animation
+    implementation 'com.airbnb.android:lottie:5.0.3'
+
+    implementation platform('com.google.firebase:firebase-bom:30.3.0')
+    implementation 'com.google.firebase:firebase-config-ktx'
+
+
+    // Declare the dependencies for the Crashlytics and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //work
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+    implementation "androidx.hilt:hilt-work:$hilt_jetpack_version"
+}

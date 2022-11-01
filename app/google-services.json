@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392890887102",
+    "project_id": "battery-health-9f4e4",
+    "storage_bucket": "battery-health-9f4e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392890887102:android:a4dfdeb2cd470926bde7ef",
+        "android_client_info": {
+          "package_name": "com.sontit.batteryhealth.entertainment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392890887102-dng3dvqurvcm6op1o6vhshn2j4jtg6rs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp4tglDCT_1uqpYOxZPqIM11CPmb73EuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392890887102-dng3dvqurvcm6op1o6vhshn2j4jtg6rs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
